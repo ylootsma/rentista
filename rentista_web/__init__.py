@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template
-from instagram_web.blueprints.users.views import users_blueprint
+from rentista_web.blueprints.users.views import users_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
 
