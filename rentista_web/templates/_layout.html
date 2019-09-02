@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% assets "home_css" %}
-      <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
 
-    {% assets "home_js" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
 
-    {% block header %}{% endblock %}
-    <title>{% block title %}{% endblock %}NEXTAGRAM</title>
-  </head>
-  <body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {% assets "home_css" %}
+  <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+
+  {% assets "home_js" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+
+  {% block header %}{% endblock %}
+  <title>{% block title %}{% endblock %}RENTISTA</title>
+</head>
+
+<body>
+
+  <section class="main-content">
     {% block content %}
     {% endblock %}
-  </body>
+  </section>
+
+
+</body>
+
 </html>
