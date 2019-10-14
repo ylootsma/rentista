@@ -8,6 +8,7 @@ from .util.assets import bundles
 from rentista_web.util.oauth import oauth
 from flask_login import login_required, current_user, login_user
 from playhouse.flask_utils import FlaskDB, get_object_or_404, object_list
+from models.outfit import Outfit
 import os
 import config
 
@@ -30,4 +31,7 @@ def internal_server_error(e):
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    outfits = Outfit.select()
+    outfit_length = len(outfits)
+
+    return object_list('home.html', outfits, paginate_by=6, outfit_length=outfit_length)

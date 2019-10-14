@@ -96,12 +96,16 @@
         </div>
     </nav>
     </br>
-    /<br>
+    <br>
+
+
     <div class="container">
         <div class="card-columns">
             {%for outfit in object_list%}
             <div class="card border-0">
-                <img src="{{outfit.profile_pic}}" class="card-img-top" alt="...">
+                <div class="col-sm-10">
+                    <img src="{{outfit.profile_pic}}" class="card-img-top" alt="...">
+                </div>
                 <div class="card-body">
                     <p class="card-text"><b>{{outfit.outfit_name}}</b>
                         - <i> {{outfit.brand_name}}</i>
@@ -111,8 +115,8 @@
                         {%else%}
                         {%if outfit.add_on_percentage>0%}
 
-                        weekly rental: €{{20+20*outfit.add_on_percentage/100}} |
-                        subscription: €{{20*outfit.add_on_percentage/100}}
+                        weekly rental: €{{(20+20*outfit.add_on_percentage/100)|round|int}} |
+                        subscription: €{{(20*outfit.add_on_percentage/100)|round|int}}
 
 
                         {%else%}
@@ -127,36 +131,30 @@
 
                 </div>
             </div>
+
             {%endfor%}
 
-            {% if pagination.get_page_count() > 1 %}
-            <ul class="pager">
-                {% if pagination.get_page() > 1 %}
-                <li class="previous"><a
-                        href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() - 1) }}">&laquo;
-                        Previous {{ pagination.get_page() - 1 }} / {{ pagination.get_page_count() }}</a></li>
-                {% else %}
-                <li class="previous disabled"><a href="#">&laquo; Previous</a></li>
-                {% endif %}
-                {% if pagination.get_page_count() > pagination.get_page() %}
-                <li class="next"><a
-                        href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() + 1) }}">Next
-                        {{ pagination.get_page() + 1 }} / {{ pagination.get_page_count() }} &raquo;</a></li>
-                {% else %}
-                <li class="next disabled"><a href="#">Next &raquo;</a></li>
-                {% endif %}
-            </ul>
-            {% endif %}
+
         </div>
+        {% if pagination.get_page_count() > 1 %}
+        <ul class="pager">
+            {% if pagination.get_page() > 1 %}
+            <li class="previous"><a
+                    href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() - 1) }}">&laquo;
+                    Previous {{ pagination.get_page() - 1 }} / {{ pagination.get_page_count() }}</a></li>
+            {% else %}
+            <li class="previous disabled"><a href="#">&laquo; Previous</a></li>
+            {% endif %}
+            {% if pagination.get_page_count() > pagination.get_page() %}
+            <li class="next"><a
+                    href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() + 1) }}">Next
+                    {{ pagination.get_page() + 1 }} / {{ pagination.get_page_count() }} &raquo;</a></li>
+            {% else %}
+            <li class="next disabled"><a href="#">Next &raquo;</a></li>
+            {% endif %}
+        </ul>
+        {%endif%}
     </div>
 
-
-
-
-
-
-
-    </div>
-    </div>
 </body>
 {% endblock %}
