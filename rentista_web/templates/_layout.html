@@ -20,6 +20,18 @@
 
   {% block header %}{% endblock %}
   <title>{% block title %}{% endblock %}RENTISTA</title>
+  {%with messages = get_flashed_messages()%}
+  {% if messages %}
+  {%for message in messages%}
+  <div class="alert alert-warning alert-dismissable" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">Close</button>
+    {{message}}
+  </div>
+
+  {%endfor%}
+
+  {%endif%}
+  {%endwith%}
 </head>
 
 <body>

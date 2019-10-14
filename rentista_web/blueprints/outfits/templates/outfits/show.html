@@ -1,0 +1,162 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<head>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            RENTISTA
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <!-- pricing and how it works  -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <!-- categories:
+        skirts
+        shorts
+        cardigans/jerseys/sweathers
+        pants
+        dresses
+
+        ocassions:
+        workwear
+        events(bridal, gala, cocktail)
+        holiday
+
+        femenine & sexy
+        elegant
+        casual
+        Timeless
+        trendy
+        authentic -->
+
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
+                </li>
+                <!-- models
+        celebs -->
+
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Trends
+        Advice
+        Dress to the moment
+        get the look -->
+            </ul>
+            <span class="navbar-text">
+                <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary"
+                        data-toggle="modal" data-target="#modal-with-tab">
+
+                        <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
+                    <!-- <br>
+        <div style="display: inline-block"><a href="#">Login</a>
+        </div> -->
+
+                    <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modal-with-tab">
+
+                        <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
+
+                    <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modal-with-tab">
+
+                        <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i></button>
+                </div>
+
+            </span>
+        </div>
+    </nav>
+    </br>
+    /<br>
+    <div class="container">
+        <div class="card-columns">
+            {%for outfit in object_list%}
+            <div class="card border-0">
+                <img src="{{outfit.profile_pic}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><b>{{outfit.outfit_name}}</b>
+                        - <i> {{outfit.brand_name}}</i>
+                        </br>
+                        {%if outfit.pricing_type=='standard'%}
+                        weekly rental: €10 | subscription: €0
+                        {%else%}
+                        {%if outfit.add_on_percentage>0%}
+
+                        weekly rental: €{{20+20*outfit.add_on_percentage/100}} |
+                        subscription: €{{20*outfit.add_on_percentage/100}}
+
+
+                        {%else%}
+                        weekly rental: €20 | subscription: €0
+
+                        {%endif%}
+                        {%endif%}
+
+                        <p>
+
+
+
+                </div>
+            </div>
+            {%endfor%}
+
+            {% if pagination.get_page_count() > 1 %}
+            <ul class="pager">
+                {% if pagination.get_page() > 1 %}
+                <li class="previous"><a
+                        href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() - 1) }}">&laquo;
+                        Previous {{ pagination.get_page() - 1 }} / {{ pagination.get_page_count() }}</a></li>
+                {% else %}
+                <li class="previous disabled"><a href="#">&laquo; Previous</a></li>
+                {% endif %}
+                {% if pagination.get_page_count() > pagination.get_page() %}
+                <li class="next"><a
+                        href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() + 1) }}">Next
+                        {{ pagination.get_page() + 1 }} / {{ pagination.get_page_count() }} &raquo;</a></li>
+                {% else %}
+                <li class="next disabled"><a href="#">Next &raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+    </div>
+</body>
+{% endblock %}

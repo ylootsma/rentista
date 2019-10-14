@@ -1,0 +1,40 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<form class="form-horizontal" action="{{ url_for('sessions.create') }}" method="POST">
+    <div class="col-sm-5">
+        <h1> Log in here </h1>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input class="form-control" name="email" placeholder="Enter user name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="password">Password:</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="password" class="form-control" name="password" placeholder="Enter password">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a href="{{url_for ('sessions.google') }}" class="btn btn-primary">Google Sign-in</a>
+    </div>
+</div>
+
+
+{% endblock %}

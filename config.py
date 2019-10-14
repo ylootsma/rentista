@@ -25,6 +25,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     ASSETS_DEBUG = False
 
+
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True

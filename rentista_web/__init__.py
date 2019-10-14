@@ -1,13 +1,27 @@
 from app import app
-from flask import render_template
+from flask import render_template, flash
 from rentista_web.blueprints.users.views import users_blueprint
+from rentista_web.blueprints.sessions.views import sessions_blueprint
+from rentista_web.blueprints.outfits.views import outfits_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
+from rentista_web.util.oauth import oauth
+from flask_login import login_required, current_user, login_user
+from playhouse.flask_utils import FlaskDB, get_object_or_404, object_list
+import os
+import config
+
+
+oauth.init_app(app)
+
 
 assets = Environment(app)
 assets.register(bundles)
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
+app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
+app.register_blueprint(outfits_blueprint, url_prefix="/outfits")
+
 
 @app.errorhandler(500)
 def internal_server_error(e):

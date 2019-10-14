@@ -4,6 +4,7 @@
 
 <head>
 
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
@@ -12,7 +13,256 @@
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
   </style>
 
+
+  <style>
+    .bg-dark {
+      background: transparent !important;
+      transition: 750ms ease;
+    }
+
+    .bg-dark.scrolled {
+      background: pink !important;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      height: 8vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+
+    /* .body{
+  height:100%;
+  background-color:#ffffff;
+} */
+
+
+
+    #btnGroupDrop1,
+    #btnGroupDrop2,
+    #btnGroupDrop3 {
+      background-color: whitesmoke;
+      border: 2px solid black;
+      /* padding: 15px 28px; */
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      width: 10vw;
+    }
+
+    /* .carousel-caption {
+   position: absolute;
+   bottom: 25vh;
+} */
+
+
+
+
+    /* .navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  (80px - button height 34px) / 2 = 23px
+  margin-top: 23px;
+  padding: 9px 10px !important;
+} */
+
+    #mod {
+      background-color: transparent;
+      border: transparent;
+    }
+
+    @media (min-width: 768px) {
+      .navbar-nav>li>a {
+        /* (80px - line-height of 27px) / 2 = 26.5px */
+        padding-top: 26.5px;
+        padding-bottom: 26.5px;
+        line-height: 27px;
+      }
+    }
+
+    /* .main-content {
+background-color: #ffffff;
+padding-top:5%;
+
+} */
+
+
+
+    .carousel-item img {
+      height: 100vh;
+
+      object-fit: cover;
+    }
+
+    .card-pricing.popular {
+      z-index: 1;
+      border: 3px solid #007bff;
+    }
+
+    .card-pricing .list-unstyled li {
+      padding: .5rem 0;
+      color: #6c757d;
+    }
+
+    /* login and register */
+
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* body {
+    background-color: #435165;
+    margin: 0; 
+ }  */
+    .login,
+    .register {
+      width: 400px;
+      background-color: #ffffff;
+      box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+      margin: 100px auto;
+    }
+
+    .login h1,
+    .register h1 {
+      text-align: center;
+      color: #5b6574;
+      font-size: 24px;
+      padding: 20px 0 20px 0;
+      border-bottom: 1px solid #dee0e4;
+    }
+
+    .login .links,
+    .register .links {
+      display: flex;
+      padding: 0 15px;
+    }
+
+    .login .links a,
+    .register .links a {
+      color: #adb2ba;
+      text-decoration: none;
+      display: inline-flex;
+      padding: 0 10px 10px 10px;
+      font-weight: bold;
+    }
+
+    .login .links a:hover,
+    .register .links a:hover {
+      color: #9da3ac;
+    }
+
+    .login .links a.active,
+    .register .links a.active {
+      border-bottom: 3px solid pink;
+      color: pink;
+    }
+
+    .login form,
+    .register form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 20px;
+    }
+
+    .login form label,
+    .register form label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      color: #ffffff;
+    }
+
+    .login form input[type="password"],
+    .login form input[type="text"],
+    .login form input[type="email"],
+    .register form input[type="password"],
+    .register form input[type="text"],
+    .register form input[type="email"] {
+      width: 310px;
+      height: 50px;
+      border: 1px solid #dee0e4;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .login form input[type="submit"],
+    .register form input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: pink;
+      border: 0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ffffff;
+      transition: background-color 0.2s;
+    }
+
+    .login form input[type="submit"]:hover,
+    .register form input[type="submit"]:hover {
+      background-color: pink;
+      transition: background-color 0.2s;
+    }
+
+    body.loggedin {
+      background-color: #f3f4f7;
+    }
+
+
+    .button4 {
+      display: inline-block;
+      padding: 0.3em 1.2em;
+      margin: 0 0.1em 0.1em 0;
+      border: 0.16em solid rgba(255, 255, 255, 0);
+      border-radius: 2em;
+      box-sizing: border-box;
+      text-decoration: none;
+      /*  font-family:'Roboto',sans-serif; */
+      font-weight: bold;
+      color: #5b6574;
+      /*  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35); */
+      text-align: center;
+      transition: all 0.2s;
+      width: 10vw;
+    }
+
+    .button4:hover {
+      border-color: rgba(255, 255, 255, 1);
+    }
+
+    @media all and (max-width:30em) {
+      .button4 {
+        display: block;
+        margin: 0.2em auto;
+      }
+    }
+  </style>
+
+  <script>
+    $(window).scroll(function () {
+      $('nav').toggleClass('scrolled', $(this).scrollTop() > 700)
+    });
+  </script>
+
 </head>
+
+
 
 <body>
 
@@ -28,18 +278,49 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
+        <!-- pricing and how it works  -->
         <li class="nav-item active">
-          <a class="nav-link" href="#outfits">Outfits<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#explanation">How it works<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span class="sr-only">(current)</span></a>
         </li>
+        <!-- categories:
+        skirts
+        shorts
+        cardigans/jerseys/sweathers
+        pants
+        dresses
+
+        ocassions:
+        workwear
+        events(bridal, gala, cocktail)
+        holiday
+
+        femenine & sexy
+        elegant
+        casual
+        Timeless
+        trendy
+        authentic -->
+
+
+
         <li class="nav-item active">
-          <a class="nav-link" href="#plans">Pricing<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
         </li>
+        <!-- models
+        celebs -->
+
+
+
         <li class="nav-item active">
           <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
         </li>
+        <!-- Trends
+        Advice
+        Dress to the moment
+        get the look -->
       </ul>
       <span class="navbar-text">
         <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
@@ -49,6 +330,14 @@
           <!-- <br>
         <div style="display: inline-block"><a href="#">Login</a>
         </div> -->
+
+          <button type="button" id="mod" class="btn btn-primary" data-toggle="modal" data-target="#modal-with-tab">
+
+            <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
+
+          <button type="button" id="mod" class="btn btn-primary" data-toggle="modal" data-target="#modal-with-tab">
+
+            <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i></button>
         </div>
 
       </span>
@@ -173,88 +462,67 @@
     <div class="container mb-5 mt-5">
       <div class="pricing card-deck flex-column flex-md-row mb-3">
         <div class="card card-pricing text-center px-3 mb-4">
-          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Starter</span>
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Stylexplore</span>
           <div class="bg-transparent card-header pt-4 border-0">
             <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15">$<span
-                class="price">3</span><span class="h6 text-muted ml-2">/ per month</span></h1>
+                class="price">60</span><span class="h6 text-muted ml-2">/ per month</span></h1>
           </div>
           <div class="card-body pt-0">
             <ul class="list-unstyled mb-4">
-              <li>Up to 5 users</li>
-              <li>Basic support on Github</li>
-              <li>Monthly updates</li>
-              <li>Free cancelation</li>
+              <li>Select 2 Outfits</li>
+              <li>Swap anytime</li>
+
             </ul>
-            <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
+            <button type="button" class="btn btn-outline-secondary mb-3">Subscribe</button>
           </div>
         </div>
         <div class="card card-pricing popular shadow text-center px-3 mb-4">
-          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Professional</span>
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Apparellove</span>
           <div class="bg-transparent card-header pt-4 border-0">
             <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="30">$<span
-                class="price">6</span><span class="h6 text-muted ml-2">/ per month</span></h1>
+                class="price">90</span><span class="h6 text-muted ml-2">/ per month</span></h1>
           </div>
           <div class="card-body pt-0">
             <ul class="list-unstyled mb-4">
-              <li>Up to 5 users</li>
-              <li>Basic support on Github</li>
-              <li>Monthly updates</li>
-              <li>Free cancelation</li>
+              <li>Select 3 outfits</li>
+              <li>Swap anytime</li>
+
+
             </ul>
-            <a href="https://www.totoprayogo.com" target="_blank" class="btn btn-primary mb-3">Order Now</a>
+            <a href="https://www.totoprayogo.com" target="_blank" class="btn btn-primary mb-3">Subscribe</a>
           </div>
         </div>
 
         <div class="card card-pricing text-center px-3 mb-4">
-          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Business</span>
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Trendmaster</span>
           <div class="bg-transparent card-header pt-4 border-0">
             <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="45">$<span
-                class="price">9</span><span class="h6 text-muted ml-2">/ per month</span></h1>
+                class="price">120</span><span class="h6 text-muted ml-2">/ per month</span></h1>
           </div>
           <div class="card-body pt-0">
             <ul class="list-unstyled mb-4">
-              <li>Up to 5 users</li>
-              <li>Basic support on Github</li>
-              <li>Monthly updates</li>
-              <li>Free cancelation</li>
+              <li>Select 4 Outfits</li>
+              <li>Swap anytime</li>
             </ul>
-            <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
+            <button type="button" class="btn btn-outline-secondary mb-3">Subscribe</button>
           </div>
         </div>
 
         <div class="card card-pricing text-center px-3 mb-4">
-          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Enterprise</span>
+          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Fashionasm</span>
           <div class="bg-transparent card-header pt-4 border-0">
             <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="60">$<span
-                class="price">12</span><span class="h6 text-muted ml-2">/ per month</span></h1>
+                class="price">150</span><span class="h6 text-muted ml-2">/ per month</span></h1>
           </div>
           <div class="card-body pt-0">
             <ul class="list-unstyled mb-4">
-              <li>Up to 5 users</li>
-              <li>Basic support on Github</li>
-              <li>Monthly updates</li>
-              <li>Free cancelation</li>
+              <li>Select 5 Outfits</li>
+              <li>Swap anytime</li>
             </ul>
-            <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
+            <button type="button" class="btn btn-outline-secondary mb-3">Subscribe</button>
           </div>
         </div>
 
-        <div class="card card-pricing text-center px-3 mb-4">
-          <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Enterprise</span>
-          <div class="bg-transparent card-header pt-4 border-0">
-            <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="60">$<span
-                class="price">12</span><span class="h6 text-muted ml-2">/ per month</span></h1>
-          </div>
-          <div class="card-body pt-0">
-            <ul class="list-unstyled mb-4">
-              <li>Up to 5 users</li>
-              <li>Basic support on Github</li>
-              <li>Monthly updates</li>
-              <li>Free cancelation</li>
-            </ul>
-            <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -265,7 +533,7 @@
 
 
   <div id='outfits' style='height:60vh'>
-    outfits
+
 
   </div>
 
@@ -283,12 +551,14 @@
 
   <div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
 
-
     <!-- Only required for left/right tabs -->
     <div class="register">
-      <h1 class="text-center">Registration</h1>
+      <!-- <h1 class="text-center">Account</h1> -->
+
+      <br>
 
       <div class="nav nav-tabs links">
+        <br>
         <a href="#register" data-toggle="tab">Register</a>
         <a href="#login" class="active" data-toggle="tab">Login</a>
       </div>
@@ -296,8 +566,21 @@
       <div class="tab-content">
 
         <div class="tab-pane active" id="login">
-          <form action="#" method="POST" autocomplete="off">
+          <br>
+          <div id='social' style='text-align: center;'>
 
+            <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                src=" {{url_for('static', filename='google_button.png')}}"></a>
+            <br>
+
+            <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
+                id='facebook' style="width: 18.2vw; height:5vh;"
+                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+          </div>
+
+          <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
 
             <label for="email">
@@ -311,18 +594,31 @@
             </label>
             <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
               required>
-            <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up </button>
+            <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
 
           </form>
         </div>
 
         <div class="tab-pane" id="register">
-          <form action="#" method="POST" autocomplete="off">
+          <br>
+          <div id='social' style='text-align: center;'>
+
+            <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                src=" {{url_for('static', filename='google_button.png')}}"></a>
+            <br>
+
+            <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
+                id='facebook' style="width: 18.2vw; height:5vh;"
+                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+          </div>
+          <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
             <label for="name">
               <i class="fas fa-user"></i>
             </label>
-            <input type="text" class="form-control" name="fullname" placeholder="Enter full name" required>
+            <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
 
             <label for="email">
               <i class="fas fa-envelope"></i>

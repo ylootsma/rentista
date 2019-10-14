@@ -1,0 +1,134 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<form action="{{ url_for('outfits.create')}}" method="POST" enctype="multipart/form-data">
+
+    <div class="col-sm-5">
+        <h1> Upload Clothing item here </h1>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="pic_link"> Upload Pictures:</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="file" name="pic_link" multiple=True>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="outfit_name">Outfit name</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="outfit_name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="brand_name">Brand Name</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="brand_name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apparell_type">Apparell Type</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="apparell_type">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <label class="control-label col-sm-2" for="sixe_xs">Amount of items: size xs</label>
+            <input type="number" name="size_xs">
+            </br>
+            <label class="control-label col-sm-2" for="size_s">Amount of items: size s</label>
+            <input type="number" name="size_s">
+            </br>
+            <label class="control-label col-sm-2" for="size_m">Amount of items: size m</label>
+            <input type="number" name="size_m">
+            </br>
+            <label class="control-label col-sm-2" for="size_l">Amount of items: size l</label>
+            <input type="number" name="size_l">
+            </br>
+            <label class="control-label col-sm-2" for="size_xl">Amount of items: size xl</label>
+            <input type="number" name="size_xl">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="enter_stock">Available from</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="date" name="enter_stock">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="state">New or Vintage</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <select name="state">
+                <option value="new">New</option>
+                <option value="vintage">Vintage</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="pricing">Standard or Exclusive rental price</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <select name="pricing">
+                <option value="standard">Standard</option>
+                <option value="exclusive">Exclusive</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="add_on">Eventual add_on percentage price(only exclusive
+            items)</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="number" name="add_on">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="retail_price">Retail_price</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="number" name="retail_price">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="occassion">For which occassion is this item best suited</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <select name="occassion">
+                <option value="workwear">Workwear</option>
+                <option value="wedding">Wedding</option>
+                <option value="cocktail">Cocktail</option>
+                <option value="gala">Gala</option>
+                <option value="standard">Holiday/Festival</option>
+                <option value="date_night">Date night</option>
+                <option value="casual_elegant">Casual: Elegant</option>
+                <option value="casual_trendy">Casual:Trendy</option>
+                <option value="casual_simple">Casual: Simple</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit">Upload</button>
+
+</form>
+
+
+{% endblock %}

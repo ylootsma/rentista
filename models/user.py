@@ -9,3 +9,9 @@ class User(BaseModel):
     Admin = pw.BooleanField(unique=False, default=False)
     Client = pw.BooleanField(unique=False, default=True)
     Partner = pw.BooleanField(unique=False, default=False)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
