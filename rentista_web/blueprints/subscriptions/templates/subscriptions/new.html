@@ -1,0 +1,396 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="container">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">
+                <h3>RENTISTA</h3>
+            </a>
+        </li>
+    </ul>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+    <hr>
+</div>
+
+<br>
+
+
+<div class="container">
+    <center>
+        <h3 class style="justify-content: center;">Find the rental style that fits you best:</h3>
+    </center>
+    <!-- pick your preferred membership option and start renting  -->
+    <br>
+    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                aria-controls="pills-home" aria-selected="true">Flexible Member</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="false">Unlimited Member</a>
+        </li>
+
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="card-deck">
+
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Steal the show</h5>
+                            Why worry about what to wear to your next event if you can rent it?
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#flex_sts_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#flex_sts_exclusive" data-toggle="tab" role="tab">Premium</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="flex_sts_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                <center>
+                                    <h5>What is included?</h5>
+
+
+                                    <h6>7 days RENT</h6>
+
+
+                                    <h6>1 standard ITEM </h6>
+
+
+
+                                    <br>Choose package:<br>
+
+
+                                    <form>
+                                        <select id="fss_select" onchange="fss_selectfunc()">
+                                            <option value="1">Rent 1 time</option>
+                                            <option value="3">Rent 3 times</option>
+                                            <option value="5">Rent 5 times</option>
+                                            <option value="8">Rent 8 times</option>
+                                            <option value="10">Rent 10 times</option>
+                                        </select>
+                                        <br>
+                                        <br>
+
+                                        <h5 id="fss_h"> Pay €50</h5>
+                                        <br>
+
+                                        <button type="submit" class="btn btn-primary">Buy now</button>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <small class="text-muted">Premium items are
+                                        available at an additional cost. Depending on your package you can rent max. 3
+                                        items at once.</small>
+                                </center>
+                            </div>
+                            <div class="tab-pane fade" id="flex_sts_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                <center>
+                                    <h5>What is included?</h5>
+
+
+                                    <h6>7 days RENT</h6>
+
+
+                                    <h6>1 standard ITEM </h6>
+
+
+
+                                    <br>Choose package:<br>
+
+
+                                    <form>
+                                        <select>
+                                            <option value="1">Rent 1 time</option>
+                                            <option value="3">Rent 3 times</option>
+                                            <option value="5">Rent 5 times</option>
+                                            <option value="8">Rent 8 times</option>
+                                            <option value="10">Rent 10 times</option>
+                                        </select>
+                                        <br>
+                                        <br>
+
+                                        <h5> Pay €50</h5>
+                                        <br>
+
+                                        <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                                            now</button>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <small class="text-muted">Premium items are
+                                        available at an additional cost. Depending on your package you can rent max. 3
+                                        items at once.</small>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Flexista</h5>
+                            Why chose if you can have both? For those with a passion for fashion!
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#unlimited_pff_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unlimited_pff_exclusive" data-toggle="tab"
+                                    role="tab">Premium</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="unlimited_pff_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                €66/month
+                            </div>
+                            <div class="tab-pane fade" id="unlimited_pff_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                €105/month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Jetsetter</h5>
+                            Pack your suitcase with rentista. Ideal for trips and vacations.
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#unlimited_fn_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unlimited_fn_exclusive" data-toggle="tab"
+                                    role="tab">Premium</a>
+
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="unlimited_fn_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                €75/month</div>
+                            <div class="tab-pane fade" id="unlimited_fn_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                €125/month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="card-deck">
+
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Conscious Convenience</h5>
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#unlimited_cc_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unlimited_cc_exclusive" data-toggle="tab"
+                                    role="tab">Premium</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="unlimited_cc_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                €50/month</div>
+                            <div class="tab-pane fade" id="unlimited_cc_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                €78/month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Stylexplore</h5>
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#unlimited_pff_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unlimited_pff_exclusive" data-toggle="tab"
+                                    role="tab">Premium</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="unlimited_pff_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                €66/month
+                            </div>
+                            <div class="tab-pane fade" id="unlimited_pff_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                €105/month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <center>
+                            <h5>Fashionasm</h5>
+                        </center>
+                    </div>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#unlimited_fn_standard" data-toggle="tab"
+                                    role="tab">Standard</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#unlimited_fn_exclusive" data-toggle="tab"
+                                    role="tab">Premium</a>
+
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="unlimited_fn_standard" role="tabpanel"
+                                aria-labelledby="standard-tab">
+                                €75/month</div>
+                            <div class="tab-pane fade" id="unlimited_fn_exclusive" role="tabpanel"
+                                aria-labelledby="exclusive-tab">
+                                €125/month
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function fss_selectfunc() {
+        var x = document.getElementById("fss_select").value;
+        document.getElementById("fss_h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        b
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+    function myFunction() {
+        var x = document.getElementById("s").value;
+        document.getElementById("h").innerHTML = "€" + x;
+    }
+
+
+
+
+</script>
+
+
+{%endblock%}

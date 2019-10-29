@@ -31,6 +31,14 @@ def show():
     return object_list('outfits/show.html', outfits, paginate_by=9)
 
 
+@outfits_blueprint.route('/<id>/detail')
+def detail(id):
+    pictures = Outfit_Picture.select().where(Outfit_Picture.outfit == id)
+    outfit = Outfit.select().where(Outfit.id == id)
+
+    return render_template('outfits/detail.html', pictures=pictures, outfit=outfit)
+
+
 @outfits_blueprint.route('/create', methods=['POST', 'GET'])
 def create():
     outfit_name = request.form.get('outfit_name')
@@ -41,17 +49,11 @@ def create():
     size_m = request.form.get('size_m')
     size_l = request.form.get('size_l')
     size_xl = request.form.get('size_xl')
-    # in_stock = True
     enter_stock_date = request.form.get('enter_stock')
-    # dropshipping date = today plus time to dropship
-    # dropshipping
-    # dropshipping including shipping date
-    state = request.form.get('state')
     pricing_type = request.form.get('pricing')
     add_on_percentage = request.form.get('add_on')
     retail_price = request.form.get('retail_price')
     occassion = request.form.get('occassion')
-    # approved = False
 
     outfit = Outfit(owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
                     size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, pricing_type=pricing_type, add_on_percentage=add_on_percentage, retail_price=retail_price, occassion=occassion, approved=False, profile_pic="default")

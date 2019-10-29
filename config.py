@@ -7,6 +7,9 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = os.environ.get(
         'SECRET_KEY') or os.urandom(32)
+    merchant_id = os.environ.get("Merchant_ID")
+    public_key = os.environ.get("Public_Key")
+    private_key = os.environ.get("Private_Key")
 
 
 class ProductionConfig(Config):

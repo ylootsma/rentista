@@ -3,6 +3,7 @@ from flask import render_template, flash
 from rentista_web.blueprints.users.views import users_blueprint
 from rentista_web.blueprints.sessions.views import sessions_blueprint
 from rentista_web.blueprints.outfits.views import outfits_blueprint
+from rentista_web.blueprints.subscriptions.views import subscriptions_blueprint
 from flask_assets import Environment, Bundle
 from .util.assets import bundles
 from rentista_web.util.oauth import oauth
@@ -22,6 +23,7 @@ assets.register(bundles)
 app.register_blueprint(users_blueprint, url_prefix="/users")
 app.register_blueprint(sessions_blueprint, url_prefix="/sessions")
 app.register_blueprint(outfits_blueprint, url_prefix="/outfits")
+app.register_blueprint(subscriptions_blueprint, url_prefix="/subscriptions")
 
 
 @app.errorhandler(500)

@@ -104,28 +104,31 @@
             {%for outfit in object_list%}
             <div class="card border-0">
                 <div class="col-sm-10">
-                    <img src="{{outfit.profile_pic}}" class="card-img-top" alt="...">
+                    <a href="{{url_for('outfits.detail', id=outfit.id)}}"><img src="{{outfit.profile_pic}}"
+                            class="card-img-top" alt="..."></a>
                 </div>
                 <div class="card-body">
-                    <p class="card-text"><b>{{outfit.outfit_name}}</b>
-                        - <i> {{outfit.brand_name}}</i>
-                        </br>
-                        {%if outfit.pricing_type=='standard'%}
-                        weekly rental: €10 | subscription: €0
-                        {%else%}
-                        {%if outfit.add_on_percentage>0%}
+                    <a href="{{url_for('outfits.detail', id=outfit.id)}}">
+                        <p class="card-text"><b>{{outfit.outfit_name}}</b>
+                            - <i> {{outfit.brand_name}}</i>
+                            </br>
+                            {%if outfit.pricing_type=='standard'%}
+                            weekly rental: €10 | subscription: €0
+                            {%else%}
+                            {%if outfit.add_on_percentage>0%}
 
-                        weekly rental: €{{(20+20*outfit.add_on_percentage/100)|round|int}} |
-                        subscription: €{{(20*outfit.add_on_percentage/100)|round|int}}
+                            weekly rental: €{{(20+20*outfit.add_on_percentage/100)|round|int}} |
+                            subscription: €{{(20*outfit.add_on_percentage/100)|round|int}}
 
 
-                        {%else%}
-                        weekly rental: €20 | subscription: €0
+                            {%else%}
+                            weekly rental: €20 | subscription: €0
 
-                        {%endif%}
-                        {%endif%}
+                            {%endif%}
+                            {%endif%}
 
-                        <p>
+                            <p>
+                    </a>
 
 
 
