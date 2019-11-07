@@ -55,51 +55,56 @@
                 <div class="card">
                     <div class="card-header">
                         <center>
-                            <h5>Steal the show</h5>
-                            Why worry about what to wear to your next event if you can rent it?
+                            <h5>Set the <b>Standard</b></h5>
+                            Pick your preferred standard membership and start renting!
+                            <!-- Thinking about what to wear to your next event? Rent it here! -->
                         </center>
                     </div>
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#flex_sts_standard" data-toggle="tab"
-                                    role="tab">Standard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#flex_sts_exclusive" data-toggle="tab" role="tab">Premium</a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <div class="card-body">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="flex_sts_standard" role="tabpanel"
+                            <div class="tab-pane fade show active" id="flex_standard" role="tabpanel"
                                 aria-labelledby="standard-tab">
                                 <center>
-                                    <h5>What is included?</h5>
-
-
-                                    <h6>7 days RENT</h6>
-
-
-                                    <h6>1 standard ITEM </h6>
 
 
 
-                                    <br>Choose package:<br>
+                                    <!-- <i>(discount applies from 3+ packages)</i><br> -->
 
 
-                                    <form>
-                                        <select id="fss_select" onchange="fss_selectfunc()">
-                                            <option value="1">Rent 1 time</option>
-                                            <option value="3">Rent 3 times</option>
-                                            <option value="5">Rent 5 times</option>
-                                            <option value="8">Rent 8 times</option>
-                                            <option value="10">Rent 10 times</option>
+                                    <form action="#" method="POST">
+
+                                        <h5>How many packages would you like to rent?</h5>
+
+                                        <select id="fs_select" onchange="fs_selectfunc()">
+                                            <option value="20">Rent 1 package</option>
+                                            <option value="37.5">Rent 2 packages</option>
+                                            <option value="52.5">Rent 3 packages</option>
+                                            <option value="65">Rent 4 packages</option>
+                                            <!-- <option value="100">Rent 8 packages</option> -->
+                                            <!-- <option value="100">Rent 10 times</option> -->
+                                        </select>
+
+
+                                        <br>How many outfits would you like to rent?<br>
+                                        <br>
+                                        <select id="fs_select2" onchange="fss_selectfunc2()">
+                                            <option value="20">1</option>
+                                            <option value="37.5">2</option>
+                                            <option value="52.5">3</option>
+                                            <option value="65">4</option>
+                                            <option value="76.5">5</option>
+                                            <!-- <option value="100">Rent 8 packages</option> -->
+                                            <!-- <option value="100">Rent 10 times</option> -->
                                         </select>
                                         <br>
                                         <br>
-
-                                        <h5 id="fss_h"> Pay €50</h5>
+                                        <h5>Every package includes:</h5>
+                                        <h6>7 days rent</h6>
+                                        <div id="fs_f">
+                                            <h5 id="fs_h"> Pay €20</h5>
+                                            <h5 id="fs_p"> Receive 1 standard outfit</h5>
+                                        </div>
                                         <br>
 
                                         <button type="submit" class="btn btn-primary">Buy now</button>
@@ -107,8 +112,9 @@
                                         <br>
                                     </form>
                                     <small class="text-muted">Premium items are
-                                        available at an additional cost. Depending on your package you can rent max. 3
-                                        items at once.</small>
+                                        available at an additional cost. Packages can be kept for 7 days with a max. of
+                                        2 packages at a
+                                        time. Extra days will be charged with 1/7 of the package price.</small>
                                 </center>
                             </div>
                             <div class="tab-pane fade" id="flex_sts_exclusive" role="tabpanel"
@@ -120,25 +126,26 @@
                                     <h6>7 days RENT</h6>
 
 
-                                    <h6>1 standard ITEM </h6>
+                                    <h6><b>1</b> ITEM per package</h6>
+
 
 
 
                                     <br>Choose package:<br>
 
 
-                                    <form>
-                                        <select>
-                                            <option value="1">Rent 1 time</option>
-                                            <option value="3">Rent 3 times</option>
-                                            <option value="5">Rent 5 times</option>
-                                            <option value="8">Rent 8 times</option>
-                                            <option value="10">Rent 10 times</option>
+                                    <form id="fse_f">
+                                        <select id="fse_select" onchange="fse_selectfunc()">
+                                            <option value="40">Rent 1 time</option>
+                                            <option value="113">Rent 3 times</option>
+                                            <option value="175">Rent 5 times</option>
+                                            <option value="260">Rent 8 times</option>
+                                            <!-- <option value="300">Rent 10 times</option> -->
                                         </select>
                                         <br>
                                         <br>
 
-                                        <h5> Pay €50</h5>
+                                        <h5 id="fse_h"> Pay €40</h5>
                                         <br>
 
                                         <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
@@ -155,56 +162,24 @@
                     </div>
                 </div>
 
+
+
                 <div class="card">
                     <div class="card-header">
                         <center>
-                            <h5>Flexista</h5>
-                            Why chose if you can have both? For those with a passion for fashion!
+                            <h5>Let's be Exclusive</h5>
+                            <!-- Pack your suitcase with rentista. Ideal for trips and vacations. -->
                         </center>
                     </div>
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#unlimited_pff_standard" data-toggle="tab"
-                                    role="tab">Standard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#unlimited_pff_exclusive" data-toggle="tab"
-                                    role="tab">Premium</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="unlimited_pff_standard" role="tabpanel"
-                                aria-labelledby="standard-tab">
-                                €66/month
-                            </div>
-                            <div class="tab-pane fade" id="unlimited_pff_exclusive" role="tabpanel"
-                                aria-labelledby="exclusive-tab">
-                                €105/month
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <center>
-                            <h5>Jetsetter</h5>
-                            Pack your suitcase with rentista. Ideal for trips and vacations.
-                        </center>
-                    </div>
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#unlimited_fn_standard" data-toggle="tab"
+                                <a class="nav-link active" href="#flex_js_standard" data-toggle="tab"
                                     role="tab">Standard</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#unlimited_fn_exclusive" data-toggle="tab"
-                                    role="tab">Premium</a>
+                                <a class="nav-link" href="#flex_js_exclusive" data-toggle="tab" role="tab">Premium</a>
 
 
                             </li>
@@ -212,12 +187,85 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="unlimited_fn_standard" role="tabpanel"
+                            <div class="tab-pane fade show active" id="flex_js_standard role=" tabpanel"
                                 aria-labelledby="standard-tab">
-                                €75/month</div>
-                            <div class="tab-pane fade" id="unlimited_fn_exclusive" role="tabpanel"
+                                <center>
+                                    <h5>What is included?</h5>
+
+
+                                    <h6>7 days RENT</h6>
+
+
+                                    <h6>3 standard ITEMS </h6>
+
+
+
+                                    <br>Choose package:<br>
+
+
+                                    <form>
+                                        <select id="fjs_select" onchange="fjs_selectfunc()">
+                                            <option value="48">Rent 1 time</option>
+                                            <option value="127.2">Rent 3 times</option>
+                                            <option value="180">Rent 5 times</option>
+                                            <option value="240">Rent 8 times</option>
+                                            <!-- <option value="">Rent 10 times</option> -->
+                                        </select>
+                                        <br>
+                                        <br>
+
+                                        <h5 id="fjs_h"> Pay €48 </h5>
+                                        <br>
+
+                                        <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                                            now</button>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <small class="text-muted">Premium items are
+                                        available at an additional cost. Depending on your package you can rent max. 3
+                                        items at once.</small>
+                                </center>h
+                            </div>
+                            <div class="tab-pane fade" id="flex_js_exclusive"" role=" tabpanel"
                                 aria-labelledby="exclusive-tab">
-                                €125/month
+                                <center>
+                                    <h5>What is included?</h5>
+
+
+                                    <h6>7 days RENT</h6>
+
+
+                                    <h6>3 ITEMS </h6>
+
+
+
+                                    <br>Choose package:<br>
+
+
+                                    <form>
+                                        <select id="fje_select" onchange="fje_selectfunc()">
+                                            <option value="96">Rent 1 time</option>
+                                            <option value="271">Rent 3 times</option>
+                                            <option value="420">Rent 5 times</option>
+                                            <option value="624">Rent 8 times</option>
+                                            <!-- <option value="10">Rent 10 times</option> -->
+                                        </select>
+                                        <br>
+                                        <br>
+
+                                        <h5 id="fje_h"> Pay €50</h5>
+                                        <br>
+
+                                        <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                                            now</button>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <small class="text-muted">Premium items are
+                                        available at an additional cost. Depending on your package you can rent max. 3
+                                        items at once.</small>
+                                </center>
                             </div>
                         </div>
                     </div>
@@ -337,29 +385,31 @@
 
 
 <script type="text/javascript">
+
     function fss_selectfunc() {
         var x = document.getElementById("fss_select").value;
-        document.getElementById("fss_h").innerHTML = "€" + x;
+        var y = document.getElementById("fss_select");
+        var z = y.options[y.selectedIndex].text;
+        var times = z.split(" ")
+        var time = times[1]
+        var t = Number(time)
+        var price = x / t;
+        document.getElementById("fss_h").innerHTML = "Pay €" + x;
+        // document.getElementById("fss_p").style.display = "initial";
+        document.getElementById("fss_p").innerHTML = "Receive " + time + " items in total";
     }
-    function myFunction() {
-        var x = document.getElementById("s").value;
-        document.getElementById("h").innerHTML = "€" + x;
+    function fse_selectfunc() {
+        var x = document.getElementById("fse_select").value;
+        document.getElementById("fse_h").innerHTML = "Pay €" + x;
     }
-    function myFunction() {
-        var x = document.getElementById("s").value;
-        document.getElementById("h").innerHTML = "€" + x;
+
+    function fjs_selectfunc() {
+        var x = document.getElementById("fjs_select").value;
+        document.getElementById("fjs_h").innerHTML = "Pay €" + x;
     }
-    function myFunction() {
-        var x = document.getElementById("s").value;
-        document.getElementById("h").innerHTML = "€" + x;
-    }
-    function myFunction() {
-        var x = document.getElementById("s").value;
-        document.getElementById("h").innerHTML = "€" + x;
-    }
-    function myFunction() {
-        var x = document.getElementById("s").value;
-        document.getElementById("h").innerHTML = "€" + x;
+    function fje_selectfunc() {
+        var x = document.getElementById("fje_select").value;
+        document.getElementById("fje_h").innerHTML = "Pay €" + x;
     }
     function myFunction() {
         var x = document.getElementById("s").value;

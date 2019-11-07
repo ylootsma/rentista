@@ -18,7 +18,24 @@ subscriptions_blueprint = Blueprint('subscriptions',
                                     template_folder='templates')
 
 
+TRANSACTION_SUCCESS_STATUSES = [
+    braintree.Transaction.Status.Authorized,
+    braintree.Transaction.Status.Authorizing,
+    braintree.Transaction.Status.Settled,
+    braintree.Transaction.Status.SettlementConfirmed,
+    braintree.Transaction.Status.SettlementPending,
+    braintree.Transaction.Status.Settling,
+    braintree.Transaction.Status.SubmittedForSettlement
+]
+
+
 @subscriptions_blueprint.route('/new', methods=['POST', 'GET'])
 @login_required
 def new():
     return render_template('subscriptions/new.html')
+
+
+@subscriptions_blueprint.route('/new_checkout', methods=['POST', 'GET'])
+@login_required
+def new_checkout_fss():
+    pass
