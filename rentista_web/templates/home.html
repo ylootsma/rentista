@@ -15,24 +15,16 @@
 
 
   <style>
-    .bg-dark {
+    /* .bg-dark {
       background: transparent !important;
       transition: 750ms ease;
     }
 
     .bg-dark.scrolled {
       background: pink !important;
-    }
+    } */
 
-    .navbar {
-      background-color: #ffffff;
-      height: 8vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 3;
-    }
+
 
     /* .body{
   height:100%;
@@ -78,14 +70,15 @@
       border: transparent;
     }
 
+    /* 
     @media (min-width: 768px) {
-      .navbar-nav>li>a {
-        /* (80px - line-height of 27px) / 2 = 26.5px */
-        padding-top: 26.5px;
+      .navbar-nav>li>a { */
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    /* padding-top: 26.5px;
         padding-bottom: 26.5px;
         line-height: 27px;
       }
-    }
+    } */
 
     /* .main-content {
 background-color: #ffffff;
@@ -94,11 +87,12 @@ padding-top:5%;
 } */
 
 
-
-    .carousel-item img {
+    .carousel-item {
       height: 100vh;
-
+      /* position: absolute; */
       object-fit: cover;
+
+      /* z-index: 1; */
     }
 
     .card-pricing.popular {
@@ -254,9 +248,9 @@ padding-top:5%;
   </style>
 
   <script>
-    $(window).scroll(function () {
-      $('nav').toggleClass('scrolled', $(this).scrollTop() > 700)
-    });
+    // $(window).scroll(function () {
+    //   $('nav').toggleClass('scrolled', $(this).scrollTop() > 700)
+    // });
   </script>
 
 </head>
@@ -265,26 +259,32 @@ padding-top:5%;
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-        alt="">
-      RENTISTA
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <!-- pricing and how it works  -->
-        <li class="nav-item active">
-          <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span class="sr-only">(current)</span></a>
-        </li>
-        <!-- categories:
+  <div id="navbar">
+    <ul class="nav justify-content-center" style="background-color: transparent;">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">
+          <h3>RENTISTA</h3>
+        </a>
+      </li>
+    </ul>
+    <ul class="nav justify-content-center" style=" background-color: transparent;">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- categories:
         skirts
         shorts
         cardigans/jerseys/sweathers
@@ -302,46 +302,6 @@ padding-top:5%;
         Timeless
         trendy
         authentic -->
-
-
-
-        <li class="nav-item active">
-          <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
-        </li>
-        <!-- models
-        celebs -->
-
-
-
-        <li class="nav-item active">
-          <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
-        </li>
-        <!-- Trends
-        Advice
-        Dress to the moment
-        get the look -->
-      </ul>
-      <span class="navbar-text">
-        <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
-            data-target="#modal-with-tab">
-
-            <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
-          <!-- <br>
-        <div style="display: inline-block"><a href="#">Login</a>
-        </div> -->
-
-          <button type="button" id="mod" class="btn btn-primary" data-toggle="modal" data-target="#modal-with-tab">
-
-            <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
-
-          <button type="button" id="mod" class="btn btn-primary" data-toggle="modal" data-target="#modal-with-tab">
-
-            <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i></button>
-        </div>
-
-      </span>
-    </div>
-  </nav>
 
 
   <div class="row d-flex justify-content-center">
@@ -419,22 +379,23 @@ padding-top:5%;
 
 
 
-          <!-- <div class="carousel-item">
-          <img
-            src="https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/imgonline-com-ua-twotoone-YqkusUAfmIGdz-2.jpg"
-            class="d-block w-100">
-          <div class="carousel-caption d-none d-md-block text-align:center;">
-            <h3 style=" background-color: whitesmoke; color: black; width: 20vw; display: inline-block;"><i>for beauty:
-                look within,
-              </i>
-            </h3>
-            <br>
-            <h3 style="background-color: whitesmoke; color: black; width: 20vw; display: inline-block;">
-              for outfits: click <a href style="color:black;">
-                <u> here</u><a>.
-            </h3>
+          <div class="carousel-item">
+            <img
+              src="https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/imgonline-com-ua-twotoone-YqkusUAfmIGdz-2.jpg"
+              class="d-block w-100">
+            <div class="carousel-caption d-none d-md-block text-align:center;">
+              <h3 style=" background-color: whitesmoke; color: black; width: 20vw; display: inline-block;"><i>for
+                  beauty:
+                  look within,
+                </i>
+              </h3>
+              <br>
+              <h3 style="background-color: whitesmoke; color: black; width: 20vw; display: inline-block;">
+                for outfits: click <a href style="color:black;">
+                  <u> here</u><a>.
+              </h3>
+            </div>
           </div>
-        </div> -->
 
 
         </div>
@@ -478,64 +439,7 @@ padding-top:5%;
 
 
 
-  <div id='outfits' style='height:60vh'>
 
-    <div class="container">
-      <div class="card-deck">
-        {%for outfit in object_list%}
-        <div class="card border-0">
-          <img src="{{outfit.profile_pic}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text">
-              <!-- <b>{{outfit.outfit_name}}</b></br> -->
-              <i> {{outfit.brand_name}}</i>
-              <!-- </br>
-              {%if outfit.pricing_type=='standard'%}
-              weekly rental: €10 | subscription: €0
-              {%else%}
-              {%if outfit.add_on_percentage>0%}
-
-              weekly rental: €{{20+20*outfit.add_on_percentage/100}} |
-              subscription: €{{20*outfit.add_on_percentage/100}}
-
-
-              {%else%}
-              weekly rental: €20 | subscription: €0
-
-              {%endif%}
-              {%endif%} -->
-
-              <p>
-
-
-
-          </div>
-        </div>
-        {%endfor%}
-
-
-      </div>
-      {% if pagination.get_page_count() > 1 %}
-      <ul class="pager">
-        {% if pagination.get_page() > 1 %}
-        <li class="previous"><a
-            href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() - 1) }}#outfits">&laquo;
-            Previous</a></li>
-        {% else %}
-        <li class="previous disabled"><a href="#">&laquo; Previous</a></li>
-        {% endif %}
-        {% if pagination.get_page_count() > pagination.get_page() %}
-        <li class="next"><a
-            href="./?{{ request.args|clean_querystring('page', page=pagination.get_page() + 1) }}#outfits">Next
-            &raquo;</a></li>
-        {% else %}
-        <li class="next disabled"><a href="#">Next &raquo;</a></li>
-        {% endif %}
-      </ul>
-      {%endif%}
-    </div>
-
-  </div>
 
 
 
@@ -543,7 +447,7 @@ padding-top:5%;
 
     <!-- Only required for left/right tabs -->
     <div class="register">
-      <!-- <h1 class="text-center">Account</h1> -->
+      <h1 class="text-center">Account</h1>
 
       <br>
 

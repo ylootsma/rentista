@@ -11,21 +11,21 @@ gateway = braintree.BraintreeGateway(
 )
 
 
-def generate_client_token(client_token):
-    return gateway.client_token.generate(client_token)
+def generate_client_token():
+    return gateway.client_token.generate()
 
 
-def transact(options):
-    return gateway.transaction.sale(options)
+def transact():
+    return gateway.transaction.sale()
 
 
-def find_transaction(id):
-    return gateway.transaction.find(id)
+def find_transaction():
+    return gateway.transaction.find()
 
 
-def create_customer(customer):
-    return gateway.customer.create(customer)
+def create_customer():
+    return gateway.customer.create()
 
 
-def subscription_create(subscription):
-    return gateway.subscription.create(subscription)
+def subscription_create():
+    return gateway.subscription.create()

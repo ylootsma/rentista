@@ -33,7 +33,5 @@ def internal_server_error(e):
 
 @app.route("/")
 def home():
-    outfits = Outfit.select()
-    outfit_length = len(outfits)
 
-    return object_list('home.html', outfits, paginate_by=6, outfit_length=outfit_length)
+    return render_template('home.html')

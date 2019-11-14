@@ -54,6 +54,7 @@ def create():
     add_on_percentage = request.form.get('add_on')
     retail_price = request.form.get('retail_price')
     occassion = request.form.get('occassion')
+    state = request.form.get('state')
 
     outfit = Outfit(owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
                     size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, pricing_type=pricing_type, add_on_percentage=add_on_percentage, retail_price=retail_price, occassion=occassion, approved=False, profile_pic="default")
@@ -77,7 +78,7 @@ def create():
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file, os.getenv("S3_BUCKET_NAME"))
         link = (
-            f"https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/{file.filename}")
+            f"https://rentista.s3.us-east-2.amazonaws.com/{file.filename}")
 
         pic = Outfit_Picture(outfit=outfit.id,
                              picture=link,

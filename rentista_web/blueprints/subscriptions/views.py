@@ -29,13 +29,41 @@ TRANSACTION_SUCCESS_STATUSES = [
 ]
 
 
-@subscriptions_blueprint.route('/new', methods=['POST', 'GET'])
+@subscriptions_blueprint.route('/pick', methods=['POST', 'GET'])
 @login_required
-def new():
-    return render_template('subscriptions/new.html')
+def pick():
+    return render_template('subscriptions/pick.html')
 
 
-@subscriptions_blueprint.route('/new_checkout', methods=['POST', 'GET'])
+@subscriptions_blueprint.route('/<id>/new/', methods=['POST', 'GET'])
 @login_required
-def new_checkout_fss():
-    pass
+def new(id):
+    client_token = generate_client_token()
+    price = request.form.get('price')
+    pick = id
+    subscriptiontype = f"{pick}_{price}"
+
+    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
+
+
+@subscriptions_blueprint.route('/subscriptions/<subscriptiontype>/', methods=['POST', 'GET'])
+def create_checkout(subscriptiontype):
+    subscription = ""
+    subscriptiontype = subscriptiontype
+    result = transact({
+        'amount': request.form.get('amount'),
+        'payment_method_nonce': request.form.get('payment_method_nonce'),
+        'options': {
+            "submit_for_settlement": True
+        }
+    })
+    if result.is_success or result.transaction:
+        subscription = Subscription(user=current_user.id,
+                                    subscription_active=False, subscription_type=subscriptiontype)
+        if subscription.save():
+            flash("Grazie Mille!!")
+            return render_template('home.html')
+    else:
+        for x in result.errors.deep_errors:
+            flash('Error: %s: %s' % (x.code, x.message))
+        return redirect(url_for('subscriptions.new', client_token=client_token, price=price, subscription=subscription))

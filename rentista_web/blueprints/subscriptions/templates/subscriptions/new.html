@@ -1,424 +1,61 @@
-{% extends "_layout.html" %}
+{% extends '_layout.html' %}
 {% block content %}
+<div class="wrapper">
+    <div class="checkout container">
 
-<div class="container">
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">
-                <h3>RENTISTA</h3>
-            </a>
-        </li>
-    </ul>
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    <hr>
+        <header>
+            <h1>Hi, <br>Let's test a transaction</h1>
+            <p>
+                Make a test payment with Braintree using PayPal or a card
+            </p>
+        </header>
+
+        <form id="payment-form" method="post"
+            action="{{ url_for('subscriptions.create_checkout', subscriptiontype=subscriptiontype) }}">
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            <section>
+                <label for="amount">
+                    <span class="input-label">{{price}}</span>
+                    <div class="input-wrapper amount-wrapper">
+                        <input id="amount" name="amount" type="hidden" min="1" placeholder={{price}} value={{price}}>
+                    </div>
+                </label>
+
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
+                </div>
+            </section>
+
+            <input type="hidden" id="nonce" name="payment_method_nonce" />
+            <button class="button" type="submit" id="submit-button"><span>Test Transaction</span></button>
+        </form>
+
+    </div>
 </div>
 
-<br>
-
-
-<div class="container">
-    <center>
-        <h3 class style="justify-content: center;">Find the rental style that fits you best:</h3>
-    </center>
-    <!-- pick your preferred membership option and start renting  -->
-    <br>
-    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                aria-controls="pills-home" aria-selected="true">Standard</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                aria-controls="pills-profile" aria-selected="false">Premium</a>
-        </li>
-
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="card-deck">
-                <div class="card">
-
-
-                    <div class="card-body">
-
-                        <center>
-                            <h5><u>No strings attached</u></h5>
-                            <br>
-                            <br>
-
-                            <form action="#" method="POST">
-
-
-
-                                <h6>Rent 1 time:</h6>
-
-                                <br>
-
-
-                                <select id="nsa_s_select" onchange="nsa_s_selectfunc()">
-                                    <option value="20">1 outfit for a week</option>
-                                    <option value="37">2 outfits for a week</option>
-                                    <option value="52">3 outfits for a week </option>
-                                    <option value="65">4 outfits for a week </option>
-                                    <option value="76">5 outfits for a week </option>
-                                    <!-- <option value="100">Rent 8 packages</option> -->
-                                    <!-- <option value="100">Rent 10 times</option> -->
-                                </select>
-                                <br>
-                                <br>
-
-
-
-
-                                <h6>Pay <big>
-                                        <span id="nsa_s_p">€20</span>
-                                    </big></h6>
-
-
-
-                                <br>
-                                <br>
-
-                                <button type="submit" class="btn btn-primary">Buy now</button>
-                                <br>
-                                <br>
-                                <br>
-
-                            </form>
-                            <small class="text-muted">Premium items and extra days rent are
-                                available at an additional cost. </small>
-                        </center>
-                    </div>
-                </div>
-
-
-
-
-                <div class="card">
-
-                    <div class="card-body">
-                        <center>
-                            <h5><u>Steal the show</u></h5>
-                            <br>
-
-                            <form>
-                                <h6>Rent <big>3</big> times:</h6>
-                                <select id="sts_s_select" onchange="sts_s_selectfunc()">
-
-                                    <option value="52">
-                                        <big>1</big> outfit for a week
-                                    </option>
-                                    <option value="97">
-                                        <big>2</big> outfits for a week
-                                    <option value="135">
-                                        <big>3</big> outfits for a week
-                                    </option>
-                                    <option value="165">
-                                        <big>4</big> outfits for a week
-                                    </option>
-
-                                </select>
-                                <br>
-                                <br>
-                                <h6>Pay <big><span id="sts_s_p">€48</span></big></h6>
-                                <br>
-                                <div>
-                                    <big>3 </big>deliveries
-                                    <br>&<br>
-                                    <big><span id="sts_s_t">3</span> </big>outfits in total<div>
-
-
-
-                                        <br>
-
-                                        <button type="submit" class="btn btn-primary">Buy
-                                            now</button>
-                                        <br>
-                                        <br>
-
-                            </form>
-                            <small class="text-muted">Premium items and extra days rent are
-                                available at an additional cost.</small>
-                        </center>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-
-                    <div class="card-body">
-                        <center>
-                            <h5><u>Fashionasm</u></h5>
-                            <br>
-                            <form>
-                                <h6>Rent Unlimited:
-                                </h6>
-                                <select id="f_s_select" onchange="f_s_selectfunc()">
-
-
-                                    <option value="58">
-                                        3 outfits at a time
-                                    </option>
-                                    <option value="70">
-                                        4 outfits at a time
-                                    </option>
-                                    <option value="79">
-                                        5 outfits at a time
-                                    </option>
-
-                                </select>
-                                <br>
-
-                                <br>
-                                <h6>Pay <big>
-                                        <span id="f_s_p">€58</span>
-                                    </big>/month</h6>
-                                <br>
-
-                                Unlimited outfits<br>Swap anytime!
-
-
-                                <br>
-                                <br>
-
-                                <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                                    now</button>
-                                <br>
-                                <br>
-
-                            </form>
-                            <small class="text-muted">Premium items are
-                                available at an additional cost. </small>
-                        </center>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="card-deck">
-                <div class="card">
-
-
-                    <div class="card-body">
-
-                        <center>
-                            <h5><u>No strings attached</u></h5>
-                            <br>
-                            <br>
-
-                            <form action="#" method="POST">
-
-
-
-                                <h6>Rent <big> 1</big> time:</h6>
-
-                                <br>
-
-
-                                <select id="nsa_p_select" onchange="nsa_p_selectfunc()">
-                                    <option value="40">1 outfit for a week</option>
-                                    <option value="77">2 outfits for a week</option>
-                                    <option value="112">3 outfits for a week </option>
-                                    <option value="145">4 outfits for a week </option>
-                                    <option value="175">5 outfits for a week </option>
-                                    <!-- <option value="100">Rent 8 packages</option> -->
-                                    <!-- <option value="100">Rent 10 times</option> -->
-                                </select>
-                                <br>
-                                <br>
-
-
-
-
-
-
-                                <h6>Pay <big><span id="nsa_p_p">€40</span></big></h6>
-
-
-                                <!-- <big>1</big> outfit<br>
-                                            <big>7 </big> days rent</h6> -->
-                                <!-- <h6>Includes 7 days rent</h6> -->
-
-                                <br>
-                                <br>
-
-                                <button type="submit" class="btn btn-primary">Buy now</button>
-                                <br>
-                                <br>
-                                <br>
-
-                            </form>
-                            <small class="text-muted">Extra days rent are
-                                available at an additional cost.</small>
-                        </center>
-                    </div>
-                </div>
-
-
-
-
-                <div class="card">
-
-                    <div class="card-body">
-                        <center>
-                            <h5><u>Steal the show</u></h5>
-                            <br>
-
-                            <form>
-                                <h6>Rent <big>3</big> times:</h6>
-                                <select id="sts_p_select" onchange="sts_p_selectfunc()">
-
-                                    <option value="108">
-                                        <big>1</big> outfit for a week
-                                    </option>
-                                    <option value="210">
-                                        <big>2</big> outfits for a week
-                                    <option value="303">
-                                        <big>3</big> outfits for a week
-                                    </option>
-                                    <option value="390">
-                                        <big>4</big> outfits for a week
-                                    </option>
-
-                                </select>
-                                <br>
-                                <br>
-                                <h6>Pay <big><span id="sts_p_p">€108</span></big></h6>
-                                <br>
-
-                                <big>3 </big>deliveries
-                                <br>&<br>
-                                <big><span id="sts_p_t">3</span> </big>outfits in total
-
-
-
-                                <br>
-                                <br>
-                                <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                                    now</button>
-                                <br>
-                                <br>
-
-                            </form>
-                            <small class="text-muted">Extra days rent are
-                                available at an additional cost. </small>
-                        </center>
-                    </div>
-                </div>
-
-
-                <div class="card">
-
-
-                    <div class="card-body">
-                        <center>
-                            <h5><u>Fashionasm</u></h5>
-                            <br>
-                            <form>
-                                <h6>Rent Unlimited:
-                                </h6>
-                                <select id="f_p_select" onchange="f_p_selectfunc()">
-
-
-                                    <option value="107">
-                                        3 outfits at a time
-                                    </option>
-                                    <option value="139">
-                                        4 outfits at a time
-                                    </option>
-
-                                </select>
-                                <br>
-
-                                <br>
-                                <h6>Pay <big><span id="f_p_p">€107</span></big>/month</h6>
-                                <br>
-
-                                Unlimited outfits<br>Swap anytime!
-
-
-                                <br>
-                                <br>
-
-                                <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                                    now</button>
-                                <br>
-                                <br>
-
-                            </form>
-
-                        </center>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-        <script type="text/javascript">
-
-            function nsa_s_selectfunc() {
-                var x = document.getElementById("nsa_s_select").value;
-
-                document.getElementById("nsa_s_p").innerHTML = "€" + x;
-            }
-            function sts_s_selectfunc() {
-                var x = document.getElementById("sts_s_select").value;
-                var y = document.getElementById("sts_s_select");
-                var z = y.options[y.selectedIndex].text;
-                var outfits = z.split(" ");
-                var outfit = outfits[0];
-                var total = outfit * 3;
-                document.getElementById("sts_s_p").innerHTML = "€" + x;
-                document.getElementById("sts_s_t").innerHTML = total;
-            }
-
-            function f_s_selectfunc() {
-                var x = document.getElementById("f_s_select").value;
-                document.getElementById("f_s_p").innerHTML = "€" + x;
-            }
-
-            function nsa_p_selectfunc() {
-                var x = document.getElementById("nsa_p_select").value;
-                document.getElementById("nsa_p_p").innerHTML = "€" + x;
-            }
-            function sts_p_selectfunc() {
-                var x = document.getElementById("sts_p_select").value;
-                var y = document.getElementById("sts_p_select");
-                var z = y.options[y.selectedIndex].text;
-                var outfits = z.split(" ");
-                var outfit = outfits[0];
-                var total = outfit * 3;
-                document.getElementById("sts_p_p").innerHTML = "€" + x;
-                document.getElementById("sts_p_t").innerHTML = total;
-            }
-
-            function f_p_selectfunc() {
-                var x = document.getElementById("f_p_select").value;
-                document.getElementById("f_p_p").innerHTML = "€" + x;
-            }
-
-        </script>
-
-
-        {%endblock%}
+<script src="https://js.braintreegateway.com/web/dropin/1.19.0/js/dropin.min.js"></script>
+<script>
+    var form = document.querySelector('#payment-form');
+    var client_token = '{{ client_token }}';
+    braintree.dropin.create({
+        authorization: client_token,
+        container: '#bt-dropin',
+        paypal: {
+            flow: 'vault'
+        }
+    }, function (createErr, instance) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            instance.requestPaymentMethod(function (err, payload) {
+                if (err) {
+                    console.log('Error', err);
+                    return;
+                }
+                // Add the nonce to the form and submit
+                document.querySelector('#nonce').value = payload.nonce;
+                form.submit();
+            });
+        });
+    });
+</script>
+{% endblock %}
