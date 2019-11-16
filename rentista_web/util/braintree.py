@@ -15,8 +15,8 @@ def generate_client_token():
     return gateway.client_token.generate()
 
 
-def transact():
-    return gateway.transaction.sale()
+def transact(transact):
+    return gateway.transaction.sale(transact)
 
 
 def find_transaction():

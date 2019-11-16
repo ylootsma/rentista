@@ -127,6 +127,22 @@ padding-top:5%;
       margin: 100px auto;
     }
 
+    .card-img-top {
+      align-content: center;
+      width: 90%;
+      height: 15vw;
+      /* object-fit: cover; */
+    }
+
+    #work,
+    #work2,
+    #work3,
+    #work4 {
+
+      border: none;
+    }
+
+
     .login h1,
     .register h1 {
       text-align: center;
@@ -251,6 +267,47 @@ padding-top:5%;
     // $(window).scroll(function () {
     //   $('nav').toggleClass('scrolled', $(this).scrollTop() > 700)
     // });
+    function nsa_s_selectfunc() {
+      var x = document.getElementById("nsa_s_select").value;
+
+      document.getElementById("nsa_s_p").innerHTML = "€" + x;
+    }
+    function sts_s_selectfunc() {
+      var x = document.getElementById("sts_s_select").value;
+      var y = document.getElementById("sts_s_select");
+      var z = y.options[y.selectedIndex].text;
+      var outfits = z.split(" ");
+      var outfit = outfits[0];
+      var total = outfit * 3;
+      document.getElementById("sts_s_p").innerHTML = "€" + x;
+      document.getElementById("sts_s_t").innerHTML = total;
+    }
+
+    function f_s_selectfunc() {
+      var x = document.getElementById("f_s_select").value;
+      document.getElementById("f_s_p").innerHTML = "€" + x;
+    }
+
+    function nsa_p_selectfunc() {
+      var x = document.getElementById("nsa_p_select").value;
+      document.getElementById("nsa_p_p").innerHTML = "€" + x;
+    }
+    function sts_p_selectfunc() {
+      var x = document.getElementById("sts_p_select").value;
+      var y = document.getElementById("sts_p_select");
+      var z = y.options[y.selectedIndex].text;
+      var outfits = z.split(" ");
+      var outfit = outfits[0];
+      var total = outfit * 3;
+      document.getElementById("sts_p_p").innerHTML = "€" + x;
+      document.getElementById("sts_p_t").innerHTML = total;
+    }
+
+    function f_p_selectfunc() {
+      var x = document.getElementById("f_p_select").value;
+      document.getElementById("f_p_p").innerHTML = "€" + x;
+    }
+
   </script>
 
 </head>
@@ -412,129 +469,525 @@ padding-top:5%;
       </div>
     </div>
   </div>
+  <br>
 
   <div id='explanation' class="container">
-
-  </div>
-
-
-  <div class='container' id='plans'>
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-          aria-controls="nav-home" aria-selected="true">Home</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-          aria-controls="nav-profile" aria-selected="false">Profile</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-          aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <center>
+      <h1>HOW IT WORKS</h1>
+    </center>
+    <br>
+    <div class="card-deck">
+      <div class="card" id="work">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
+        <div class=" card-body">
+          <h5 class="card-title">Plan</h5>
+          <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals! </p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
       </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      <div class="card" id="work2">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt="">
+        <div class=" card-body">
+          <h5 class="card-title">Choose</h5>
+          <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
+
+        </div>
+      </div>
+      <div class="card" id="work3">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/modemeisje.jpeg" class="card-img-top" alt="">
+        <div class=" card-body">
+          <h5 class="card-title">Wear</h5>
+          <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long as you
+            want!</p>
+
+        </div>
+      </div>
+      <div class="card" id="work4">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/Black+Recycling+Symbol+(U%2B267B).jpg"
+          class="card-img-top" alt="">
+        <div class=" card-body">
+          <h5 class="card-title">Repeat</h5>
+          <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
+
+        </div>
+      </div>
     </div>
-    </container>
+    <div id="include">
+      <center>
+        <h3>Why Rent with us:</h3>
+      </center>
+      <table class="table table-borderless table-hover">
+        <tbody>
+          <tr>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
+                style="width:5rem; height:5rem;"></td>
+            <td>Includes free delivery both ways</td>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
+                style="width:5rem; height:5rem;"></td>
+            <td>Includes free delivery both ways</td>
+          </tr>
+          <tr>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
+            <td>Includes free dry-cleaning</td>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
+            <td>Includes free dry-cleaning</td>
+          </tr>
+          <tr>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
+            </td>
+            <td>Includes insurance for minor damages</td>
+            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
+            </td>
+            <td>Includes insurance for minor damages</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
   </div>
 
 
 
+  <br>
+
+  <div class="container" id="plans">
+    <center>
+      <h2 class style="justify-content: center;">RENTISTA SUBSCRIPTIONS</h2>
+    </center>
+    <!-- pick your preferred membership option and start renting  -->
+    <br>
+    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+          aria-controls="pills-home" aria-selected="true">Standard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+          aria-controls="pills-profile" aria-selected="false">Premium</a>
+      </li>
+
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="card-deck">
+          <div class="card">
+
+
+            <div class="card-body">
+
+              <center>
+                <h5><u>No strings attached</u></h5>
+                <br>
+                <br>
+
+                <h6>Rent 1 time:</h6>
+
+                <br>
+                <form action="{{ url_for('subscriptions.new', id='nsa_s')}}" method="POST">
+
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                  <select name="price" id="nsa_s_select" onchange="nsa_s_selectfunc()">
+                    <option value="22">1 outfit for a week</option>
+                    <option value="42">2 outfits for a week</option>
+                    <option value="58">3 outfits for a week </option>
+                    <option value="71">4 outfits for a week </option>
+                    <option value="81">5 outfits for a week </option>
+                  </select>
+                  <br>
+                  <br>
+
+
+
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                  <h6>Pay <big>
+                      <span id="nsa_s_p">€22</span>
+                    </big></h6>
+
+
+
+                  <br>
+                  <br>
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                  <button type="submit" class="btn btn-primary">Buy now</button>
+                  <br>
+                  <br>
+                  <br>
+
+                </form>
+                <small class="text-muted">Premium items and extra days rent are
+                  available at an additional cost. </small>
+              </center>
+            </div>
+          </div>
 
 
 
 
-  <div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
+          <div class="card">
 
-    <!-- Only required for left/right tabs -->
-    <div class="register">
-      <h1 class="text-center">Account</h1>
+            <div class="card-body">
+              <center>
+                <h5><u>Steal the show</u></h5>
+                <br>
+
+                <form>
+                  <h6>Rent <big>3</big> times:</h6>
+                  <select id="sts_s_select" onchange="sts_s_selectfunc()">
+
+                    <option value="58">
+                      <big>1</big> outfit for a week
+                    </option>
+                    <option value="106">
+                      <big>2</big> outfits for a week
+                    <option value="145">
+                      <big>3</big> outfits for a week
+                    </option>
+                    <option value="175">
+                      <big>4</big> outfits for a week
+                    </option>
+
+                  </select>
+                  <br>
+                  <br>
+                  <h6>Pay <big><span id="sts_s_p">€58</span></big></h6>
+                  <br>
+                  <div>
+                    <big>3 </big>deliveries
+                    <br>&<br>
+                    <big><span id="sts_s_t">3</span> </big>outfits in total<div>
+
+
+
+                      <br>
+
+                      <button type="submit" class="btn btn-primary">Buy
+                        now</button>
+                      <br>
+                      <br>
+
+                </form>
+                <small class="text-muted">Premium items and extra days rent are
+                  available at an additional cost.</small>
+              </center>
+            </div>
+          </div>
+
+
+          <div class="card">
+
+
+            <div class="card-body">
+              <center>
+                <h5><u>Fashionasm</u></h5>
+                <br>
+                <form>
+                  <h6>Rent Unlimited:
+                  </h6>
+                  <select id="f_s_select" onchange="f_s_selectfunc()">
+
+
+                    <option value="68">
+                      3 outfits at a time
+                    </option>
+                    <option value="83">
+                      4 outfits at a time
+                    </option>
+                    <option value="93">
+                      5 outfits at a time
+                    </option>
+
+                  </select>
+                  <br>
+
+                  <br>
+                  <h6>Pay <big>
+                      <span id="f_s_p">€68</span>
+                    </big>/month</h6>
+                  <br>
+
+                  Unlimited outfits<br>Swap anytime!
+
+
+                  <br>
+                  <br>
+
+                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                    now</button>
+                  <br>
+                  <br>
+
+                </form>
+                <small class="text-muted">Premium items are
+                  available at an additional cost. </small>
+              </center>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="card-deck">
+          <div class="card">
+
+
+            <div class="card-body">
+
+              <center>
+                <h5><u>No strings attached</u></h5>
+                <br>
+                <br>
+
+                <form action="#" method="POST">
+
+
+
+                  <h6>Rent <big> 1</big> time:</h6>
+
+                  <br>
+
+
+                  <select id="nsa_p_select" onchange="nsa_p_selectfunc()">
+                    <option value="45">1 outfit for a week</option>
+                    <option value="86">2 outfits for a week</option>
+                    <option value="125">3 outfits for a week </option>
+                    <option value="160">4 outfits for a week </option>
+                    <option value="192">5 outfits for a week </option>
+                    <!-- <option value="100">Rent 8 packages</option> -->
+                    <!-- <option value="100">Rent 10 times</option> -->
+                  </select>
+                  <br>
+                  <br>
+
+
+
+
+
+
+                  <h6>Pay <big><span id="nsa_p_p">€45</span></big></h6>
+
+
+                  <!-- <big>1</big> outfit<br>
+                                            <big>7 </big> days rent</h6> -->
+                  <!-- <h6>Includes 7 days rent</h6> -->
+
+                  <br>
+                  <br>
+
+                  <button type="submit" class="btn btn-primary">Buy now</button>
+                  <br>
+                  <br>
+                  <br>
+
+                </form>
+                <small class="text-muted">Extra days rent are
+                  available at an additional cost.</small>
+              </center>
+            </div>
+          </div>
+
+
+
+
+          <div class="card">
+
+            <div class="card-body">
+              <center>
+                <h5><u>Steal the show</u></h5>
+                <br>
+
+                <form>
+                  <h6>Rent <big>3</big> times:</h6>
+                  <select id="sts_p_select" onchange="sts_p_selectfunc()">
+
+                    <option value="115">
+                      <big>1</big> outfit for a week
+                    </option>
+                    <option value="221">
+                      <big>2</big> outfits for a week
+                    <option value="318">
+                      <big>3</big> outfits for a week
+                    </option>
+
+
+                  </select>
+                  <br>
+                  <br>
+                  <h6>Pay <big><span id="sts_p_p">€115</span></big></h6>
+                  <br>
+
+                  <big>3 </big>deliveries
+                  <br>&<br>
+                  <big><span id="sts_p_t">3</span> </big>outfits in total
+
+
+
+                  <br>
+                  <br>
+                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                    now</button>
+                  <br>
+                  <br>
+
+                </form>
+                <small class="text-muted">Extra days rent are
+                  available at an additional cost. </small>
+              </center>
+            </div>
+          </div>
+
+
+          <div class="card">
+
+
+            <div class="card-body">
+              <center>
+                <h5><u>Fashionasm</u></h5>
+                <br>
+                <form>
+                  <h6>Rent Unlimited:
+                  </h6>
+                  <select id="f_p_select" onchange="f_p_selectfunc()">
+
+
+                    <option value="138">
+                      3 outfits at a time
+                    </option>
+                    <option value="179">
+                      4 outfits at a time
+                    </option>
+
+                  </select>
+                  <br>
+
+                  <br>
+                  <h6>Pay <big><span id="f_p_p">€138</span></big>/month</h6>
+                  <br>
+
+                  Unlimited outfits<br>Swap anytime!
+
+
+                  <br>
+                  <br>
+
+                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                    now</button>
+                  <br>
+                  <br>
+
+                </form>
+
+              </center>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
 
       <br>
 
-      <div class="nav nav-tabs links">
-        <br>
-        <a href="#register" data-toggle="tab">Register</a>
-        <a href="#login" class="active" data-toggle="tab">Login</a>
-      </div>
 
-      <div class="tab-content">
 
-        <div class="tab-pane active" id="login">
+
+
+      <div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
+
+        <!-- Only required for left/right tabs -->
+        <div class="register">
+          <h1 class="text-center">Account</h1>
+
           <br>
-          <div id='social' style='text-align: center;'>
 
-            <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                src=" {{url_for('static', filename='google_button.png')}}"></a>
+          <div class="nav nav-tabs links">
             <br>
-
-            <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
-                id='facebook' style="width: 18.2vw; height:5vh;"
-                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+            <a href="#register" data-toggle="tab">Register</a>
+            <a href="#login" class="active" data-toggle="tab">Login</a>
           </div>
 
-          <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <div class="tab-content">
+
+            <div class="tab-pane active" id="login">
+              <br>
+              <div id='social' style='text-align: center;'>
+
+                <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                    id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                    src=" {{url_for('static', filename='google_button.png')}}"></a>
+                <br>
+
+                <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
+                    id='facebook' style="width: 18.2vw; height:5vh;"
+                    src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+              </div>
+
+              <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 
 
-            <label for="email">
-              <i class="fas fa-envelope"></i>
-            </label>
-            <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
-              required>
+                <label for="email">
+                  <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+                  required>
 
-            <label for="password">
-              <i class="fas fa-lock"></i>
-            </label>
-            <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
-              required>
-            <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
+                <label for="password">
+                  <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+                  required>
+                <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
 
-          </form>
-        </div>
+              </form>
+            </div>
 
-        <div class="tab-pane" id="register">
-          <br>
-          <div id='social' style='text-align: center;'>
+            <div class="tab-pane" id="register">
+              <br>
+              <div id='social' style='text-align: center;'>
 
-            <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                src=" {{url_for('static', filename='google_button.png')}}"></a>
-            <br>
+                <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                    id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                    src=" {{url_for('static', filename='google_button.png')}}"></a>
+                <br>
 
-            <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
-                id='facebook' style="width: 18.2vw; height:5vh;"
-                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+                <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
+                    id='facebook' style="width: 18.2vw; height:5vh;"
+                    src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+              </div>
+              <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+                <label for="name">
+                  <i class="fas fa-user"></i>
+                </label>
+                <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
+
+                <label for="email">
+                  <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+                  required>
+
+                <label for="password">
+                  <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+                  required>
+                <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up </button>
+
+              </form>
+
+            </div>
           </div>
-          <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-
-            <label for="name">
-              <i class="fas fa-user"></i>
-            </label>
-            <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
-
-            <label for="email">
-              <i class="fas fa-envelope"></i>
-            </label>
-            <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
-              required>
-
-            <label for="password">
-              <i class="fas fa-lock"></i>
-            </label>
-            <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
-              required>
-            <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up </button>
-
-          </form>
 
         </div>
       </div>
-
     </div>
-  </div>
-  </div>
 
 
 </body>

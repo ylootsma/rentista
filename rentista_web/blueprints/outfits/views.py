@@ -74,7 +74,6 @@ def create():
     for file in files:
         y = y+1
 
-        # breakpoint()
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file, os.getenv("S3_BUCKET_NAME"))
         link = (
@@ -85,9 +84,9 @@ def create():
                              )
         if pic.save():
             x = x+1
-            pic = Outfit_Picture(outfit=outfit.id,
-                                 picture=link,
-                                 )
+            # pic = Outfit_Picture(outfit=outfit.id,
+            #                      picture=link,
+            #                      )
         if x == 2:
             outfit.profile_pic = link
             outfit.save()

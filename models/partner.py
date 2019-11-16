@@ -13,7 +13,7 @@ class Partner(BaseModel):
     partnership_active = pw.BooleanField(unique=False, default="default")
     business_number = pw.FloatField(unique=False, default="0")
     activation_date = pw.DateField(unique=False, null=True)
-    signed_contract = pw.BlobField(null=True)
+    # signed_contract = pw.BlobField(null=True)
     contract_start = pw.DateField(null=True)
     contract_end = pw.DateField(null=True)
     business_type = pw.CharField(unique=False, default="default")

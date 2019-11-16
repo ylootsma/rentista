@@ -22,7 +22,7 @@ class Outfit (BaseModel):
     retail_price = pw.DecimalField(unique=False, default="0")
     occassion = pw.CharField(unique=False, default="default")
     approved = pw.BooleanField(unique=False, default=False)
-    profile_pic = pw.TextField(unique=True, default="default")
+    profile_pic = pw.TextField(unique=True, null=True)
     # style = pw.CharField(unique=False, default="default")
     # look = pw.CharField(unique=False, default="default")
     # trendy_timeless_matrix = pw.IntegerField(unique=False, default="0")
