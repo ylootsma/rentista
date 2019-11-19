@@ -86,15 +86,6 @@ padding-top:5%;
 
 } */
 
-
-    .carousel-item {
-      height: 100vh;
-      /* position: absolute; */
-      object-fit: cover;
-
-      /* z-index: 1; */
-    }
-
     .card-pricing.popular {
       z-index: 1;
       border: 3px solid #007bff;
@@ -127,11 +118,17 @@ padding-top:5%;
       margin: 100px auto;
     }
 
+
+
     .card-img-top {
-      align-content: center;
-      width: 90%;
-      height: 15vw;
+      justify-content: center;
+      /* width: 72%; */
       /* object-fit: cover; */
+      height: 9rem;
+      width: 6rem;
+      margin: 0 auto;
+
+
     }
 
     #work,
@@ -140,6 +137,11 @@ padding-top:5%;
     #work4 {
 
       border: none;
+
+
+
+
+
     }
 
 
@@ -315,238 +317,161 @@ padding-top:5%;
 
 
 <body>
+  <header style="background-color: black;">
+    <form>
 
-  <div id="navbar">
+      <center>
+        <h6 style="height: 2rem; color: white;"> 20% off on your first order! <button type=" button"
+            style="border: 1px solid black; color: solid black; background-color: white; margin: 0.3rem;">
+            <a href="#" style="color:black;">Join Waitlist</a>
+          </button>
+
+        </h6>
+      </center>
+  </header>
+  <div id=" navbar">
     <ul class="nav justify-content-center" style="background-color: transparent;">
       <li class="nav-item">
         <a class="nav-link active" href="#">
-          <h3>RENTISTA</h3>
+          <h2>RENTISTA</h2>
         </a>
       </li>
     </ul>
+
     <ul class="nav justify-content-center" style=" background-color: transparent;">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
+        <a class="nav-link active" href="#">OUTFITS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">HOW IT WORKS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">PRICING</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" href="#">INSPIRATION</a>
       </li>
     </ul>
-
+    <br>
   </div>
 
-  <!-- categories:
-        skirts
-        shorts
-        cardigans/jerseys/sweathers
-        pants
-        dresses
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner" style="height:55rem; object-fit: cover;">
+      <div class=" carousel-item active">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/tamara-bellis-68csPWTnafo-unsplash2.jpg"
+          class="d-block w-100" alt="..." style="height:55rem; object-fit: cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/66888486_10219441448489829_2955886880693944320_o+(2).jpg"
+          class="d-block w-100" alt="..." style="height:55rem; object-fit: cover;">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-        ocassions:
-        workwear
-        events(bridal, gala, cocktail)
-        holiday
+  <div style="background-color: #FFF6F5;">
+    <div style="margin-left: 5rem; margin-right: 5rem;">
+      <br>
+      <center>
+        <h2>RENT MANUAL</h2>
+      </center>
+      <br>
+      <div class=" card-deck" style="background-color: #FFF6F5;">
 
-        femenine & sexy
-        elegant
-        casual
-        Timeless
-        trendy
-        authentic -->
+        <div class="card" id="work" style="margin-right:2rem;  background-color: #FFF6F5;">
+          <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
+          <div class=" card-body">
+            <h5 class="card-title">Plan</h5>
 
-
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-12 col-md-offset-12">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-
-          <div class=" carousel-item active ">
-            <img src="
-            https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/tamara-bellis-68csPWTnafo-unsplash2.jpg"
-              class=" d-block w-100">
-            <!-- <div class="carousel-caption d-none d-md-block" style="top:25vh; right:60vw;">
-
-            <button class="btn btn-light"><b>Subscribe here</b></button>
-            <br>
-            <h3 style="color:whitesmoke;">
-            </h3>
-          </div> -->
+            <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals!
+            </p>
+            <!-- <p class="card-text"><small class="text-muted">We offer various subscriptions, starting from 1x weekly to
+              unlimited rentals!</small></p> -->
           </div>
-
-          <div class="carousel-item ">
-            <img
-              src="https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/tamara-bellis-IwVRO3TLjLc-unsplash.jpg"
-              class="d-block w-100">
-
-            <!-- <div class="carousel-caption d-none d-md-block text-align:center;">
-
-            <h3 style=" color: whitesmoke; display: inline;">
-             An occasion to...
-            </h3>
-            <br>
-            <br>
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"> 
-                <h5> <b> Impress</b></h5>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Workdays</a>
-                <a class="dropdown-item" href="#">Events</a>
-                <a class="dropdown-item" href="#">Date& Late Nights</a>
-              </div>
-            </div>
-
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop3" type="button" class="btn btn-light dropdown" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <h5> <b> Express </b></h5>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Timeless Fashion</a>
-                <a class="dropdown-item" href="#">Latest Trends</a>
-                <a class="dropdown-item" href="#">Exclusive Designs</a>
-              </div>
-            </div>
-
-
-
-
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop2" type="button" class="btn btn-light dropdown" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <h5> <b>Relax</b></h5>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Party Fever</a>
-                <a class="dropdown-item" href="#">Sunny moments</a>
-                <a class="dropdown-item" href="#">Casual days</a>
-              </div>
-            </div>
-          </div> -->
-
-          </div>
-
-
-
-
-          <div class="carousel-item">
-            <img
-              src="https://yvonextagram-clone-instagram.s3.us-east-2.amazonaws.com/imgonline-com-ua-twotoone-YqkusUAfmIGdz-2.jpg"
-              class="d-block w-100">
-            <div class="carousel-caption d-none d-md-block text-align:center;">
-              <h3 style=" background-color: whitesmoke; color: black; width: 20vw; display: inline-block;"><i>for
-                  beauty:
-                  look within,
-                </i>
-              </h3>
-              <br>
-              <h3 style="background-color: whitesmoke; color: black; width: 20vw; display: inline-block;">
-                for outfits: click <a href style="color:black;">
-                  <u> here</u><a>.
-              </h3>
-            </div>
-          </div>
-
-
         </div>
 
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <div class="card" id="work2" style="margin-right:2rem;  background-color: #FFF6F5;">
+          <img src=" https://rentista.s3.us-east-2.amazonaws.com/63_clothing-rack-clothes-hanger-dress-512.png"
+            class="card-img-top" alt="">
+          <div class=" card-body">
 
+            <h5 class="card-title">Choose</h5>
+
+            <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
+
+          </div>
+        </div>
+        <div class="card" id="work3" style="margin-right:2rem;  background-color: #FFF6F5;">
+          <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt="">
+          <div class=" card-body">
+
+            <h5 class="card-title">Wear</h5>
+
+            <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long
+              as you
+              want!</p>
+
+          </div>
+        </div>
+        <div class="card" id="work4" style="background-color: #FFF6F5;">
+          <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png" class="card-img-top" alt="">
+          <div class=" card-body">
+
+            <h5 class="card-title">Repeat</h5>
+
+            <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <br>
-
-  <div id='explanation' class="container">
+  <div id="include" class="container">
     <center>
-      <h1>HOW IT WORKS</h1>
+      <h2>Reasons to Rent with Rentista</h2>
     </center>
     <br>
-    <div class="card-deck">
-      <div class="card" id="work">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
-        <div class=" card-body">
-          <h5 class="card-title">Plan</h5>
-          <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals! </p>
-          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-        </div>
-      </div>
-      <div class="card" id="work2">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt="">
-        <div class=" card-body">
-          <h5 class="card-title">Choose</h5>
-          <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
+    <table class="table table-borderless table-hover">
+      <tbody>
+        <tr>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png" style="width:5rem; height:5rem;">
+          </td>
+          <td>Delivery both ways</td>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/sustain.png" style=" width:5rem; height:5rem;">
+          </td>
+          <td>Reduce your carbon footprint. Sharing is caring!</td>
+        </tr>
+        <tr>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
+          <td>Free dry-cleaning</td>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/flexible+icon.png" style="width:5rem; height:5rem;">
+          </td>
+          <td>Feel flexible to dress for every occassion in a convenient
+            way</td>
+        </tr>
+        <tr>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
+          </td>
+          <td>Insurance for minor damage included</td>
+          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/save+money.png" style="width:5rem; height:5rem;">
+          </td>
+          <td>Upgrade your style without hurting your bankaccount</td>
+        </tr>
+      </tbody>
+    </table>
 
-        </div>
-      </div>
-      <div class="card" id="work3">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/modemeisje.jpeg" class="card-img-top" alt="">
-        <div class=" card-body">
-          <h5 class="card-title">Wear</h5>
-          <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long as you
-            want!</p>
-
-        </div>
-      </div>
-      <div class="card" id="work4">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/Black+Recycling+Symbol+(U%2B267B).jpg"
-          class="card-img-top" alt="">
-        <div class=" card-body">
-          <h5 class="card-title">Repeat</h5>
-          <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
-
-        </div>
-      </div>
-    </div>
-    <div id="include">
-      <center>
-        <h3>Why Rent with us:</h3>
-      </center>
-      <table class="table table-borderless table-hover">
-        <tbody>
-          <tr>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
-                style="width:5rem; height:5rem;"></td>
-            <td>Includes free delivery both ways</td>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
-                style="width:5rem; height:5rem;"></td>
-            <td>Includes free delivery both ways</td>
-          </tr>
-          <tr>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
-            <td>Includes free dry-cleaning</td>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
-            <td>Includes free dry-cleaning</td>
-          </tr>
-          <tr>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
-            </td>
-            <td>Includes insurance for minor damages</td>
-            <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
-            </td>
-            <td>Includes insurance for minor damages</td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-
-
+    <hr>
   </div>
+
+
 
 
 
@@ -554,7 +479,7 @@ padding-top:5%;
 
   <div class="container" id="plans">
     <center>
-      <h2 class style="justify-content: center;">RENTISTA SUBSCRIPTIONS</h2>
+      <h2 class style="justify-content: center;">Plans and Pricing</h2>
     </center>
     <!-- pick your preferred membership option and start renting  -->
     <br>
@@ -921,8 +846,8 @@ padding-top:5%;
                     src=" {{url_for('static', filename='google_button.png')}}"></a>
                 <br>
 
-                <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
-                    id='facebook' style="width: 18.2vw; height:5vh;"
+                <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+                  <img id='facebook' style="width: 18.2vw; height:5vh;"
                     src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
               </div>
 
@@ -955,8 +880,8 @@ padding-top:5%;
                     src=" {{url_for('static', filename='google_button.png')}}"></a>
                 <br>
 
-                <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'> <img
-                    id='facebook' style="width: 18.2vw; height:5vh;"
+                <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+                  <img id='facebook' style="width: 18.2vw; height:5vh;"
                     src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
               </div>
               <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
@@ -978,7 +903,8 @@ padding-top:5%;
                 </label>
                 <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
                   required>
-                <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up </button>
+                <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up
+                </button>
 
               </form>
 
