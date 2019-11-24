@@ -5,6 +5,8 @@
 <head>
 
 
+
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
@@ -235,6 +237,19 @@ padding-top:5%;
       background-color: #f3f4f7;
     }
 
+    #navbar2 {
+      display: none
+    }
+
+    @media screen and (max-width: 600px) {
+      #navbar {
+        display: none;
+      }
+
+      #navbar2 {
+        display: inherit;
+      }
+    }
 
     .button4 {
       display: inline-block;
@@ -311,7 +326,48 @@ padding-top:5%;
     }
 
   </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
 
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $('.responsive').slick({
+      // dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+  </script>
 </head>
 
 
@@ -329,7 +385,7 @@ padding-top:5%;
         </h6>
       </center>
   </header>
-  <div id=" navbar">
+  <div id="navbar">
     <ul class="nav justify-content-center" style="background-color: transparent;">
       <li class="nav-item">
         <a class="nav-link active" href="#">
@@ -355,16 +411,96 @@ padding-top:5%;
     <br>
   </div>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar2">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
+        alt="">
+      RENTISTA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <!-- pricing and how it works  -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- categories:
+        skirts
+        shorts
+        cardigans/jerseys/sweathers
+        pants
+        dresses
+
+        ocassions:
+        workwear
+        events(bridal, gala, cocktail)
+        holiday
+
+        femenine & sexy
+        elegant
+        casual
+        Timeless
+        trendy
+        authentic -->
+
+
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- models
+        celebs -->
+
+
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- Trends
+        Advice
+        Dress to the moment
+        get the look -->
+      </ul>
+      <span class="navbar-text">
+        <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
+            data-target="#modal-with-tab">
+
+            <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
+          <!-- <br>
+        <div style="display: inline-block"><a href="#">Login</a>
+        </div> -->
+
+          <button type="button" id="mod" class="btn btn-primary" data-toggle="modal" data-target="#modal-with-tab">
+
+            <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
+
+
+
+          <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
+            <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i>
+          </button>
+
+      </span>
+    </div>
+
+  </nav>
+
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner" style="height:55rem; object-fit: cover;">
       <div class=" carousel-item active">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/tamara-bellis-68csPWTnafo-unsplash2.jpg"
-          class="d-block w-100" alt="..." style="height:55rem; object-fit: cover;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/imgonline-com-ua-twotoone-o7fcNOLcH89LhzOF.jpg"
+          class="d-block w-100" alt="..." style="height:55rem;">
       </div>
-      <div class="carousel-item">
+      <!-- <div class="carousel-item">
         <img src="https://rentista.s3.us-east-2.amazonaws.com/66888486_10219441448489829_2955886880693944320_o+(2).jpg"
           class="d-block w-100" alt="..." style="height:55rem; object-fit: cover;">
-      </div>
+      </div> -->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -376,110 +512,171 @@ padding-top:5%;
     </a>
   </div>
 
-  <div style="background-color: #FFF6F5;">
-    <div style="margin-left: 5rem; margin-right: 5rem;">
-      <br>
-      <center>
-        <h2>RENT MANUAL</h2>
-      </center>
-      <br>
-      <div class=" card-deck" style="background-color: #FFF6F5;">
 
-        <div class="card" id="work" style="margin-right:2rem;  background-color: #FFF6F5;">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
-          <div class=" card-body">
-            <h5 class="card-title">Plan</h5>
+  <div class="container">
+    <br>
+    <center>
+      <h3>How to Rent</h3>
+    </center>
+    <br>
+    <div class=" card-deck">
 
-            <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals!
-            </p>
-            <!-- <p class="card-text"><small class="text-muted">We offer various subscriptions, starting from 1x weekly to
+      <div class="card" id="work" style="margin-right:2rem;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
+        <div class=" card-body">
+          <h6 class="card-title">Plan</h6>
+
+          <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals!
+          </p>
+          <!-- <p class="card-text"><small class="text-muted">We offer various subscriptions, starting from 1x weekly to
               unlimited rentals!</small></p> -->
+        </div>
+      </div>
+
+      <div class="card" id="work2" style="margin-right:2rem;">
+        <img src=" https://rentista.s3.us-east-2.amazonaws.com/63_clothing-rack-clothes-hanger-dress-512.png"
+          class="card-img-top" alt="">
+        <div class=" card-body">
+
+          <h6 class="card-title">Choose</h6>
+
+          <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
+
+        </div>
+      </div>
+      <div class="card" id="work3" style="margin-right:2rem;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt="">
+        <div class=" card-body">
+
+          <h6 class="card-title">Wear</h6>
+
+          <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long
+            as you
+            want!</p>
+
+        </div>
+      </div>
+      <div class="card" id="work4">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png" class="card-img-top" alt="">
+        <div class=" card-body">
+
+          <h6 class="card-title">Repeat</h6>
+
+          <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br>
+  <div id="include" class="container">
+    <center>
+      <h3>Reasons to Rent</h3>
+    </center>
+    <br>
+    <div class="card mb-3" style=" border: none; margin-left:0rem;">
+      <div class="row no-gutters">
+
+        <div class="col-md-8">
+          <div class="card-body">
+            <center>
+              <table class="table table-borderless table-hover">
+                <tbody>
+                  <tr>
+                    <td><img src="https://rentista.s3.us-east-2.amazonaws.com/sustain.png"
+                        style=" width:5rem; height:5rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-top: 2rem;">Reduce your carbon footprint. Sharing is caring!</h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><img src="https://rentista.s3.us-east-2.amazonaws.com/flexible+icon.png"
+                        style="width:5rem; height:5rem; margin-top: 1rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-top: 2rem;">Feel flexible to dress for every occassion in a convenient
+                        way</h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><img src=" https://rentista.s3.us-east-2.amazonaws.com/save+money.png"
+                        style="width:5rem; height:5rem; margin-top: 2rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-top: 3rem;">Upgrade your style without hurting your bankaccount</h5>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
           </div>
         </div>
+        <div class="col-md-4">
 
-        <div class="card" id="work2" style="margin-right:2rem;  background-color: #FFF6F5;">
-          <img src=" https://rentista.s3.us-east-2.amazonaws.com/63_clothing-rack-clothes-hanger-dress-512.png"
-            class="card-img-top" alt="">
-          <div class=" card-body">
-
-            <h5 class="card-title">Choose</h5>
-
-            <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
-
-          </div>
+          <video height="450rem" autoplay loop muted style class="card-img">
+            <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/mp4">
+            <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/ogg" />
+            Your browser does not support the video tag.</video>
         </div>
-        <div class="card" id="work3" style="margin-right:2rem;  background-color: #FFF6F5;">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt="">
-          <div class=" card-body">
+      </div>
+    </div>
 
-            <h5 class="card-title">Wear</h5>
 
-            <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long
-              as you
-              want!</p>
 
-          </div>
+
+    <div class="card mb-3" style=" border: none;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="https://rentista.s3.us-east-2.amazonaws.com/joline_zakelijk_mislukt.jpg" class="card-img"
+            style="height: 30rem; width: 18rem; object-fit: cover;">
         </div>
-        <div class="card" id="work4" style="background-color: #FFF6F5;">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png" class="card-img-top" alt="">
-          <div class=" card-body">
+        <div class="col-md-8">
+          <div class="card-body">
+            <center>
+              <!-- <h6>What is included</h6> -->
 
-            <h5 class="card-title">Repeat</h5>
-
-            <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
-
+              <table>
+                <tbody>
+                  <tr>
+                    <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
+                        style="width:5rem; height:8rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-left:2rem;">Delivery both ways</h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png"
+                        style="width:5rem; height:8rem; margin-top: 1rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-left:2rem;">Dry-cleaning is included </h5>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png"
+                        style="width:5rem; height:8rem; margin-top: 2rem;">
+                    </td>
+                    <td>
+                      <h5 style="margin-left:2rem;">Insurance for minor damages is covered</h5>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <div id="include" class="container">
-    <center>
-      <h2>Reasons to Rent with Rentista</h2>
-    </center>
-    <br>
-    <table class="table table-borderless table-hover">
-      <tbody>
-        <tr>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png" style="width:5rem; height:5rem;">
-          </td>
-          <td>Delivery both ways</td>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/sustain.png" style=" width:5rem; height:5rem;">
-          </td>
-          <td>Reduce your carbon footprint. Sharing is caring!</td>
-        </tr>
-        <tr>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png" style="width:5rem; height:5rem;"></td>
-          <td>Free dry-cleaning</td>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/flexible+icon.png" style="width:5rem; height:5rem;">
-          </td>
-          <td>Feel flexible to dress for every occassion in a convenient
-            way</td>
-        </tr>
-        <tr>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png" style="width:5rem; height:5rem;">
-          </td>
-          <td>Insurance for minor damage included</td>
-          <td><img src="https://rentista.s3.us-east-2.amazonaws.com/save+money.png" style="width:5rem; height:5rem;">
-          </td>
-          <td>Upgrade your style without hurting your bankaccount</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <hr>
-  </div>
-
-
-
-
 
   <br>
 
   <div class="container" id="plans">
     <center>
-      <h2 class style="justify-content: center;">Plans and Pricing</h2>
+      <h3 class style="justify-content: center;">PRICING</h3>
     </center>
     <!-- pick your preferred membership option and start renting  -->
     <br>

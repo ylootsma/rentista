@@ -27,7 +27,7 @@ def clean_querystring(request_args, *keys_to_remove, **new_values):
     # We'll use this template filter in the pagination include. This filter
     # will take the current URL and allow us to preserve the arguments in the
     # querystring while replacing any that we need to overwrite. For instance
-    # if your URL is /?q=search+query&page=2 and we want to preserve the search
+    # if your URL is /?q=search+query&page=2 and we want to preserve the searchx
     # term but make a link to page 3, this filter will allow us to do that.
     querystring = dict((key, value) for key, value in request_args.items())
     for key in keys_to_remove:
