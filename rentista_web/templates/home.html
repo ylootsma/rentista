@@ -7,16 +7,235 @@
 
 
 
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
   <style>
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
   </style>
 
 
   <style>
+    .features-boxed {
+      color: #313437;
+      background: url(https://rentista.s3.us-east-2.amazonaws.com/joline+goudfluweel+achtergrond.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 80rem;
+      background-position: top center;
+
+    }
+
+    .features-boxed p {
+      color: #7d8285;
+    }
+
+    .features-boxed h2 {
+      font-weight: bold;
+      /* margin-bottom: 25px; */
+      padding-top: 25px;
+      color: white;
+    }
+
+    @media (max-width:767px) {
+      .features-boxed h2 {
+        margin-bottom: 25px;
+        padding-top: 25px;
+        font-size: 24px;
+      }
+    }
+
+    .features-boxed .intro {
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .features-boxed .intro p {
+      margin-bottom: 0;
+    }
+
+    .features-boxed .features {
+      padding: 10px 0;
+    }
+
+    .features-boxed .item {
+      text-align: center;
+    }
+
+    .features-boxed .item .box {
+      text-align: center;
+      padding: 30px;
+      background-color: #fff;
+      margin-bottom: 30px;
+      height: 20rem;
+    }
+
+    .features-boxed .item .icon {
+      font-size: 60px;
+      color: #1485ee;
+      margin-top: 20px;
+      margin-bottom: 35px;
+    }
+
+    .features-boxed .item .name {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .features-boxed .item .description {
+      font-size: 15px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+
+
+    .newsletter-subscribe {
+      color: #313437;
+      background-color: #fff;
+      padding: 50px 0;
+    }
+
+    .newsletter-subscribe p {
+      color: #7d8285;
+      line-height: 1.5;
+    }
+
+    .newsletter-subscribe h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      line-height: 1.5;
+      padding-top: 0;
+      margin-top: 0;
+      color: inherit;
+    }
+
+    .newsletter-subscribe .intro {
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto 25px;
+    }
+
+    .newsletter-subscribe .intro p {
+      margin-bottom: 35px;
+    }
+
+    .newsletter-subscribe form {
+      justify-content: center;
+    }
+
+    .newsletter-subscribe form .form-control {
+      background: #eff1f4;
+      border: none;
+      border-radius: 3px;
+      box-shadow: none;
+      outline: none;
+      color: inherit;
+      text-indent: 9px;
+      height: 45px;
+      margin-right: 10px;
+      min-width: 250px;
+    }
+
+    .newsletter-subscribe form .btn {
+      padding: 16px 32px;
+      border: none;
+      background: none;
+      box-shadow: none;
+      text-shadow: none;
+      opacity: 0.9;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      line-height: 1;
+    }
+
+    .newsletter-subscribe form .btn:hover {
+      opacity: 1;
+    }
+
+    .newsletter-subscribe form .btn:active {
+      transform: translateY(1px);
+    }
+
+    .newsletter-subscribe form .btn-primary {
+      background-color: #055ada !important;
+      color: #fff;
+      outline: none !important;
+    }
+
+
+    .footer-basic {
+      padding: 40px 0;
+      color: #4b4c4d;
+    }
+
+    .footer-basic ul {
+      padding: 0;
+      list-style: none;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .footer-basic li {
+      padding: 0 10px;
+    }
+
+    .footer-basic ul a {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+
+    .footer-basic ul a:hover {
+      opacity: 1;
+    }
+
+    .footer-basic .social {
+      text-align: center;
+      padding-bottom: 25px;
+    }
+
+    .footer-basic .social>a {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin: 0 8px;
+      color: inherit;
+      opacity: 0.75;
+    }
+
+    .footer-basic .social>a:hover {
+      opacity: 0.9;
+    }
+
+    .footer-basic .copyright {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      margin-bottom: 0;
+    }
+
+
     /* .bg-dark {
       background: transparent !important;
       transition: 750ms ease;
@@ -499,13 +718,13 @@ padding-top:5%;
   </nav>
 
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="carousel-inner" style="height:55rem; object-fit: cover;">
+    <div class="carousel-inner" style="height:40rem; object-fit: cover;">
       <div class=" carousel-item active">
         <img src="https://rentista.s3.us-east-2.amazonaws.com/coverfoto+rentista+bewerkt.jpg" class="d-block w-100"
-          alt="..." style="height:55rem; object-fit: cover; object-position:0 0;">
+          alt="..." style="height:40rem; object-fit: cover; object-position:left top;">
 
-        <div class="carousel-caption d-none d-md-block" style="color:white; right:55rem; top:22rem;">
-          <h3>Start renting outfits 24/7</h3>
+        <div class="carousel-caption d-none d-md-block" style="color:white; right:55rem; top:10rem;">
+          <h3>Rent outfits 24/7</h3>
           <h4>&</h4>
 
           <h3> Always have something to wear</h3>
@@ -537,619 +756,707 @@ padding-top:5%;
   </div>
   <br>
   <br>
-  <div>
-    <div class="container">
-      <br>
-      <center>
-        <h3>How to Rent</h3>
-      </center>
-      <br>
-      <div class="card-deck">
+  <!-- 
+  <div class="container">
+    <br>
+    <center>
+      <h3>How it Works</h3>
+    </center>
+    <br>
+    <div class="card-deck">
 
-        <div class="card" id="work" style="margin-right:2rem; background-color: #F7C6D6">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt=""
-            style="margin-top:1rem;">
-          <div class=" card-body">
+      <div class="card" id="work" style="margin-right:5rem; background-color: transparent;">
+
+      </div>
+
+      <div class=" card" id="work" style="margin-right:1rem; background-color: transparent;">
+        <div style="background-color:#F7C6D6;">
+          <center>
             <h6 class="card-title">Plan</h6>
-
-            <p class="card-text">We offer various subscriptions, starting from 1x weekly to unlimited rentals!
-            </p>
-            <!-- <p class="card-text"><small class="text-muted">We offer various subscriptions, starting from 1x weekly to
-              unlimited rentals!</small></p> -->
-          </div>
+            <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png" class="card-img-top" alt="">
+          </center>
         </div>
+        <center>
 
-        <div class="card" id="work2" style="margin-right:2rem; background-color: #F7C6D6">
-          <img src=" https://rentista.s3.us-east-2.amazonaws.com/63_clothing-rack-clothes-hanger-dress-512.png"
-            class="card-img-top" alt="" style="margin-top:1rem;">
-          <div class=" card-body">
+          <p class="card-text" style="background-color:transparent; color:#F7C6D6;"><small>We offer various
+              subscriptions,
+              starting from 1x weekly to unlimited rentals!</small>
+          </p>
+        </center>
+   
+      </div>
 
+      <div class="card" id="work2" style="margin-right:1rem; background-color: transparent;">
+        <div style="background-color:#F7C6D6;">
+          <center>
             <h6 class="card-title">Choose</h6>
+            <img src=" https://rentista.s3.us-east-2.amazonaws.com/63_clothing-rack-clothes-hanger-dress-512.png"
+              class="card-img-top" alt="">
+          </center>
 
-            <p class="card-text"> Find your style amongst our offer of standard and premium outfits!</p>
-
-          </div>
         </div>
-        <div class="card" id="work3" style="margin-right:2rem; background-color: #F7C6D6;">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt=""
-            style="margin-top:1rem;">
-          <div class=" card-body">
 
-            <h6 class="card-title">Wear</h6>
+        <center>
+          <p class="card-text" style="background-color:transparent; color:#F7C6D6;"> <small>Find your style amongst
+              our
+              offer of
+              standard
+              and
+              premium outfits!</small></p>
+        </center>
+      </div>
+      <div class="card" id="work3" style="margin-right:2rem; background-color: #F7C6D6;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png" class="card-img-top" alt=""
+          style="margin-top:1rem;">
+        <div class=" card-body">
 
-            <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long
-              as you
-              want!</p>
+          <h6 class="card-title">Wear</h6>
 
-          </div>
+          <p class="card-text"> Depending on your subscription you can wear your outfit(s) for a week or as long
+            as you
+            want!</p>
+
         </div>
-        <div class="card" id="work4" style="background-color: #F7C6D6;">
-          <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png" class="card-img-top" alt=""
-            style="margin-top:1rem;">
-          <div class=" card-body">
+      </div>
+      <div class="card" id="work4" style="background-color: #F7C6D6;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png" class="card-img-top" alt=""
+          style="margin-top:1rem;">
+        <div class=" card-body">
 
-            <h6 class="card-title">Repeat</h6>
+          <h6 class="card-title">Repeat</h6>
 
-            <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
+          <p class="card-text">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
 
-          </div>
         </div>
       </div>
     </div>
+  </div> -->
+  <br>
+
+  <br>
+  <div id="include" class="container" style="background-color: transparent;">
+    <center>
+      <h3>Your benefits</h3>
+    </center>
     <br>
+    <div class=" card mb-3" style=" background-color:transparent; border: none; margin-left:0rem; ">
+      <div class="row no-gutters">
 
-    <br>
-    <div id="include" class="container" style=" border: solid black 2px;">
-      <center>
-        <h3>Reasons to Rent</h3>
-      </center>
-      <br>
-      <div class=" card mb-3" style=" border: none; margin-left:0rem; ">
-        <div class="row no-gutters">
+        <div class="col-md-4">
 
-          <div class="col-md-8">
-            <div class="card-body">
-              <center>
-                <table class="table table-borderless table-hover">
-                  <tbody>
-                    <tr>
-                      <td><img src="https://rentista.s3.us-east-2.amazonaws.com/sustain.png"
-                          style=" width:5rem; height:5rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-top: 2rem;">Reduce your carbon footprint. Sharing is caring!</h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><img src="https://rentista.s3.us-east-2.amazonaws.com/flexible+icon.png"
-                          style="width:5rem; height:5rem; margin-top: 1rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-top: 2rem;">Feel flexible to dress for every occassion in a convenient
-                          way</h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><img src=" https://rentista.s3.us-east-2.amazonaws.com/save+money.png"
-                          style="width:5rem; height:5rem; margin-top: 2rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-top: 3rem;">Upgrade your style without hurting your bankaccount</h5>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </center>
-            </div>
-          </div>
-          <div class="col-md-4">
+          <video height="450rem" autoplay loop muted style class="card-img">
+            <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/mp4">
+            <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/ogg" />
+            Your browser does not support the video tag.</video>
 
-            <video height="450rem" autoplay loop muted style class="card-img">
-              <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/mp4">
-              <source src="https://rentista.s3.us-east-2.amazonaws.com/rentista_zakelijk3.mp4" type="video/ogg" />
-              Your browser does not support the video tag.</video>
+        </div>
+
+        <div class="col-md-8">
+          <div class="card-body">
+
+            <table class="table table-borderless table-hover">
+              <tbody>
+                <tr>
+                  <td><img src="https://rentista.s3.us-east-2.amazonaws.com/sustain.png"
+                      style=" width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Reduce your carbon footprint. Sharing is caring!</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="https://rentista.s3.us-east-2.amazonaws.com/flexible+icon.png"
+                      style="width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Feel flexible to dress for every occassion in a convenient
+                      way</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src=" https://rentista.s3.us-east-2.amazonaws.com/save+money.png"
+                      style="width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Upgrade your style without hurting your bankaccount</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
+                      style="width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Delivery both ways</h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png"
+                      style="width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Dry-cleaning is included </h5>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png"
+                      style="width:5rem; height:3rem;">
+                  </td>
+                  <td>
+                    <h5 style="">Insurance for minor damages is covered</h5>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
         </div>
+
       </div>
-
-
-
-
-      <div class="card mb-3" style=" border: none;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="https://rentista.s3.us-east-2.amazonaws.com/joline_zakelijk_opzij.jpg" class="card-img"
-              style="height: 30rem; width: 18rem; object-fit: cover;">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <center>
-                <!-- <h6>What is included</h6> -->
-
-                <table>
-                  <tbody>
-                    <tr>
-                      <td><img src="https://rentista.s3.us-east-2.amazonaws.com/free-delivery.png"
-                          style="width:5rem; height:8rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-left:2rem;">Delivery both ways</h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><img src="https://rentista.s3.us-east-2.amazonaws.com/21-512.png"
-                          style="width:5rem; height:8rem; margin-top: 1rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-left:2rem;">Dry-cleaning is included </h5>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><img src="https://rentista.s3.us-east-2.amazonaws.com/insurance.png"
-                          style="width:5rem; height:8rem; margin-top: 2rem;">
-                      </td>
-                      <td>
-                        <h5 style="margin-left:2rem;">Insurance for minor damages is covered</h5>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </center>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
     </div>
+
+
+
+
 
     <br>
   </div>
 
-
-  <div class="container" id="plans">
-    <center>
-      <h3 class style="justify-content: center;">PRICING</h3>
-    </center>
-    <!-- pick your preferred membership option and start renting  -->
-    <br>
-    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-          aria-controls="pills-home" aria-selected="true">Standard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-          aria-controls="pills-profile" aria-selected="false">Premium</a>
-      </li>
-
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div class="card-deck">
-          <div class="card">
+  <br>
 
 
-            <div class="card-body">
-
-              <center>
-                <h5><u>No strings attached</u></h5>
-                <br>
-                <br>
-
-                <h6>Rent 1 time:</h6>
-
-                <br>
-                <form action="{{ url_for('subscriptions.new', id='nsa_s')}}" method="POST">
-
-                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                  <select name="price" id="nsa_s_select" onchange="nsa_s_selectfunc()">
-                    <option value="22">1 outfit for a week</option>
-                    <option value="42">2 outfits for a week</option>
-                    <option value="58">3 outfits for a week </option>
-                    <option value="71">4 outfits for a week </option>
-                    <option value="81">5 outfits for a week </option>
-                  </select>
-                  <br>
-                  <br>
-
-
-
-                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                  <h6>Pay <big>
-                      <span id="nsa_s_p">€22</span>
-                    </big></h6>
-
-
-
-                  <br>
-                  <br>
-                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                  <button type="submit" class="btn btn-primary">Buy now</button>
-                  <br>
-                  <br>
-                  <br>
-
-                </form>
-                <small class="text-muted">Premium items and extra days rent are
-                  available at an additional cost. </small>
-              </center>
-            </div>
+  <div class="features-boxed">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center">How it works</h2>
+        <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat,
+          pellentesque ut laoreet vitae.</p>
+      </div>
+      <div class="row justify-content-center features">
+        <div class="col-sm-4 col-md-4 col-lg-3 item">
+          <div class="box"> <img src="https://rentista.s3.us-east-2.amazonaws.com/subscription.png"
+              class="card-img-top">
+            <h3 class="name">Plan</h3>
+            <p class="description">We offer various
+              subscriptions,
+              starting from 1x weekly to unlimited rentals!</p>
           </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-3 item">
+          <div class="box"> <img src=" https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png"
+              class="card-img-top">
+            <h3 class="name">Choose</h3>
+            <p class="description">Find your style amongst
+              our
+              offer of
+              standard
+              and
+              premium outfits!</p>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-3 item">
+          <div class="box"><img src=" https://rentista.s3.us-east-2.amazonaws.com/fashion-event-icon.png"
+              class="card-img-top">
+            <h3 class="name">Wear </h3>
+            <p class="description">Depending on your subscription you can wear your outfit(s) for a week or as long
+              as you
+              want!.</p>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-3 item">
+          <div class="box"> <img src="https://rentista.s3.us-east-2.amazonaws.com/renewable-energy.png"
+              class="card-img-top">
+            <h3 class="name">Repeat</h3>
+            <p class="description">Pick your new outfits whenever you are ready, we will take care of the rest!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
+    <div class="container" id="plans">
+      <center>
+        <h3 class
+          style="justify-content: center; font-weight: bold; padding-top: 25px; color: rgba(214, 208, 169, 0.945);">
+          Subscriptions
+        </h3>
+      </center>
+      <!-- pick your preferred membership option and start renting  -->
+      <br>
+      <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+            aria-controls="pills-home" aria-selected="true">Standard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+            aria-controls="pills-profile" aria-selected="false">Premium</a>
+        </li>
+
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="card-deck">
+            <div class="card">
 
 
-          <div class="card">
+              <div class="card-body">
 
-            <div class="card-body">
-              <center>
-                <h5><u>Steal the show</u></h5>
-                <br>
-
-                <form>
-                  <h6>Rent <big>3</big> times:</h6>
-                  <select id="sts_s_select" onchange="sts_s_selectfunc()">
-
-                    <option value="58">
-                      <big>1</big> outfit for a week
-                    </option>
-                    <option value="106">
-                      <big>2</big> outfits for a week
-                    <option value="145">
-                      <big>3</big> outfits for a week
-                    </option>
-                    <option value="175">
-                      <big>4</big> outfits for a week
-                    </option>
-
-                  </select>
+                <center>
+                  <h5><u>No strings attached</u></h5>
                   <br>
                   <br>
-                  <h6>Pay <big><span id="sts_s_p">€58</span></big></h6>
+
+                  <h6>Rent 1 time:</h6>
+
                   <br>
-                  <div>
+                  <form action="{{ url_for('subscriptions.new', id='nsa_s')}}" method="POST">
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <select name="price" id="nsa_s_select" onchange="nsa_s_selectfunc()">
+                      <option value="22">1 outfit for a week</option>
+                      <option value="42">2 outfits for a week</option>
+                      <option value="58">3 outfits for a week </option>
+                      <option value="71">4 outfits for a week </option>
+                      <option value="81">5 outfits for a week </option>
+                    </select>
+                    <br>
+                    <br>
+
+
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <h6>Pay <big>
+                        <span id="nsa_s_p">€22</span>
+                      </big></h6>
+
+
+
+                    <br>
+                    <br>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <button type="submit" class="btn btn-primary">Buy now</button>
+                    <br>
+                    <br>
+                    <br>
+
+                  </form>
+                  <small class="text-muted">Premium items and extra days rent are
+                    available at an additional cost. </small>
+                </center>
+              </div>
+            </div>
+
+
+
+
+            <div class="card">
+
+              <div class="card-body">
+                <center>
+                  <h5><u>Steal the show</u></h5>
+                  <br>
+
+                  <form>
+                    <h6>Rent <big>3</big> times:</h6>
+                    <select id="sts_s_select" onchange="sts_s_selectfunc()">
+
+                      <option value="58">
+                        <big>1</big> outfit for a week
+                      </option>
+                      <option value="106">
+                        <big>2</big> outfits for a week
+                      <option value="145">
+                        <big>3</big> outfits for a week
+                      </option>
+                      <option value="175">
+                        <big>4</big> outfits for a week
+                      </option>
+
+                    </select>
+                    <br>
+                    <br>
+                    <h6>Pay <big><span id="sts_s_p">€58</span></big></h6>
+                    <br>
+                    <div>
+                      <big>3 </big>deliveries
+                      <br>&<br>
+                      <big><span id="sts_s_t">3</span> </big>outfits in total<div>
+
+
+
+                        <br>
+
+                        <button type="submit" class="btn btn-primary">Buy
+                          now</button>
+                        <br>
+                        <br>
+
+                  </form>
+                  <small class="text-muted">Premium items and extra days rent are
+                    available at an additional cost.</small>
+                </center>
+              </div>
+            </div>
+
+
+            <div class="card">
+
+
+              <div class="card-body">
+                <center>
+                  <h5><u>Fashionasm</u></h5>
+                  <br>
+                  <form>
+                    <h6>Rent Unlimited:
+                    </h6>
+                    <select id="f_s_select" onchange="f_s_selectfunc()">
+
+
+                      <option value="68">
+                        3 outfits at a time
+                      </option>
+                      <option value="83">
+                        4 outfits at a time
+                      </option>
+                      <option value="93">
+                        5 outfits at a time
+                      </option>
+
+                    </select>
+                    <br>
+
+                    <br>
+                    <h6>Pay <big>
+                        <span id="f_s_p">€68</span>
+                      </big>/month</h6>
+                    <br>
+
+                    Unlimited outfits<br>Swap anytime!
+
+
+                    <br>
+                    <br>
+
+                    <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                      now</button>
+                    <br>
+                    <br>
+
+                  </form>
+                  <small class="text-muted">Premium items are
+                    available at an additional cost. </small>
+                </center>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="card-deck">
+            <div class="card">
+
+
+              <div class="card-body">
+
+                <center>
+                  <h5><u>No strings attached</u></h5>
+                  <br>
+                  <br>
+
+                  <form action="#" method="POST">
+
+
+
+                    <h6>Rent <big> 1</big> time:</h6>
+
+                    <br>
+
+
+                    <select id="nsa_p_select" onchange="nsa_p_selectfunc()">
+                      <option value="45">1 outfit for a week</option>
+                      <option value="86">2 outfits for a week</option>
+                      <option value="125">3 outfits for a week </option>
+                      <option value="160">4 outfits for a week </option>
+                      <option value="192">5 outfits for a week </option>
+                      <!-- <option value="100">Rent 8 packages</option> -->
+                      <!-- <option value="100">Rent 10 times</option> -->
+                    </select>
+                    <br>
+                    <br>
+
+
+
+
+
+
+                    <h6>Pay <big><span id="nsa_p_p">€45</span></big></h6>
+
+
+                    <!-- <big>1</big> outfit<br>
+                                            <big>7 </big> days rent</h6> -->
+                    <!-- <h6>Includes 7 days rent</h6> -->
+
+                    <br>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary">Buy now</button>
+                    <br>
+                    <br>
+                    <br>
+
+                  </form>
+                  <small class="text-muted">Extra days rent are
+                    available at an additional cost.</small>
+                </center>
+              </div>
+            </div>
+
+
+
+
+            <div class="card">
+
+              <div class="card-body">
+                <center>
+                  <h5><u>Steal the show</u></h5>
+                  <br>
+
+                  <form>
+                    <h6>Rent <big>3</big> times:</h6>
+                    <select id="sts_p_select" onchange="sts_p_selectfunc()">
+
+                      <option value="115">
+                        <big>1</big> outfit for a week
+                      </option>
+                      <option value="221">
+                        <big>2</big> outfits for a week
+                      <option value="318">
+                        <big>3</big> outfits for a week
+                      </option>
+
+
+                    </select>
+                    <br>
+                    <br>
+                    <h6>Pay <big><span id="sts_p_p">€115</span></big></h6>
+                    <br>
+
                     <big>3 </big>deliveries
                     <br>&<br>
-                    <big><span id="sts_s_t">3</span> </big>outfits in total<div>
+                    <big><span id="sts_p_t">3</span> </big>outfits in total
 
 
 
-                      <br>
+                    <br>
+                    <br>
+                    <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                      now</button>
+                    <br>
+                    <br>
 
-                      <button type="submit" class="btn btn-primary">Buy
-                        now</button>
-                      <br>
-                      <br>
-
-                </form>
-                <small class="text-muted">Premium items and extra days rent are
-                  available at an additional cost.</small>
-              </center>
+                  </form>
+                  <small class="text-muted">Extra days rent are
+                    available at an additional cost. </small>
+                </center>
+              </div>
             </div>
-          </div>
 
 
-          <div class="card">
+            <div class="card">
 
 
-            <div class="card-body">
-              <center>
-                <h5><u>Fashionasm</u></h5>
-                <br>
-                <form>
-                  <h6>Rent Unlimited:
-                  </h6>
-                  <select id="f_s_select" onchange="f_s_selectfunc()">
-
-
-                    <option value="68">
-                      3 outfits at a time
-                    </option>
-                    <option value="83">
-                      4 outfits at a time
-                    </option>
-                    <option value="93">
-                      5 outfits at a time
-                    </option>
-
-                  </select>
+              <div class="card-body">
+                <center>
+                  <h5><u>Fashionasm</u></h5>
                   <br>
-
-                  <br>
-                  <h6>Pay <big>
-                      <span id="f_s_p">€68</span>
-                    </big>/month</h6>
-                  <br>
-
-                  Unlimited outfits<br>Swap anytime!
+                  <form>
+                    <h6>Rent Unlimited:
+                    </h6>
+                    <select id="f_p_select" onchange="f_p_selectfunc()">
 
 
-                  <br>
-                  <br>
+                      <option value="138">
+                        3 outfits at a time
+                      </option>
+                      <option value="179">
+                        4 outfits at a time
+                      </option>
 
-                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                    now</button>
-                  <br>
-                  <br>
+                    </select>
+                    <br>
 
-                </form>
-                <small class="text-muted">Premium items are
-                  available at an additional cost. </small>
-              </center>
+                    <br>
+                    <h6>Pay <big><span id="f_p_p">€138</span></big>/month</h6>
+                    <br>
+
+                    Unlimited outfits<br>Swap anytime!
+
+
+                    <br>
+                    <br>
+
+                    <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
+                      now</button>
+                    <br>
+                    <br>
+
+                  </form>
+
+                </center>
+              </div>
             </div>
-          </div>
 
+
+            <div class="card">
+
+
+            </div>
+
+
+
+          </div>
 
         </div>
-      </div>
-
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <div class="card-deck">
-          <div class="card">
-
-
-            <div class="card-body">
-
-              <center>
-                <h5><u>No strings attached</u></h5>
-                <br>
-                <br>
-
-                <form action="#" method="POST">
-
-
-
-                  <h6>Rent <big> 1</big> time:</h6>
-
-                  <br>
-
-
-                  <select id="nsa_p_select" onchange="nsa_p_selectfunc()">
-                    <option value="45">1 outfit for a week</option>
-                    <option value="86">2 outfits for a week</option>
-                    <option value="125">3 outfits for a week </option>
-                    <option value="160">4 outfits for a week </option>
-                    <option value="192">5 outfits for a week </option>
-                    <!-- <option value="100">Rent 8 packages</option> -->
-                    <!-- <option value="100">Rent 10 times</option> -->
-                  </select>
-                  <br>
-                  <br>
-
-
-
-
-
-
-                  <h6>Pay <big><span id="nsa_p_p">€45</span></big></h6>
-
-
-                  <!-- <big>1</big> outfit<br>
-                                            <big>7 </big> days rent</h6> -->
-                  <!-- <h6>Includes 7 days rent</h6> -->
-
-                  <br>
-                  <br>
-
-                  <button type="submit" class="btn btn-primary">Buy now</button>
-                  <br>
-                  <br>
-                  <br>
-
-                </form>
-                <small class="text-muted">Extra days rent are
-                  available at an additional cost.</small>
-              </center>
-            </div>
-          </div>
-
-
-
-
-          <div class="card">
-
-            <div class="card-body">
-              <center>
-                <h5><u>Steal the show</u></h5>
-                <br>
-
-                <form>
-                  <h6>Rent <big>3</big> times:</h6>
-                  <select id="sts_p_select" onchange="sts_p_selectfunc()">
-
-                    <option value="115">
-                      <big>1</big> outfit for a week
-                    </option>
-                    <option value="221">
-                      <big>2</big> outfits for a week
-                    <option value="318">
-                      <big>3</big> outfits for a week
-                    </option>
-
-
-                  </select>
-                  <br>
-                  <br>
-                  <h6>Pay <big><span id="sts_p_p">€115</span></big></h6>
-                  <br>
-
-                  <big>3 </big>deliveries
-                  <br>&<br>
-                  <big><span id="sts_p_t">3</span> </big>outfits in total
-
-
-
-                  <br>
-                  <br>
-                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                    now</button>
-                  <br>
-                  <br>
-
-                </form>
-                <small class="text-muted">Extra days rent are
-                  available at an additional cost. </small>
-              </center>
-            </div>
-          </div>
-
-
-          <div class="card">
-
-
-            <div class="card-body">
-              <center>
-                <h5><u>Fashionasm</u></h5>
-                <br>
-                <form>
-                  <h6>Rent Unlimited:
-                  </h6>
-                  <select id="f_p_select" onchange="f_p_selectfunc()">
-
-
-                    <option value="138">
-                      3 outfits at a time
-                    </option>
-                    <option value="179">
-                      4 outfits at a time
-                    </option>
-
-                  </select>
-                  <br>
-
-                  <br>
-                  <h6>Pay <big><span id="f_p_p">€138</span></big>/month</h6>
-                  <br>
-
-                  Unlimited outfits<br>Swap anytime!
-
-
-                  <br>
-                  <br>
-
-                  <button id="flex_sts_button" type="submit" class="btn btn-primary">Buy
-                    now</button>
-                  <br>
-                  <br>
-
-                </form>
-
-              </center>
-            </div>
-          </div>
-
-
-          <div class="card">
-
-
-          </div>
-
-
-
-        </div>
-
       </div>
 
       <br>
+    </div>
 
-
-
-
-
-      <div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
-
-        <!-- Only required for left/right tabs -->
-        <div class="register">
-          <h1 class="text-center">Account</h1>
-
-          <br>
-
-          <div class="nav nav-tabs links">
-            <br>
-            <a href="#register" data-toggle="tab">Register</a>
-            <a href="#login" class="active" data-toggle="tab">Login</a>
-          </div>
-
-          <div class="tab-content">
-
-            <div class="tab-pane active" id="login">
-              <br>
-              <div id='social' style='text-align: center;'>
-
-                <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                    id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                    src=" {{url_for('static', filename='google_button.png')}}"></a>
-                <br>
-
-                <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
-                  <img id='facebook' style="width: 18.2vw; height:5vh;"
-                    src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
-              </div>
-
-              <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-
-
-                <label for="email">
-                  <i class="fas fa-envelope"></i>
-                </label>
-                <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
-                  required>
-
-                <label for="password">
-                  <i class="fas fa-lock"></i>
-                </label>
-                <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
-                  required>
-                <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
-
-              </form>
-            </div>
-
-            <div class="tab-pane" id="register">
-              <br>
-              <div id='social' style='text-align: center;'>
-
-                <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                    id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                    src=" {{url_for('static', filename='google_button.png')}}"></a>
-                <br>
-
-                <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
-                  <img id='facebook' style="width: 18.2vw; height:5vh;"
-                    src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
-              </div>
-              <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-
-                <label for="name">
-                  <i class="fas fa-user"></i>
-                </label>
-                <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
-
-                <label for="email">
-                  <i class="fas fa-envelope"></i>
-                </label>
-                <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
-                  required>
-
-                <label for="password">
-                  <i class="fas fa-lock"></i>
-                </label>
-                <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
-                  required>
-                <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up
-                </button>
-
-              </form>
-
-            </div>
-          </div>
-
+    <div class="newsletter-subscribe">
+      <div class="container">
+        <div class="intro">
+          <h2 class="text-center">Subscribe for our Newsletter</h2>
+          <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat,
+            pellentesque ut laoreet vitae. </p>
         </div>
+        <form class="form-inline" method="post">
+          <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email">
+          </div>
+          <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
+        </form>
       </div>
     </div>
+
+
+    <div class="footer-basic">
+      <footer>
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+              class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
+            href="#"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Home</a></li>
+          <li class="list-inline-item"><a href="#">Services</a></li>
+          <li class="list-inline-item"><a href="#">About</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright">Company Name © 2017</p>
+      </footer>
+    </div>
+
+
+
+
+
+    <div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
+
+      <!-- Only required for left/right tabs -->
+      <div class="register">
+        <h1 class="text-center">Account</h1>
+
+        <br>
+
+        <div class="nav nav-tabs links">
+          <br>
+          <a href="#register" data-toggle="tab">Register</a>
+          <a href="#login" class="active" data-toggle="tab">Login</a>
+        </div>
+
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="login">
+            <br>
+            <div id='social' style='text-align: center;'>
+
+              <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                  id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                  src=" {{url_for('static', filename='google_button.png')}}"></a>
+              <br>
+
+              <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+                <img id='facebook' style="width: 18.2vw; height:5vh;"
+                  src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+            </div>
+
+            <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+
+              <label for="email">
+                <i class="fas fa-envelope"></i>
+              </label>
+              <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+                required>
+
+              <label for="password">
+                <i class="fas fa-lock"></i>
+              </label>
+              <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+                required>
+              <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
+
+            </form>
+          </div>
+
+          <div class="tab-pane" id="register">
+            <br>
+            <div id='social' style='text-align: center;'>
+
+              <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
+                  id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
+                  src=" {{url_for('static', filename='google_button.png')}}"></a>
+              <br>
+
+              <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+                <img id='facebook' style="width: 18.2vw; height:5vh;"
+                  src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+            </div>
+            <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+              <label for="name">
+                <i class="fas fa-user"></i>
+              </label>
+              <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
+
+              <label for="email">
+                <i class="fas fa-envelope"></i>
+              </label>
+              <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+                required>
+
+              <label for="password">
+                <i class="fas fa-lock"></i>
+              </label>
+              <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+                required>
+              <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
 
 
 </body>
