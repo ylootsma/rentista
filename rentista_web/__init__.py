@@ -10,6 +10,7 @@ from rentista_web.util.oauth import oauth
 from flask_login import login_required, current_user, login_user
 from playhouse.flask_utils import FlaskDB, get_object_or_404, object_list
 from models.outfit import Outfit
+from models.outfit_picture import Outfit_Picture
 import os
 import config
 
@@ -33,5 +34,7 @@ def internal_server_error(e):
 
 @app.route("/")
 def home():
+    pictures = Outfit_Picture.select().where(Outfit_Picture.outfit == 78)
+    # outfit = Outfit.select().where(Outfit.id == 78)
 
-    return render_template('home.html')
+    return render_template('home.html', pictures=pictures)

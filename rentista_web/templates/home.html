@@ -20,11 +20,58 @@
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
   </style>
 
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
   <style>
+    #slick {
+      position: relative;
+    }
+
+    .arrow_prev {
+      position: absolute;
+      top: 50%;
+      left: -3%;
+    }
+
+
+
+    .arrow_next {
+      position: absolute;
+      top: 50%;
+      right: -1%;
+    }
+
+
+
+    .for_slick_slider {
+
+      display: flex;
+      width: 70rem;
+
+      height: 30rem;
+
+    }
+
+
+    .for_slick_slider .items {
+
+      /* height: 250px; */
+      /* width: 18rem; */
+      /* margin: 50px; */
+    }
+
+    .for_slick_slider .items img {
+      height: 30rem;
+      width: 14rem;
+      /* object-fit: cover; */
+
+
+    }
+
+
     .features-boxed {
       color: #313437;
-      background: url(https://rentista.s3.us-east-2.amazonaws.com/joline+goudfluweel+achtergrond.jpg);
+      background: ;
       background-size: cover;
       background-repeat: no-repeat;
       height: 80rem;
@@ -545,48 +592,7 @@ padding-top:5%;
     }
 
   </script>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
 
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <script type="text/javascript">
-    $('.responsive').slick({
-      // dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
-      ]
-    });
-  </script>
 </head>
 
 
@@ -717,26 +723,27 @@ padding-top:5%;
 
   </nav>
 
+
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="carousel-inner" style="height:40rem; object-fit: cover;">
+    <div class="carousel-inner" style="height:40rem;">
       <div class=" carousel-item active">
-        <img src="https://rentista.s3.us-east-2.amazonaws.com/coverfoto+rentista+bewerkt.jpg" class="d-block w-100"
-          alt="..." style="height:40rem; object-fit: cover; object-position:left top;">
+        <img src="https://rentista.s3.us-east-2.amazonaws.com/joline+goudfluweel+achtergrond.jpg" class="d-block w-100"
+          alt="..." style="height:40rem; object-fit:cover; object-position: left 22%;">
 
-        <div class="carousel-caption d-none d-md-block" style="color:white; right:55rem; top:10rem;">
-          <h3>Rent outfits 24/7</h3>
-          <h4>&</h4>
+        <div class="carousel-caption d-none d-md-block" style="color:white; left:20rem; top:10rem;">
+          <h4>Always something to wear</h4>
+          <h3>OUTFITS FOR RENT 24/7</h3>
 
-          <h3> Always have something to wear</h3>
           <br>
-
+          <hr style="width:15rem; background-color:white">
+          <br>
           <i>
-            <h5> Receive 20% discount on our flexible or unlimited subscriptions</h5>
+            <h5>Weekly & Unlimited Subscriptions Available</h5>
           </i>
-          <br>
 
-          <p><button type="button" class="btn btn-outline-light">Sign-up</button>
-            <button type="button" class="btn btn-outline-light">Learn More</button></p>
+          <p><button type="button" class="btn btn-outline-light" style="margin:0.5rem; width:7rem;">Sign-up</button>
+            <button type="button" class="btn btn-outline-light" style="width:7rem;">Learn More</button></p>
+
 
         </div>
       </div>
@@ -833,10 +840,36 @@ padding-top:5%;
   </div> -->
   <br>
 
+
+
+  <div class="container" id="slick">
+    <h2 class="text-center">Outfits & Brands</h2>
+    <div class="for_slick_slider multiple-items">
+      {%for picture in pictures %}
+      <div class="items">
+        <a href="#"><img src="{{picture.picture}}" class="pic">
+        </a>
+      </div>
+      {%endfor%}
+    </div>
+    <div class="arrow_prev">
+      <span>
+        <i class="fas fa-chevron-circle-left" style="font-size: large;"></i>
+      </span>
+    </div>
+    <div class="arrow_next">
+      <span>
+        <i class="fas fa-chevron-circle-right" style="font-size: large;"></i>
+      </span>
+    </div>
+  </div>
   <br>
+  <br>
+
+
   <div id="include" class="container" style="background-color: transparent;">
     <center>
-      <h3>Your benefits</h3>
+      <h3>Rent your clothes with us to:</h3>
     </center>
     <br>
     <div class=" card mb-3" style=" background-color:transparent; border: none; margin-left:0rem; ">
@@ -886,7 +919,7 @@ padding-top:5%;
                       style="width:5rem; height:3rem;">
                   </td>
                   <td>
-                    <h5 style="">Delivery both ways</h5>
+                    <h5 style="">Benefit from free delivery both ways</h5>
                   </td>
                 </tr>
                 <tr>
@@ -894,7 +927,7 @@ padding-top:5%;
                       style="width:5rem; height:3rem;">
                   </td>
                   <td>
-                    <h5 style="">Dry-cleaning is included </h5>
+                    <h5 style=""> Save time because dry-cleaning is included </h5>
                   </td>
                 </tr>
                 <tr>
@@ -902,7 +935,7 @@ padding-top:5%;
                       style="width:5rem; height:3rem;">
                   </td>
                   <td>
-                    <h5 style="">Insurance for minor damages is covered</h5>
+                    <h5 style="">Have peace of mind because minor damages are insured</h5>
                   </td>
                 </tr>
               </tbody>
@@ -1455,6 +1488,20 @@ padding-top:5%;
       </div>
     </div>
   </div>
+
+
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $('.multiple-items').slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      prevArrow: '.arrow_prev',
+      nextArrow: '.arrow_next'
+    });
+
+  </script>
 
 
 
