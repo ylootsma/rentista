@@ -13,5 +13,8 @@ html {
   padding-right:50px;
   padding-left:50px;
   font-family: sans-serif;
-}
+  }
 
+  body{
+    background-color: rgba(250, 249, 243, 0.945);
+  }
