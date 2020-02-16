@@ -1,7 +1,7 @@
 alabaster==0.7.12
 
 appnope==0.1.0
-appscript==1.0.1
+
 asn1crypto==0.24.0
 astroid==2.3.1
 astropy==3.2.2
