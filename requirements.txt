@@ -68,7 +68,7 @@ fsspec==0.5.2
 future==0.17.1
 gevent==1.4.0
 glob2==0.7
-gmpy2==2.0.8
+
 google-api-python-client==1.7.9
 google-auth==1.6.3
 google-auth-httplib2==0.0.3
