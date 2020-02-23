@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, request, flash, redirect, u
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from models.outfit import Outfit
+from models.subscription import Subscription
 from models.outfit_picture import Outfit_Picture
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
@@ -51,13 +52,12 @@ def create():
     size_xl = request.form.get('size_xl')
     enter_stock_date = request.form.get('enter_stock')
     pricing_type = request.form.get('pricing')
-    add_on_percentage = request.form.get('add_on')
     retail_price = request.form.get('retail_price')
-    occassion = request.form.get('occassion')
     state = request.form.get('state')
+    style_matrix = request.form.get('trend_matrix')
 
     outfit = Outfit(owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
-                    size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, pricing_type=pricing_type, add_on_percentage=add_on_percentage, retail_price=retail_price, occassion=occassion, approved=False, profile_pic="default")
+                    size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, pricing_type=pricing_type, retail_price=retail_price, profile_pic="default", style_matrix=style_matrix)
 
     if outfit.save():
         flash("outfit stored succesfully")
@@ -104,3 +104,34 @@ def create():
     #     return redirect(url_for('outfits.show')
     # else:
     #     flash("pic failed to save")
+
+@outfits_blueprint.route("/add_to_cart/<outfit>")
+def add_to_cart(outfit):
+    outfits = Outfit.select()
+    outfit = int(outfit) 
+    if 'cart' not in session:
+        session['cart'] = []
+    if outfit not in session['cart']:   
+        session['cart'].append(outfit)
+    sess =  session['cart']  
+    flash("added to cart")
+    return object_list('outfits/show.html', outfits, sess=sess, paginate_by=9)
+     
+@outfits_blueprint.route("/checkout/<id>")
+def checkout(id):
+    subscription = 'none'
+    if current_user.is_authenticated:
+        if current_user.subscription:
+            subscription = Subscription.select().where(Subscription.user == current_user.id)
+    if subscription == 'none':   
+    amount = 0         
+    sess = id
+    outfits = []
+    for s in sess:
+        outfit = Outfit.select().where(Outfit.id == s)
+        if outf
+       
+
+    breakpoint()
+    return object_list('outfits/show.html', outfits, paginate_by=9)     
+   

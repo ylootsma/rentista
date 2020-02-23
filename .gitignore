@@ -2,5 +2,4 @@
 *.DS_Store
 *__pycache__
 *.env
-rentista_web/static/.webassets-cache
-rentista_web/static/gen
+

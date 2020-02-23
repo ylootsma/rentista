@@ -86,7 +86,7 @@ def google_login():
 
 @users_blueprint.route('/facebook', methods=["GET"])
 def facebook():
-    redirect_uri = "https://obscure-sea-32968.herokuapp.com//users/facebook/login"
+    redirect_uri = "https://localhost:5000/users/facebook/login"
     return oauth.facebook.authorize_redirect(redirect_uri, state=session['csrf_token'])
 
 

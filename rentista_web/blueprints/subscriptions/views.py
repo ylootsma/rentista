@@ -35,14 +35,33 @@ def pick():
     return render_template('subscriptions/pick.html')
 
 
-@subscriptions_blueprint.route('/<id>/new/', methods=['POST', 'GET'])
+@subscriptions_blueprint.route('/standard', methods=['POST', 'GET'])
 @login_required
-def new(id):
+def standard():
     client_token = generate_client_token()
-    price = request.form.get('price')
-    pick = id
-    subscriptiontype = f"{pick}_{price}"
+    price = 93
+    subscriptiontype= "standard"
+    
+    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
+
+@subscriptions_blueprint.route('/premium', methods=['POST', 'GET'])
+@login_required
+def premium():
+    client_token = generate_client_token()
+    price = 109
+    subscriptiontype= "premium"
+    
+    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
+
+
+@subscriptions_blueprint.route('/exclusive', methods=['POST', 'GET'])
+@login_required
+def exclusive():
+    client_token = generate_client_token()
+    price = 125
+    subscriptiontype= "exclusive"
+    
     return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
 
@@ -66,4 +85,4 @@ def create_checkout(subscriptiontype):
     else:
         for x in result.errors.deep_errors:
             flash('Error: %s: %s' % (x.code, x.message))
-        return redirect(url_for('subscriptions.new', client_token=client_token, price=price, subscription=subscription))
+        return redirect(url_for('subscriptions.pick'))

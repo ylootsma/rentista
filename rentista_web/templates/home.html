@@ -5,27 +5,27 @@
 <head>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156528103-1"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156528103-1"></script>
   <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
 
       gtag('config', 'UA-156528103-1');
-  </script>
+  </script> -->
 
 
   <!-- Hotjar Tracking Code for www.rentista.co -->
-  <script>
-      (function (h, o, t, j, a, r) {
-          h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-          h._hjSettings = { hjid: 1649012, hjsv: 6 };
-          a = o.getElementsByTagName('head')[0];
-          r = o.createElement('script'); r.async = 1;
-          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  </script>
+  <!-- <script>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+      h._hjSettings = { hjid: 1649012, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script> -->
 
   
 
@@ -1707,6 +1707,7 @@ flex-direction: column;*/
       @media only screen and (min-width: 1200px) {
           .features-boxed .features {
               padding: 10px 20px;
+            
           }
 
           .features-boxed .item {
@@ -1722,7 +1723,7 @@ flex-direction: column;*/
               padding-top: 0.5rem;
               margin-bottom: 1rem;
               /* margin-top: 1rem; */
-              height: 13rem;
+              height: 15rem;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -1858,15 +1859,20 @@ flex-direction: column;*/
           .navbar-brand {
               margin-left: 25rem;
           }
-      } */
+      } *
 
       /* navbar */
       .bg-dark {
           background: transparent !important;
           transition: 750ms ease;
           /* background: white !important; */
-
       }
+
+      #mod1,#mod2, #mod3 {
+          background: transparent !important;
+          border:transparent !important;
+      }
+
 
       .nav-link {
           color: black !important;
@@ -2922,7 +2928,7 @@ flex-direction: column;*/
                   <a class="nav-link" href="#info">ZO WERKT HET<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active">
-                  <a class="nav-link" href="#outfits">OUTFITS <span class=" sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ url_for('outfits.show') }}">OUTFITS <span class=" sr-only">(current)</span></a>
               </li>
 
 
@@ -2932,12 +2938,29 @@ flex-direction: column;*/
               </li>
 
           </ul>
-          
-        <span class="navbar-text">
-          <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
-            data-target="#modal-with-tab">
-          </div> 
-        </span> 
+          <span class="navbar-text">
+           
+            <div style="text-align: center"> <button type="button" id="mod1" class="btn btn-primary"
+                    data-toggle="modal" data-target="#modal-with-tab">
+
+                    <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i></button>
+                <!-- <br>
+    <div style="display: inline-block"><a href="#">Login</a>
+    </div> -->
+
+                <button type="button" id="mod2" class="btn btn-primary" data-toggle="modal"
+                    data-target="#">
+
+                    <i class="fas fa-heart" style="font-size:24px; color:black; display: inline-block"></i></button>
+
+                <button type="button" id="mod3" class="btn btn-primary" data-toggle="modal"
+                    data-target="#">
+
+                    <i class="fas fa-shopping-bag" style="font-size:24px; color:black; display: inline-block"></i></button>
+            </div>
+
+        </span>
+        
       </div>
       <!-- <ul class="navbar-nav ml-auto" id="subscribe">
 
@@ -3677,7 +3700,7 @@ flex-direction: column;*/
   <br>
   <!-- slick image slider -->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -3824,7 +3847,7 @@ flex-direction: column;*/
               </div>
           </div>
       </div>
-  </div>
+  </div> -->
 
   </div>
   <div id="prices">
@@ -3911,23 +3934,14 @@ flex-direction: column;*/
                               </div>
                               <i>Huur onbeperkt kleding voor een vaste prijs</i>
                               <br><br>
-                              <form>
+                              <form action="{{ url_for('new_1')}}" method="POST" enctype="multipart/form-data">
                                   <h6>Huur per keer:
                                   </h6>
-
-                                  <select class="form-control" id="f_s_select" onchange="f_s_selectfunc()">
-
-
-                                      <option value="93">
-                                          3 outfits
-                                      </option>
-                                      <option value="109">
-                                          4 outfits
-                                      </option>
-                                      <option value="125">
-                                          5 outfits
-                                      </option>
-
+                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                  <select name="price" class="form-control" id="f_s_select" onchange="f_s_selectfunc()">   
+                                    <option value="93">3 outfits</option>
+                                    <option value="109">4 outfits</option>
+                                    <option value="125">5 outfits</option>
                                   </select>
 
                                   <br>
@@ -3941,12 +3955,13 @@ flex-direction: column;*/
                                   <!-- Unlimited deliveries<br>Swap anytime -->
 
 
-
-                                  <button type="button" class="btn btn-outline-dark"
+                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                  <button type="submit" class="btn btn-outline-dark"
                                       style="margin:0.5rem; width:9rem; color: black;">
-                                      <a href="#" data-toggle="modal" data-target="#exampleModal3"
-                                          style="color:black">
-                                          Toegang</a></button>
+                                      <!-- <a href="#" data-toggle="modal" data-target="#exampleModal3" -->
+                                          <!-- style="color:black"> -->
+                                          Toegang
+                                  </button>
                               </form>
                           </center>
                       </div>
@@ -4019,7 +4034,8 @@ flex-direction: column;*/
                               <button type="button" class="btn btn-outline-dark"
                                   style="margin:0.5rem; width:9rem; color: black;">
                                   <a href="" data-toggle="modal" data-target="#exampleModal2" style="color:black">
-                                      Toegang</a></button>
+                                      Toegang</a>
+                                    </button>
 
 
                           </form>
@@ -4040,23 +4056,15 @@ flex-direction: column;*/
                           </div>
                           <i>Huur onbeperkt kleding voor een vaste prijs</i>
                           <br><br>
-                          <form>
-                              <h6>Huur per keer:
-                              </h6>
-                              <select class="form-control" id="f_s_select" onchange="f_s_selectfunc()">
-
-
-                                  <option value="93">
-                                      3 outfits
-                                  </option>
-                                  <option value="109">
-                                      4 outfits
-                                  </option>
-                                  <option value="125">
-                                      5 outfits
-                                  </option>
-
-                              </select>
+                          <form action="{{url_for('new_2')}}"   method="POST" enctype="multipart/form-data">
+                            <h6>Huur per keer:
+                            </h6>
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                            <select name="price" class="form-control" id="f_s_select" onchange="f_s_selectfunc()">   
+                              <option value="93">3 outfits</option>
+                              <option value="109">4 outfits</option>
+                              <option value="125">5 outfits</option>
+                            </select>
 
                               <br>
 
@@ -4069,13 +4077,16 @@ flex-direction: column;*/
                               <!-- Unlimited deliveries<br>Swap anytime -->
 
 
-
-                              <button type="button" class="btn btn-outline-dark"
+                              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                              <button type="submit" class="btn btn-outline-dark"
                                   style="margin:0.5rem; width:9rem; color: black; ">
-                                  <a href="" data-toggle="modal" data-target="#exampleModal3" style="color:black">
-                                      Toegang</a></button>
-
-                      </center>
+                                  <!-- <a href="" data-toggle="modal" data-target="#exampleModal3" style="color:black">
+                                      Toegang</a> -->
+                                      Toegang
+                              </button>
+                          </form>
+                     
+                        </center>
                   </div>
               </div>
 

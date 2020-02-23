@@ -10,8 +10,8 @@ class User(BaseModel):
     Admin = pw.BooleanField(unique=False, default=False)
     Partner = pw.BooleanField(unique=False, default=False)
     DOB = pw.DateField(unique=False, default="01/01/01")
-    bottom_size = pw.CharField(unique=False, default="default")
-    top_size = pw.CharField(unique=False, default="default")
+    size = pw.CharField(unique=False, default="default")
+   
 
     def is_authenticated(self):
         return True

@@ -60,3 +60,6 @@ def logout():
         logout_user()
         flash('Logged out successfully')
     return redirect(url_for('home'))
+
+
+

@@ -8,6 +8,53 @@
         @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
     </style>
     <style>
+    .bg-dark {
+        background: white !important;
+          transition: 750ms ease;
+          /* background: white !important; */
+      }
+
+      #mod1,#mod2, #mod3 {
+          background: transparent !important;
+          border:transparent !important;
+      }
+
+
+      .nav-link {
+          color: black !important;
+          font-weight: bold;
+
+      }
+
+      .navbar-brand {
+          color: black !important;
+      }
+      @media only screen and (min-width: 1000px) {
+          .navbar-brand {
+              margin-left: 10rem;
+          }
+      }
+      .modal-dialog {
+            position: fixed;
+            right: 0%;
+            margin-top: 0%;
+            height: 100vh;
+
+        }
+
+        .modal-body {
+            height: 95vh;
+            overflow-y: auto;
+        }
+
+
+        .modal-open {
+            overflow-y: scroll;
+        }
+      /* .bg-dark.scrolled {
+          background: white !important;
+
+      } */
         @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
     </style>
 
@@ -15,91 +62,98 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            RENTISTA
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <!-- pricing and how it works  -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span
-                            class="sr-only">(current)</span></a>
-                </li>
-                <!-- categories:
-        skirts
-        shorts
-        cardigans/jerseys/sweathers
-        pants
-        dresses
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <a class="navbar-brand" href="#" style="font-size:xx-large; font-weight: normal;">
+        RENTISTA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"
+        style="float: left; margin-right: 3rem;">
+        <span class="navbar-toggler-icon" style="float: left;"></span>
+    </button>
+    <div class=" collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
 
-        ocassions:
-        workwear
-        events(bridal, gala, cocktail)
-        holiday
-
-        femenine & sexy
-        elegant
-        casual
-        Timeless
-        trendy
-        authentic -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#info">ZO WERKT HET<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('outfits.show') }}">OUTFITS <span class=" sr-only">(current)</span></a>
+            </li>
 
 
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
-                </li>
-                <!-- models
-        celebs -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#prices">PRIJZEN<span class=" sr-only">(current)</span></a>
+            </li>
 
+        </ul>
+        <span class="navbar-text">
+         
+          <div style="text-align: center"> <button type="button" id="mod1" class="btn btn-primary"
+                  data-toggle="modal" data-target="#modal-with-tab">
 
+                  <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i></button>
+              <!-- <br>
+  <div style="display: inline-block"><a href="#">Login</a>
+  </div> -->
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
-                </li>
-                <!-- Trends
-        Advice
-        Dress to the moment
-        get the look -->
-            </ul>
-            <span class="navbar-text">
-                <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary"
-                        data-toggle="modal" data-target="#modal-with-tab">
+              <button type="button" id="mod2" class="btn btn-primary" data-toggle="modal"
+                  data-target="#">
 
-                        <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
-                    <!-- <br>
-        <div style="display: inline-block"><a href="#">Login</a>
-        </div> -->
+                  <i class="fas fa-heart" style="font-size:24px; color:black; display: inline-block"></i></button>
 
-                    <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-with-tab">
+              <button type="button" id="mod3" class="btn btn-primary" data-toggle="modal"
+                  data-target="#myModal2">
 
-                        <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
+                  <i class="fas fa-shopping-bag" style="font-size:24px; color:black; display: inline-block"></i></button>
+          </div>
 
-                    <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-with-tab">
+      </span>
+      
+    </div>
+    <!-- <ul class="navbar-nav ml-auto" id="subscribe">
 
-                        <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i></button>
-                </div>
+        <button class="btn btn-primary" type="submit">Sign-up</button>
 
-            </span>
-        </div>
-    </nav>
-    </br>
-    <br>
+    </ul> -->
 
+</nav>
+<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-    <div class="container">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel2">Shopping Bag</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                {%if sess|length > 0 %}
+                {%for s in sess%}
+                {%for outfit in object_list%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                {{outfit.outfit_name}}
+                <i class="fa fa-trash" aria-hidden="true"></i></p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+                <button><a href="{{url_for('outfits.checkout', id=sess)}}">Checkout<a></button>
+                {%else%}
+                <p id="no_items">There are no items in your shopping bag
+                </p>
+
+                {%endif%}
+            </div>
+
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+
+    <div class="container" style="padding-top:5rem;">
         <div class="card-columns">
             {%for outfit in object_list%}
             <div class="card border-0">
@@ -112,25 +166,12 @@
                         <p class="card-text"><b>{{outfit.outfit_name}}</b>
                             - <i> {{outfit.brand_name}}</i>
                             </br>
-                            {%if outfit.pricing_type=='standard'%}
-                            weekly rental: €10 | subscription: €0
-                            {%else%}
-                            {%if outfit.add_on_percentage>0%}
-
-                            weekly rental: €{{(20+20*outfit.add_on_percentage/100)|round|int}} |
-                            subscription: €{{(20*outfit.add_on_percentage/100)|round|int}}
-
-
-                            {%else%}
-                            weekly rental: €20 | subscription: €0
-
-                            {%endif%}
-                            {%endif%}
+                          
 
                             <p>
                     </a>
 
-
+                    <button><a href="{{url_for('outfits.add_to_cart', outfit=outfit.id)}}">Order Now</a></button>
 
                 </div>
             </div>

@@ -80,25 +80,17 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-sm-2" for="pricing">Standard or Exclusive rental price</label>
+        <label class="control-label col-sm-2" for="pricing">Rental price</label>
         <div class="col-sm-5">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <select name="pricing">
                 <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
                 <option value="exclusive">Exclusive</option>
             </select>
         </div>
     </div>
 
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="add_on">Eventual add_on percentage price(only exclusive
-            items)</label>
-        <div class="col-sm-5">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            <input type="number" name="add_on">
-        </div>
-    </div>
 
     <div class="form-group">
         <label class="control-label col-sm-2" for="retail_price">Retail_price</label>
@@ -109,22 +101,13 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-sm-2" for="occassion">For which occassion is this item best suited</label>
+        <label class="control-label col-sm-2" for="retail_price">Trend_Timeless</label>
         <div class="col-sm-5">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            <select name="occassion">
-                <option value="workwear">Workwear</option>
-                <option value="wedding">Wedding</option>
-                <option value="cocktail">Cocktail</option>
-                <option value="gala">Gala</option>
-                <option value="standard">Holiday/Festival</option>
-                <option value="date_night">Date night</option>
-                <option value="casual_elegant">Casual: Elegant</option>
-                <option value="casual_trendy">Casual:Trendy</option>
-                <option value="casual_simple">Casual: Simple</option>
-            </select>
+            <input type="number" name="trend_matrix">
         </div>
     </div>
+
 
     <button type="submit">Upload</button>
 
