@@ -41,6 +41,7 @@ def standard():
     client_token = generate_client_token()
     price = 93
     subscriptiontype= "standard"
+    subscriptionprice = 93
     
     return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
@@ -51,6 +52,7 @@ def premium():
     client_token = generate_client_token()
     price = 109
     subscriptiontype= "premium"
+    subscriptionprice = 109
     
     return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
@@ -61,6 +63,7 @@ def exclusive():
     client_token = generate_client_token()
     price = 125
     subscriptiontype= "exclusive"
+    subcriptionprice = 125
     
     return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
@@ -78,7 +81,7 @@ def create_checkout(subscriptiontype):
     })
     if result.is_success or result.transaction:
         subscription = Subscription(user=current_user.id,
-                                    subscription_active=False, subscription_type=subscriptiontype)
+                                    subscription_active=True, subscription_type=subscriptiontype,subscription_price=subscriptionprice)
         if subscription.save():
             flash("Grazie Mille!!")
             return render_template('home.html')

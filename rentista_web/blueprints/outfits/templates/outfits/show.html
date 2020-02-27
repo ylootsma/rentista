@@ -141,12 +141,15 @@
                 {%endif%}
                 {%endfor%}
                 {%endfor%}
-                <button><a href="{{url_for('outfits.checkout', id=sess)}}">Checkout<a></button>
+                <button><a href="">Checkout<a></button>
                 {%else%}
                 <p id="no_items">There are no items in your shopping bag
                 </p>
 
                 {%endif%}
+                <p>{{amount}}</p>
+                <p>{{discount}}</p>
+
             </div>
 
         </div><!-- modal-content -->

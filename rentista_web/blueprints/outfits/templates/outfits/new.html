@@ -82,12 +82,8 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="pricing">Rental price</label>
         <div class="col-sm-5">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-            <select name="pricing">
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="exclusive">Exclusive</option>
-            </select>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />           
+            <input type="number" name="outfit_price">
         </div>
     </div>
 

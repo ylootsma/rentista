@@ -29,7 +29,64 @@ def new():
 @outfits_blueprint.route('/show/')
 def show():
     outfits = Outfit.select()
-    return object_list('outfits/show.html', outfits, paginate_by=9)
+    sess =  session['cart']  
+    subscription = None
+    amount = 0
+    # outfits = []
+    discount = 0
+    # user = None
+    surplus = []
+    sub = []
+    if current_user.is_authenticated:
+        # user= User.select().where(User.id == current_user.id)
+        subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+        if not subscription:
+            for s in sess:
+                item = Outfit.select().where(Outfit.id == s)
+                item = amount + item.outfit_price
+            # outfits.append(outfit)
+                if len(sess)>1:
+                    discount= discount + (item.outfit_price*0.35)    
+        else:  
+            outfits_cart = Outfit.select().order_by(Outfit.outfit_price.desc()) 
+            if len(sess) > subscription.subscription_type:
+                sess2 = len(sess) - subscription.subscription_type + 1
+                s= 0
+                while s < sess2:
+                    for item in outfits_cart:
+                        if item.id in sess:
+                            amount = amount + item.outfit_price
+                            surplus.append(s)
+                            s = s+1        
+            if len(sess) > (subscription.subscription_type+1):
+                sess2 = len(sess) - subscription.subscription_type + 1
+                s= 0
+                while s < sess2:
+                    for item in outfits_cart:
+                        if item.id in sess:
+                            discount = discount + item.outfit_price*35
+                            surplus.append(s)
+                            s = s+1       
+            if surplus > 0:
+                for s in sess:
+                    if s not in surplus:
+                        sub.append(s) 
+            else:
+                for s in sess:
+                    sub.append(s)                               
+    else:
+        count = 0
+        for s in sess:
+            item = Outfit.get(Outfit.id == s).outfit_price
+            amount = amount + item
+            item = float(item)
+            # outfits.append(outfit)
+            if count>0:
+                discount= discount + item*0.33   
+            count= count+1                 
+            
+    
+    return object_list('outfits/show.html', outfits, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess, paginate_by=9)
 
 
 @outfits_blueprint.route('/<id>/detail')
@@ -51,13 +108,13 @@ def create():
     size_l = request.form.get('size_l')
     size_xl = request.form.get('size_xl')
     enter_stock_date = request.form.get('enter_stock')
-    pricing_type = request.form.get('pricing')
+    outfit_price = request.form.get('outfit_price')
     retail_price = request.form.get('retail_price')
     state = request.form.get('state')
     style_matrix = request.form.get('trend_matrix')
 
     outfit = Outfit(owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
-                    size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, pricing_type=pricing_type, retail_price=retail_price, profile_pic="default", style_matrix=style_matrix)
+                    size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, outfit_price=outfit_price, retail_price=retail_price, profile_pic="default", style_matrix=style_matrix)
 
     if outfit.save():
         flash("outfit stored succesfully")
@@ -107,31 +164,103 @@ def create():
 
 @outfits_blueprint.route("/add_to_cart/<outfit>")
 def add_to_cart(outfit):
-    outfits = Outfit.select()
+    # outfits = Outfit.select()
     outfit = int(outfit) 
     if 'cart' not in session:
         session['cart'] = []
     if outfit not in session['cart']:   
         session['cart'].append(outfit)
-    sess =  session['cart']  
-    flash("added to cart")
-    return object_list('outfits/show.html', outfits, sess=sess, paginate_by=9)
-     
-@outfits_blueprint.route("/checkout/<id>")
-def checkout(id):
-    subscription = 'none'
-    if current_user.is_authenticated:
-        if current_user.subscription:
-            subscription = Subscription.select().where(Subscription.user == current_user.id)
-    if subscription == 'none':   
-    amount = 0         
-    sess = id
-    outfits = []
-    for s in sess:
-        outfit = Outfit.select().where(Outfit.id == s)
-        if outf
-       
+        flash("added to cart")
+    # sess =  session['cart']  
+    # subscription = None
+    # amount = 0
+    # # outfits = []
+    # discount = 0
+    # # user = None
+    # surplus = []
+    # sub = []
+    # if current_user.is_authenticated:
+    #     # user= User.select().where(User.id == current_user.id)
+    #     subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+    #     if not subscription:
+    #         for s in sess:
+    #             item = Outfit.select().where(Outfit.id == s)
+    #             item = amount + item.outfit_price
+    #         # outfits.append(outfit)
+    #             if len(sess)>1:
+    #                 discount= discount + (item.outfit_price*0.35)    
+    #     else:  
+    #         outfits_cart = Outfit.select().order_by(Outfit.outfit_price.desc()) 
+    #         if len(sess) > subscription.subscription_type:
+    #             sess2 = len(sess) - subscription.subscription_type + 1
+    #             s= 0
+    #             while s < sess2:
+    #                 for item in outfits_cart:
+    #                     if item.id in sess:
+    #                         amount = amount + item.outfit_price
+    #                         surplus.append(s)
+    #                         s = s+1        
+    #         if len(sess) > (subscription.subscription_type+1):
+    #             sess2 = len(sess) - subscription.subscription_type + 1
+    #             s= 0
+    #             while s < sess2:
+    #                 for item in outfits_cart:
+    #                     if item.id in sess:
+    #                         discount = discount + item.outfit_price*35
+    #                         surplus.append(s)
+    #                         s = s+1       
+    #         if surplus > 0:
+    #             for s in sess:
+    #                 if s not in surplus:
+    #                     sub.append(s) 
+    #         else:
+    #             for s in sess:
+    #                 sub.append(s)                               
+    # else:
+    #     count = 0
+    #     for s in sess:
+    #         item = Outfit.get(Outfit.id == s).outfit_price
+    #         amount = amount + item
+    #         item = float(item)
+    #         # outfits.append(outfit)
+    #         if count>0:
+    #             discount= discount + item*0.33   
+    #         count= count+1                 
+            
+      
+   
+    return redirect(url_for('outfits.show'))
 
-    breakpoint()
-    return object_list('outfits/show.html', outfits, paginate_by=9)     
+
+
+# @outfits_blueprint.route("/checkout/<id>")
+# def checkout(id):
+#     subscription = None
+#     amount = 0
+#     outfits = []
+#     discount = 0
+#     sess = id
+#     user= User.select().where(User.id == current_user.id)
+#     # if current_user.is_authenticated: # ask user to create an account before sign-up
+#         if user.subscription != None:
+#             subscription = Subscription.select().where(Subscription.user == current_user.id)
+#             count = 0
+#             for s in sess:
+#                 outfit = c # order by
+#                 outfits.append(outfit)
+#                 if count >= (subscription.subscription_type):
+#                     amount = amount + outfit.out_price
+#                 if count >= (subscription.subscription_type+1):
+#                     discount = discount + (outfit.outfit_price*0.33)
+#                 count = count+1                  
+#         else:             
+#             for s in sess:
+#                 outfit = Outfit.select().where(Outfit.id == s)
+#                 amount = amount + outfit.outfit_price
+#                 outfits.append(outfit)
+#                 if len(sess)>1:
+#                     discount= discount + (outfit.outfit_price*0.33)
+
+#     breakpoint()
+#     return object_list('outfits/show.html', outfits, paginate_by=9)     
    

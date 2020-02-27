@@ -17,10 +17,9 @@ class Outfit (BaseModel):
     in_stock = pw.BooleanField(unique=False, default=True)
     enter_stock_date = pw.DateField(default="01/01/01")
     state = pw.CharField(unique=False, default="new")
-    pricing_type = pw.CharField(unique=False, default="standard")
     retail_price = pw.DecimalField(unique=False, default=150)
     # purchase_price = pw.DecimalField(unique=False, default=0)
     profile_pic = pw.TextField(unique=True, null=True)
-    style_matrix = pw.IntegerField(unique=False, default=0)
-    outfit_price = retail_price = pw.DecimalField(unique=False, default=50)
+    style_matrix = pw.IntegerField(unique=False, default=5)
+    outfit_price = pw.DecimalField(unique=False, default=50)
     
