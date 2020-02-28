@@ -133,7 +133,7 @@
             <div class="modal-body">
                 {%if sess|length > 0 %}
                 {%for s in sess%}
-                {%for outfit in object_list%}
+                {%for outfit in out%}
                 {%if outfit.id==s%}
                 <p>{{outfit.brand_name}} -
                 {{outfit.outfit_name}}
@@ -149,6 +149,8 @@
                 {%endif%}
                 <p>{{amount}}</p>
                 <p>{{discount}}</p>
+                <p>{{sub}}</p>
+                <p>{{surplus}}</p>
 
             </div>
 
