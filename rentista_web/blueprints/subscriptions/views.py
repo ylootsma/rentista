@@ -42,8 +42,13 @@ def standard():
     price = 93
     subscriptiontype= "standard"
     subscriptionprice = 93
-    
-    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
+
+    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+    if subscription:
+        flash("You already have a subscription. Contact us in case you would like to change.")
+        return redirect(url_for('home'))
+    else:
+        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
 
 @subscriptions_blueprint.route('/premium', methods=['POST', 'GET'])
@@ -54,7 +59,12 @@ def premium():
     subscriptiontype= "premium"
     subscriptionprice = 109
     
-    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
+    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+    if subscription:
+        flash("You already have a subscription. Contact us in case you would like to change.")
+        return redirect(url_for('home'))
+    else:
+        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
 
 @subscriptions_blueprint.route('/exclusive', methods=['POST', 'GET'])
@@ -65,7 +75,12 @@ def exclusive():
     subscriptiontype= "exclusive"
     subcriptionprice = 125
     
-    return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
+    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+    if subscription:
+        flash("You already have a subscription. Contact us in case you would like to change.")
+        return redirect(url_for('home'))
+    else:
+        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
 
 @subscriptions_blueprint.route('/subscriptions/<subscriptiontype>/', methods=['POST', 'GET'])
@@ -85,6 +100,24 @@ def create_checkout(subscriptiontype):
         if subscription.save():
             flash("Grazie Mille!!")
             return render_template('home.html')
+    else:
+        for x in result.errors.deep_errors:
+            flash('Error: %s: %s' % (x.code, x.message))
+        return redirect(url_for('subscriptions.pick'))
+
+@subscriptions_blueprint.route('/checkout/', methods=['POST', 'GET'])
+def checkout():
+
+    result = transact({
+        'amount': request.form.get('amount'),
+        'payment_method_nonce': request.form.get('payment_method_nonce'),
+        'options': {
+            "submit_for_settlement": True
+        }
+    })
+    if result.is_success or result.transaction:
+        flash("Grazie Mille!!")
+        return render_template('home.html')
     else:
         for x in result.errors.deep_errors:
             flash('Error: %s: %s' % (x.code, x.message))

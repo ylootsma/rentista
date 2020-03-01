@@ -39,6 +39,8 @@ def show():
     surplus = []
     sub = []
     sess = []
+    price = 0
+    
     if 'cart' in session:
         sess =  session['cart']  
         if current_user.is_authenticated:
@@ -47,7 +49,7 @@ def show():
             if subscription:
                 
                 sub_length = int(subscription.subscription_type) 
-                
+
                 if len(sess) > sub_length:
                     sess2 = len(sess) - sub_length    
                     count =0
@@ -92,8 +94,15 @@ def show():
                     discount= discount + item*0.33   
                 count= count+1                 
             
-    
-    return object_list('outfits/show.html', outfits, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
+    if amount>0:
+        amount=float(amount)
+        price = amount- discount
+    if subscription:    
+        subscriptiontype=subscription.subscription_type
+        subtype = int(subscriptiontype)
+    else:
+        subtype = 0    
+    return object_list('outfits/show.html', outfits, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
 
 
 @outfits_blueprint.route('/<id>/detail')

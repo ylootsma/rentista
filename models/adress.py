@@ -1,0 +1,15 @@
+from models.base_model import BaseModel
+import peewee as pw
+from models.user import User
+
+
+class Adress(BaseModel):
+    user_id = pw.ForeignKeyField(User)
+    name = pw.CharField(unique=False, default="default")
+    street = pw.CharField(unique=False, default="default")
+    housenumber = pw.CharField(unique=False, default="default")
+    postal = pw.CharField(unique=False, default="default")
+    city = pw.CharField(unique=False, default="default")
+    country = pw.CharField(unique=False, default="default")
+    phone = pw.IntegerField(unique=True, default="00000")
+   

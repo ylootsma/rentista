@@ -1,0 +1,72 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<form action="{{ url_for('outfits.create', price=price)}}" method="POST" enctype="multipart/form-data">
+
+    <div class="col-sm-5">
+        <h1>Adres-gegevens</h1>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="outfit_name">Geadresseerde</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="outfit_name">Straat</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="street">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="brand_name">Huisnummer</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="housenumber" pattern="\d*">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apparell_type">Postcode</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="postal" pattern="\d*">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apparell_type">Stad</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="city">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apparell_type">Land</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="text" name="country">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apparell_type">Telefoonnummer</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <input type="number" name="phone">
+        </div>
+    </div>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+
+{% endblock %}

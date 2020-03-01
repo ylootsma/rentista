@@ -131,26 +131,89 @@
             </div>
 
             <div class="modal-body">
+
                 {%if sess|length > 0 %}
+                
+                {%if subscription %}
+                <p>Huur {{subscription.subscription_type}} outfits per keer met je abbonnement.</p>
+               
+                {%if sess|length < subtype %}
+                <p>Je kunt nog {{subtype-(sess|length)}} artikel(en) toevoegen.</p>
+                {%endif%}
+
+                {%if surplus|length > 0 %}
+
+                <p>Je abbonnement bevat nu volgende artikelen:</p>
+                {%for s in sub%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                prijs €0</p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}  
+
+                <p>Je hebt {{surplus|length}}extra artikelen bestelt:</p> 
+                {%for s in surplus%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                prijs €{{outfit.outfit_price}}</p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%} 
+                <p>Prijs voor extra outfits:€{{amount}}</p>
+                {%if surplus|length > 1 %}
+                <p>Korting meerdere artikelen€ {{discount}}</p>
+                <p>Totaal bedrag: €{{price}}</p>
+                {%endif%}
+                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+
+                {%else%}
+                <p>Je abbonnement bevat nu volgende artikelen:</p>
+                {%for s in sess%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+                <button><a href="">Bestel<a></button>  
+                {%endif%}
+
+                {%else%}
                 {%for s in sess%}
                 {%for outfit in out%}
                 {%if outfit.id==s%}
                 <p>{{outfit.brand_name}} -
                 {{outfit.outfit_name}}
-                <i class="fa fa-trash" aria-hidden="true"></i></p>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                    prijs€{{outfit.outfit_price}}</p>
                 {%endif%}
                 {%endfor%}
                 {%endfor%}
-                <button><a href="">Checkout<a></button>
+                <p>Prijs voor alle outfits:€{{amount}}</p>
+                {%if sess|length > 1 %}
+                <p>Korting €{{discount}}</p>
+                <p>Totaal bedrag:€{{price}}</p>
+                {%endif%}
+                <button><a href="{{ url_for('orders.new', price=price) }}">Checkout<a></button>
+                 <p><small>Heb je een abbonnement? <a href="">Log-in<a></small></p>   
+                {%endif%} 
+
                 {%else%}
-                <p id="no_items">There are no items in your shopping bag
+                <p id="no_items">Je hebt nog geen artikelen bestelt 
                 </p>
 
                 {%endif%}
-                <p>{{amount}}</p>
-                <p>{{discount}}</p>
-                <p>{{sub}}</p>
-                <p>{{surplus}}</p>
+            
 
             </div>
 
