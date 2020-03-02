@@ -11,5 +11,5 @@ class Adress(BaseModel):
     postal = pw.CharField(unique=False, default="default")
     city = pw.CharField(unique=False, default="default")
     country = pw.CharField(unique=False, default="default")
-    phone = pw.IntegerField(unique=True, default="00000")
+    phone = pw.CharField(unique=False, default="00000")
    

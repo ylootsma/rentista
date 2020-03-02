@@ -1,6 +1,5 @@
 {% extends '_layout.html' %}
 {% block content %}
-
 <div class="wrapper">
     <div class="checkout container">
 
@@ -12,7 +11,7 @@
         </header>
 
         <form id="payment-form" method="post"
-            action="{{ url_for('subscriptions.checkout') }}">
+            action="{{ url_for('orders.create_checkout') }}">
             <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
             <section>
                 <label for="amount">
@@ -59,5 +58,4 @@
         });
     });
 </script>
-
 {% endblock %}

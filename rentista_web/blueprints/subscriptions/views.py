@@ -78,7 +78,6 @@ def exclusive():
     subscription = Subscription.get_or_none(Subscription.user == current_user.id)
     if subscription:
         flash("You already have a subscription. Contact us in case you would like to change.")
-        return redirect(url_for('home'))
     else:
         return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
@@ -105,20 +104,3 @@ def create_checkout(subscriptiontype):
             flash('Error: %s: %s' % (x.code, x.message))
         return redirect(url_for('subscriptions.pick'))
 
-@subscriptions_blueprint.route('/checkout/', methods=['POST', 'GET'])
-def checkout():
-
-    result = transact({
-        'amount': request.form.get('amount'),
-        'payment_method_nonce': request.form.get('payment_method_nonce'),
-        'options': {
-            "submit_for_settlement": True
-        }
-    })
-    if result.is_success or result.transaction:
-        flash("Grazie Mille!!")
-        return render_template('home.html')
-    else:
-        for x in result.errors.deep_errors:
-            flash('Error: %s: %s' % (x.code, x.message))
-        return redirect(url_for('subscriptions.pick'))

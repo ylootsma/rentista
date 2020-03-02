@@ -82,7 +82,18 @@ def show():
                    
                 else:
                     for s in sess:
-                        sub.append(s)                               
+                        sub.append(s)   
+            
+            else:
+                count = 0
+                for s in sess:
+                    item = Outfit.get(Outfit.id == s).outfit_price
+                    amount = amount + item
+                    item = float(item)
+                # outfits.append(outfit)
+                    if count>0:
+                        discount= discount + item*0.33   
+                    count= count+1                                              
         else:
             count = 0
             for s in sess:
@@ -97,6 +108,8 @@ def show():
     if amount>0:
         amount=float(amount)
         price = amount- discount
+    
+
     if subscription:    
         subscriptiontype=subscription.subscription_type
         subtype = int(subscriptiontype)
