@@ -6,9 +6,9 @@ from models.user import User
 
 class Order(BaseModel):
     order_customer_id = pw.IntegerField(unique=False)
-    user_id = pw.ForeignKeyField(User, backref='orders')
     order_date = pw.DateField(unique=False)
     status = pw.CharField(unique=False)
     is_open = pw.BooleanField(unique=False)
+    user = pw.ForeignKeyField(User, backref='orders')
 
      

@@ -4,7 +4,7 @@ from models.user import User
 
 
 class Adress(BaseModel):
-    user_id = pw.ForeignKeyField(User)
+    user = pw.ForeignKeyField(User)
     name = pw.CharField(unique=False, default="default")
     street = pw.CharField(unique=False, default="default")
     housenumber = pw.CharField(unique=False, default="default")
