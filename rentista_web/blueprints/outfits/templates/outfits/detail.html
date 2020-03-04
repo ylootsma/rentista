@@ -259,19 +259,19 @@
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <select id="size" name="size">
                         <option value="" disabled selected>Select your size</option>
-                        {%if outfit[0].size_xs >= 1  %}
+                        {%if size[0].size_xs >= 1  %}
                         <option value="size_xs">size_xs</option>
                         {%endif%}
-                        {% if outfit[0].size_s >= 1 %}
+                        {% if size[0].size_s >= 1 %}
                         <option value="size_s">size_s</option>
                         {%endif%}
-                        {% if outfit[0].size_m >= 1 %}
+                        {% if size[0].size_m >= 1 %}
                         <option value="size_m">size_m</option>
                         {%endif%}
-                        {% if outfit[0].size_l >= 1 %}
+                        {% if size[0].size_l >= 1 %}
                         <option value="size_l">size_l</option>
                         {%endif%}
-                        {% if outfit[0].size_xl >= 1 %}
+                        {% if size[0].size_xl >= 1 %}
                         <option value="size_xl">size_xl</option>
                         {%endif%}
                     </select>
@@ -303,23 +303,7 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid.
-                        3
-                        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                        nesciunt
-                        laborum
-                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee
-                        nulla
-                        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred
-                        nesciunt
-                        sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                        beer
-                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                        accusamus
-                        labore sustainable VHS.
+                        {{outfit[0].description}}
                     </div>
                 </div>
             </div>
@@ -340,23 +324,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                        richardson ad squid.
-                        3
-                        wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                        nesciunt
-                        laborum
-                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee
-                        nulla
-                        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred
-                        nesciunt
-                        sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                        beer
-                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                        accusamus
-                        labore sustainable VHS.
+                        {{outfit[0].material}}
                     </div>
                 </div>
             </div>

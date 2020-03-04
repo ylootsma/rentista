@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from models.outfit import Outfit
 from models.subscription import Subscription
 from models.outfit_picture import Outfit_Picture
+from models.size import Size
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
 from app import app
@@ -122,8 +123,9 @@ def show():
 def detail(id):
     pictures = Outfit_Picture.select().where(Outfit_Picture.outfit == id)
     outfit = Outfit.select().where(Outfit.id == id)
-
-    return render_template('outfits/detail.html', pictures=pictures, outfit=outfit)
+    size = Size.select().where(Size.outfit == id)
+    # breakpoint()
+    return render_template('outfits/detail.html', size =size, pictures=pictures, outfit=outfit)
 
 
 @outfits_blueprint.route('/create', methods=['POST', 'GET'])
@@ -141,14 +143,15 @@ def create():
     retail_price = request.form.get('retail_price')
     state = request.form.get('state')
     style_matrix = request.form.get('trend_matrix')
+    description = request.form.get('description')
+    material = request.form.get('material')
 
-    outfit = Outfit(owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
-                    size_xs=size_xs, size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, in_stock=True, enter_stock_date=enter_stock_date, state=state, outfit_price=outfit_price, retail_price=retail_price, profile_pic="default", style_matrix=style_matrix)
+    outfit = Outfit(description=description, material=material, owner=current_user.id, brand_name=brand_name, apparell_type=apparell_type, outfit_name=outfit_name,
+                    in_stock=True, enter_stock_date=enter_stock_date, state=state, outfit_price=outfit_price, retail_price=retail_price, profile_pic="default", style_matrix=style_matrix)
 
     if outfit.save():
-        flash("outfit stored succesfully")
-    else:
-        flash("outfit not saved, please try again")
+        size = Size(size_s=size_s, size_m=size_m, size_l=size_l, size_xl=size_xl, size_xs=size_xs,outfit=outfit.id)
+        size.save()    
 
     files = request.files.getlist("pic_link")
 
@@ -190,6 +193,8 @@ def create():
     #     return redirect(url_for('outfits.show')
     # else:
     #     flash("pic failed to save")
+
+    
 
 @outfits_blueprint.route("/add_to_cart/<outfit>")
 def add_to_cart(outfit):

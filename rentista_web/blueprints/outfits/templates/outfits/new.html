@@ -104,6 +104,25 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="retail_price">Description</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <textarea name="description" rows="10" cols="30"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="retail_price">Material</label>
+        <div class="col-sm-5">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <textarea name="material" rows="10" cols="30"></textarea>
+        </div>
+    </div>
+
+
+    
+
 
     <button type="submit">Upload</button>
 

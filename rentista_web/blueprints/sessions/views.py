@@ -22,20 +22,16 @@ def create():
     password = request.form.get('password')
 
     user = User.get_or_none(User.email == email)
-    upas = user.password
     if not user:
         flash('Email not valid', 'warning')
         return redirect(url_for('sessions.new'))
 
-    # if not check_password_hash(user.password, password):
-    #     flash('Password invalid', 'danger')
-    #     return redirect(url_for('sessions.new'))
-
-    if password != upas:
+    if not check_password_hash(user.password, password):
         flash('Password invalid', 'danger')
         return redirect(url_for('sessions.new'))
 
     login_user(user)
+    session["username"] = "username"
     flash('Welcome, successfully signed in.')
     return redirect(url_for('home'))
 

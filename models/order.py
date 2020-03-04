@@ -10,5 +10,6 @@ class Order(BaseModel):
     status = pw.CharField(unique=False)
     is_open = pw.BooleanField(unique=False)
     user = pw.ForeignKeyField(User, backref='orders')
+  
 
      

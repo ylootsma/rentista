@@ -4,5 +4,5 @@ from models.outfit import Outfit
 
 
 class Outfit_Picture(BaseModel):
-    outfit = pw.ForeignKeyField(Outfit, backref='outfit_pictures')
+    outfit = pw.ForeignKeyField(Outfit, backref='outfit_pictures')  
     picture = pw.TextField(unique=True, null=True)

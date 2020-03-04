@@ -32,6 +32,7 @@ def create():
         return redirect(url_for('home'))
     else:
         return redirect(url_for('home'))
+        
 
 
 @users_blueprint.route('/<username>', methods=["GET"])
