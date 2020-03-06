@@ -30,6 +30,7 @@ def new():
 @outfits_blueprint.route('/show/')
 def show():
     outfits = Outfit.select()
+    size = Size.select()
     out= Outfit.select()
     outfits_cart = Outfit.select().order_by(Outfit.outfit_price.desc()) 
     subscription = None
@@ -116,7 +117,7 @@ def show():
         subtype = int(subscriptiontype)
     else:
         subtype = 0    
-    return object_list('outfits/show.html', outfits, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
+    return object_list('outfits/show.html', outfits, size=size, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
 
 
 @outfits_blueprint.route('/<id>/detail')
@@ -196,15 +197,22 @@ def create():
 
     
 
-@outfits_blueprint.route("/add_to_cart/<outfit>")
+@outfits_blueprint.route("/add_to_cart/<outfit>/", methods=['POST', 'GET'])
 def add_to_cart(outfit):
     # outfits = Outfit.select()
+    s = request.form.get('size')
     outfit = int(outfit) 
     if 'cart' not in session:
         session['cart'] = []
     if outfit not in session['cart']:   
-        session['cart'].append(outfit)
-        flash("added to cart")
+        session['cart'].append(outfit) 
+    if 'size' not in session:
+        session['size'] = []
+    if s not in session['size']:   
+        session['size'].append(s)
+
+   
+
     # sess =  session['cart']  
     # subscription = None
     # amount = 0

@@ -7,6 +7,7 @@ from models.outfit_picture import Outfit_Picture
 from models.order_outfit import Order_Outfit
 from models.order import Order
 from models.adress import Adress
+from models.size import Size
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
 from app import app
@@ -81,10 +82,40 @@ def create(price):
             order = Order(order_customer_id=randrange(10), user=current_user.id, order_date=datetime.datetime.today(), status='preparation', is_open=True)
             if order.save():
                 sess = session['cart']
+                size = session['size']
+                count = 0
                 for s in sess:
-                    order_outfit = Order_Outfit(order=order.id, outfit=s)
+                    order_size = size[count]
+                   
+                    order_outfit = Order_Outfit(order=order.id, outfit=s, size=order_size)
                     order_outfit.save()
-                session.pop("cart", None)        
+                    si = Size.get(Size.outfit_id == s)
+                    if order_size == 'size_xs':
+                        si_old = int(si.size_xs)
+                        si_new = si_old-1
+                        si.size_xs=si_new
+                    if order_size == 'size_s':
+                        si_old = int(si.size_s)
+                        si_new = si_old-1
+                        si.size_s=si_new
+                    if order_size == 'size_m':
+                        si_old = int(si.size_m)
+                        si_new = si_old-1
+                        si.size_m=si_new
+                    if order_size == 'size_l':
+                        si_old = int(si.size_l)
+                        si_new = si_old-1
+                        si.size_l=si_new
+                    if order_size == 'size_xl':
+                        si_old = int(si.size_xl)   
+                        si_new = si_old-1
+                        si.size_xl=si_new 
+                    si.save()
+                    count = count+1
+
+                session.pop("cart", None)   
+                session.pop("size", None)  
+
                 flash('Bedankt voor je bestelling')
                 return redirect(url_for('home'))
 
@@ -111,10 +142,41 @@ def create_checkout():
         order = Order(order_customer_id=randrange(10), user=current_user.id, order_date=datetime.datetime.today(), status='preparation', is_open=True)
         if order.save():
             sess = session['cart']
+            size = session['size']
+            count = 0
             for s in sess:
-                order_outfit = Order_Outfit(order=order.id, outfit=s)
+                order_size = size[count]
+                
+                order_outfit = Order_Outfit(order=order.id, outfit=s, size=order_size)
                 order_outfit.save()
-            session.pop("cart", None)      
+                si = Size.get(Size.outfit_id == s)
+                if order_size == 'size_xs':
+                    si_old = int(si.size_xs)
+                    si_new = si_old-1
+                    si.size_xs=si_new
+                if order_size == 'size_s':
+                    si_old = int(si.size_s)
+                    si_new = si_old-1
+                    si.size_s=si_new
+                if order_size == 'size_m':
+                    si_old = int(si.size_m)
+                    si_new = si_old-1
+                    si.size_m=si_new
+                if order_size == 'size_l':
+                    si_old = int(si.size_l)
+                    si_new = si_old-1
+                    si.size_l=si_new
+                if order_size == 'size_xl':
+                    si_old = int(si.size_xl)   
+                    si_new = si_old-1
+                    si.size_xl=si_new         
+               
+                si.save()
+                count = count+1
+
+            session.pop("cart", None)   
+            session.pop("size", None) 
+                 
             flash('Bedankt voor je bestelling')
             return redirect(url_for('home'))
                 

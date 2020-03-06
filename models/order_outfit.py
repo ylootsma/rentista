@@ -7,3 +7,4 @@ from models.order import Order
 class Order_Outfit(BaseModel):
     order = pw.ForeignKeyField(Order, backref='outfits')
     outfit = pw.ForeignKeyField(Outfit, backref='orders')
+    size = pw.CharField(unique=False, default='size_xs')
