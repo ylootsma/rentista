@@ -11,7 +11,7 @@
         </header>
 
         <form id="payment-form" method="post"
-            action="{{ url_for('subscriptions.create_checkout', subscriptiontype=subscriptiontype) }}">
+            action="{{ url_for('subscriptions.create_checkout', subscriptiontype=subscriptiontype, price=price) }}">
             <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
             <section>
                 <label for="amount">

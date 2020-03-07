@@ -1,3 +1,4 @@
+from flask import request
 import boto3
 import botocore
 from config import Config
@@ -29,3 +30,9 @@ def upload_file_to_s3(file, bucket_name, acl="public-read"):
         return e
 
     return "Success"
+
+
+def redirect_url(default='home'):
+    return request.args.get('next') or \
+           request.referrer or \
+           url_for(default)

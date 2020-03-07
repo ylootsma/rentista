@@ -41,7 +41,7 @@ def standard():
     client_token = generate_client_token()
     price = 93
     subscriptiontype= "standard"
-    subscriptionprice = 93
+   
 
     subscription = Subscription.get_or_none(Subscription.user == current_user.id)
     if subscription:
@@ -57,7 +57,6 @@ def premium():
     client_token = generate_client_token()
     price = 109
     subscriptiontype= "premium"
-    subscriptionprice = 109
     
     subscription = Subscription.get_or_none(Subscription.user == current_user.id)
     if subscription:
@@ -73,7 +72,7 @@ def exclusive():
     client_token = generate_client_token()
     price = 125
     subscriptiontype= "exclusive"
-    subcriptionprice = 125
+   
     
     subscription = Subscription.get_or_none(Subscription.user == current_user.id)
     if subscription:
@@ -82,10 +81,11 @@ def exclusive():
         return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
 
 
-@subscriptions_blueprint.route('/subscriptions/<subscriptiontype>/', methods=['POST', 'GET'])
-def create_checkout(subscriptiontype):
+@subscriptions_blueprint.route('/subscriptions/<subscriptiontype>/<price>/', methods=['POST', 'GET'])
+def create_checkout(subscriptiontype,price):
     subscription = ""
     subscriptiontype = subscriptiontype
+    subscriptionprice = price
     result = transact({
         'amount': request.form.get('amount'),
         'payment_method_nonce': request.form.get('payment_method_nonce'),

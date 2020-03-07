@@ -27,6 +27,27 @@ def new():
     return render_template('outfits/new.html')
 
 
+@outfits_blueprint.route('/remove/<outfit>/')
+def remove(outfit):
+    outfit=int(outfit)
+    sess = session['cart']
+    count = 0
+    size = session['size']
+    for s in sess:
+        if s == outfit:
+            break
+        else:    
+            count = count +1 
+    del size[count]        
+    session['cart'].remove(outfit)
+    sess = session['cart']
+    session.modified = True   
+    # breakpoint() 
+    # print(session['cart'])
+    # print(session['size'])
+    return redirect(url_for('outfits.show'))
+
+
 @outfits_blueprint.route('/show/')
 def show():
     outfits = Outfit.select()
@@ -45,6 +66,7 @@ def show():
     
     if 'cart' in session:
         sess =  session['cart']  
+        ses_siz = session['size']
         if current_user.is_authenticated:
             # user= User.select().where(User.id == current_user.id)
             subscription = Subscription.get_or_none(Subscription.user == current_user.id)
@@ -117,7 +139,7 @@ def show():
         subtype = int(subscriptiontype)
     else:
         subtype = 0    
-    return object_list('outfits/show.html', outfits, size=size, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
+    return object_list('outfits/show.html', outfits, ses_siz=ses_siz, size=size, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
 
 
 @outfits_blueprint.route('/<id>/detail')
@@ -197,21 +219,18 @@ def create():
 
     
 
-@outfits_blueprint.route("/add_to_cart/<outfit>/", methods=['POST', 'GET'])
-def add_to_cart(outfit):
+@outfits_blueprint.route("/add_to_cart/<outfit>/<size>/" , methods=['POST', 'GET'])
+def add_to_cart(outfit,size):
     # outfits = Outfit.select()
-    s = request.form.get('size')
     outfit = int(outfit) 
+    s = size
     if 'cart' not in session:
         session['cart'] = []
-    if outfit not in session['cart']:   
-        session['cart'].append(outfit) 
-    if 'size' not in session:
         session['size'] = []
-    if s not in session['size']:   
+    if outfit not in session['cart']:   
+        session['cart'].append(outfit)
         session['size'].append(s)
-
-   
+        flash("added to cart")
 
     # sess =  session['cart']  
     # subscription = None

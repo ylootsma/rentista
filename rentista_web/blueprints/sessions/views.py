@@ -1,8 +1,9 @@
-from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for, session, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
+from rentista_web.util.helpers import *
 from app import app
 
 
@@ -13,11 +14,13 @@ sessions_blueprint = Blueprint('sessions',
 
 @sessions_blueprint.route('/new', methods=['GET'])
 def new():
-    return render_template('sessions/new.html')
+ 
+    return render_template('sessions/new.html', url=url)
 
 
-@sessions_blueprint.route('/create', methods=['POST', 'GET'])
+@sessions_blueprint.route('/create/', methods=['POST', 'GET'])
 def create():
+
     email = request.form.get('email')
     password = request.form.get('password')
 
@@ -32,8 +35,11 @@ def create():
 
     login_user(user)
     session["username"] = "username"
+   
+    
     flash('Welcome, successfully signed in.')
-    return redirect(url_for('home'))
+   
+    return (url_for('home'))
 
     # change to sessions last page visited
 
