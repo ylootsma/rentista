@@ -14,9 +14,9 @@ users_blueprint = Blueprint('users',
                             template_folder='templates')
 
 
-@users_blueprint.route('/new', methods=['GET'])
-def new():
-    pass
+# @users_blueprint.route('/new', methods=['GET'])
+# def new():
+#     pass
 
 
 @users_blueprint.route('/create', methods=['POST'])
@@ -29,60 +29,65 @@ def create():
     user = User(name=name, email=email,
                 password=pwd)
     if user.save():
-        return redirect(url_for('home'))
+        flash("Bedankt voor je aanmelding")
+        return redirect(redirect_url())
+
     else:
-        return redirect(url_for('home'))
-        
+        flash("Er is iets fout gegaan, probeer het opnieuw")
+        return redirect(redirect_url())
 
 
-@users_blueprint.route('/<username>', methods=["GET"])
-def show(username):
-    pass
+@users_blueprint.route('/admin', methods=['POST'])
+@login_required
+def admin():
+    user = User.get_by_id(current_user.id)
+    if user.Admin == True:
+       return render_template('users/admin.html', user=user)
 
-
-@users_blueprint.route('/', methods=["GET"])
-def index():
-    return "USERS"
-
-
-@users_blueprint.route('/<id>/edit', methods=['GET'])
-def edit(id):
-    pass
-
-
-@users_blueprint.route('/<id>', methods=['POST'])
-def update(id):
-    pass
-
-
-@users_blueprint.route('/google', methods=["GET"])
-def google():
-    redirect_uri = "http://localhost:5000/users/google/login"
-    return oauth.google.authorize_redirect(redirect_uri)
-
-
-@users_blueprint.route('/google/login', methods=["GET"])
-def google_login():
-    token = oauth.google.authorize_access_token()
-    profile = oauth.google.get(
-        'https://www.googleapis.com/oauth2/v2/userinfo').json()
-    name = profile['name']
-    email = oauth.google.get(
-        'https://www.googleapis.com/oauth2/v2/userinfo').json()['email']
-    user = User.get_or_none(User.email == email)
-    if user == None:
-        user = User(name=name, email=email)
-        if user.save():
-            login_user(user)
-            flash('succesfully signed-up')
-            return redirect(url_for('home'))
-        else:
-            flash('something went wrong, please try again', 'danger')
-            return redirect(url_for('home'))
     else:
-        login_user(user)
-        flash('Welcome, successfully signed in.')
-        return redirect(url_for('home', id=user.id))
+        flash('Sorry, je hebt geen toegang')
+        return redirect(redirect_url())
+
+@users_blueprint.route('/show', methods=['POST'])
+@login_required
+def show():
+    user = User.get_by_id(current_user.id)
+    return render_template('users/show.html', user=user)
+
+ 
+
+
+
+
+
+# @users_blueprint.route('/google', methods=["GET"])
+# def google():
+#     redirect_uri = "http://localhost:5000/users/google/login"
+#     return oauth.google.authorize_redirect(redirect_uri)
+
+
+# @users_blueprint.route('/google/login', methods=["GET"])
+# def google_login():
+#     token = oauth.google.authorize_access_token()
+#     profile = oauth.google.get(
+#         'https://www.googleapis.com/oauth2/v2/userinfo').json()
+#     name = profile['name']
+#     email = oauth.google.get(
+#         'https://www.googleapis.com/oauth2/v2/userinfo').json()['email']
+#     user = User.get_or_none(User.email == email)
+#     if user == None:
+#         user = User(name=name, email=email)
+#         if user.save():
+#             login_user(user)
+#             flash('succesfully signed-up')
+#             return redirect(url_for('home'))
+#         else:
+#             flash('something went wrong, please try again', 'danger')
+#             return redirect(url_for('home'))
+#     else:
+#         login_user(user)
+#         flash('Welcome, successfully signed in.')
+#         return redirect(url_for('home', id=user.id))
 
 
 @users_blueprint.route('/facebook', methods=["GET"])
@@ -111,7 +116,7 @@ def facebook_login():
             return redirect(url_for('home'))
         else:
             flash('something went wrong, please try again', 'danger')
-            return redirect(url_for('home'))
+            return redirect(redirect_url())
     else:
         login_user(user)
         flash('Welcome, successfully signed in.')

@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from models.outfit import Outfit
 from models.subscription import Subscription
 from models.outfit_picture import Outfit_Picture
+from models.user import User
 from models.size import Size
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
@@ -50,6 +51,13 @@ def remove(outfit):
 
 @outfits_blueprint.route('/show/')
 def show():
+    admin=False
+    authentic = False
+    if current_user.is_authenticated:
+        authentic = True
+        user=User.get_or_none(User.id == current_user.id)
+        if user.Admin == True:  
+            admin = True
     outfits = Outfit.select()
     size = Size.select()
     out= Outfit.select()
@@ -66,7 +74,6 @@ def show():
     
     if 'cart' in session:
         sess =  session['cart']  
-        ses_siz = session['size']
         if current_user.is_authenticated:
             # user= User.select().where(User.id == current_user.id)
             subscription = Subscription.get_or_none(Subscription.user == current_user.id)
@@ -139,7 +146,7 @@ def show():
         subtype = int(subscriptiontype)
     else:
         subtype = 0    
-    return object_list('outfits/show.html', outfits, ses_siz=ses_siz, size=size, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
+    return object_list('outfits/show.html', outfits, admin=admin, authentic=authentic, size=size, price=price, subtype=subtype, out=out, sub=sub, subscription=subscription, surplus=surplus, discount=discount, amount=amount, sess=sess,paginate_by=9)
 
 
 @outfits_blueprint.route('/<id>/detail')

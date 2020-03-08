@@ -15,7 +15,7 @@ sessions_blueprint = Blueprint('sessions',
 @sessions_blueprint.route('/new', methods=['GET'])
 def new():
  
-    return render_template('sessions/new.html', url=url)
+    return render_template('sessions/new.html')
 
 
 @sessions_blueprint.route('/create/', methods=['POST', 'GET'])
@@ -39,9 +39,7 @@ def create():
     
     flash('Welcome, successfully signed in.')
    
-    return (url_for('home'))
-
-    # change to sessions last page visited
+    return redirect(redirect_url())
 
 
 @sessions_blueprint.route('/google', methods=['GET'])

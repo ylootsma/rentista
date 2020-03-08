@@ -30,13 +30,15 @@ TRANSACTION_SUCCESS_STATUSES = [
 
 
 @subscriptions_blueprint.route('/pick', methods=['POST', 'GET'])
-@login_required
+
 def pick():
+  
+
     return render_template('subscriptions/pick.html')
 
 
 @subscriptions_blueprint.route('/standard', methods=['POST', 'GET'])
-@login_required
+
 def standard():
     client_token = generate_client_token()
     price = 93
@@ -52,7 +54,7 @@ def standard():
 
 
 @subscriptions_blueprint.route('/premium', methods=['POST', 'GET'])
-@login_required
+
 def premium():
     client_token = generate_client_token()
     price = 109
@@ -67,7 +69,7 @@ def premium():
 
 
 @subscriptions_blueprint.route('/exclusive', methods=['POST', 'GET'])
-@login_required
+
 def exclusive():
     client_token = generate_client_token()
     price = 125

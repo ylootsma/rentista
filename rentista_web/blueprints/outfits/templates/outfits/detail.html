@@ -5,39 +5,41 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <style>
         .for_slick_slider {
+          display: flex;
+         
+          /* position: relative; */
+          /* width: 70rem; */
+          /* align-items: center; */
+          /* justify-content: center; */
+          height: 30rem;
+      }
 
-            display: flex;
+      .for_slick_slider .items img {
+       
+          height: 30rem;
+          width: 14rem;
+          object-fit: cover;
+      }
 
-            width: 200rem;
-            height: 200rem;
+      .arrow_prev {
+          position: absolute;
+          top: 100%;
+          left: 8%;
+          transform: rotate(-90deg)
+      }
 
+      .arrow_next {
+          position: absolute;
+          top: -2%;
+          left: 8%;
+          transform: rotate(-90deg)
+      }
 
-        }
-
-        /* 
-
-        .for_slick_slider .items {
-            /* margin: 50px; */
-
-
-
-        /* width: 250px;
-            height: 200rem;
-        }  */
-
-        .for_slick_slider .items img {
-            height: 200rem;
-            width: 20rem;
-            object-fit: cover;
-
-        }
-
-        #top_pic {
-            margin-left: 10px;
-            object-fit: cover;
-            width: 800px;
-
-        }
+#top_pic{
+          width:40rem;
+          height:60rem;
+         
+      } 
 
         nav .breadcrumb {
             /* padding: 0.8em 1em;
@@ -50,25 +52,25 @@
         nav .breadcrumb li a {
             color: black;
         }
-
+/* 
         body {
             position: relative
-        }
+        } */
 
-        #pic_box {
+        /* #pic_box {
             position: absolute;
             text-align: left;
-        }
-
+        } */
+/* 
         #info {
             width: 50em;
             position: absolute;
             /* text-align: right; */
-            margin-left: 60em;
+            /* margin-left: 60em; */
 
             /* margin-right: 10em; */
 
-        }
+        } 
 
         #headingOne,
         #headingTwo {
@@ -112,7 +114,7 @@
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
                 class="d-inline-block align-top" alt="">
@@ -124,7 +126,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <!-- pricing and how it works  -->
+               
                 <li class="nav-item active">
                     <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
                 </li>
@@ -132,51 +134,27 @@
                     <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <!-- categories:
-        skirts
-        shorts
-        cardigans/jerseys/sweathers
-        pants
-        dresses
-
-        ocassions:
-        workwear
-        events(bridal, gala, cocktail)
-        holiday
-
-        femenine & sexy
-        elegant
-        casual
-        Timeless
-        trendy
-        authentic -->
-
+     
 
 
                 <li class="nav-item active">
                     <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
                 </li>
-                <!-- models
-        celebs -->
+        
 
 
 
                 <li class="nav-item active">
                     <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
                 </li>
-                <!-- Trends
-        Advice
-        Dress to the moment
-        get the look -->
+             
             </ul>
             <span class="navbar-text">
                 <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary"
                         data-toggle="modal" data-target="#modal-with-tab">
 
                         <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
-                    <!-- <br>
-        <div style="display: inline-block"><a href="#">Login</a>
-        </div> -->
+               
 
                     <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-with-tab">
@@ -192,7 +170,7 @@
             </span>
         </div>
 
-    </nav>
+    </nav> -->
 
     <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -222,39 +200,61 @@
                     href="{{url_for('outfits.detail', id=outfit[0].id)}}">{{outfit[0].outfit_name}}</a></li>
         </ol>
     </nav>
-    <div id="pic_box">
-        <div>
-            <img id="top_pic" src="{{pictures[1].picture}}">
-        </div>
-        <br>
-        <div class="for_slick_slider responsive">
+
+<div class="container">
+    <div class="d-inline-flex p-2 bd-highlight" style="position: relative;"> 
+
+
+        <div class="for_slick_slider slider">
             {%for picture in pictures %}
             <div class="items">
                 <a href="#"><img src="{{picture.picture}}" class="pic"></a>
             </div>
             {%endfor%}
         </div>
-    </div>
-
-    <br>
-
-    <div id="info">
-        <div class="title">
-            <a href="#">
-                <h6>{{outfit[0].brand_name}}</h6>
-            </a>
-            <center>
-                <h3>
-                    <hr>{{outfit[0].outfit_name}}
-                    <hr>
-                </h3>
-            </center>
-
+        <div class="arrow_prev">
+            <span>
+                <i class="fas fa-chevron-left" style="font-size: large;"></i>
+            </span>
+        </div>
+        <div class="arrow_next">
+            <span>
+                <i class="fas fa-chevron-right" style="font-size: large;"></i>
+            </span>
         </div>
 
-        <div class="form">
+        <div id="pic_box" style="margin-right:1rem;">
+            <div>
+                <img id="top_pic" src="{{pictures[1].picture}}">
+            </div>
+          
+        
+        </div>
+
+
+
+    
+     
+        <br>
+      <div class="d-flex flex-column bd-highlight mb-4" style="width:max-content">
+            <div>
+                <a href="#">
+                    <h6>{{outfit[0].brand_name}}</h6>
+                </a>
+              
+                    <h3>
+                        <hr>{{outfit[0].outfit_name}}
+                        <hr>
+                    </h3>
+               
+             </div>
+
+  
             <!-- <form action="#" method="POST"> -->
+                <div>
+                <form>
             <div class="form-group">
+               
                 <div class="col-sm-5">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <select id="size" name="size">
@@ -284,7 +284,9 @@
 
             </form>
         </div>
-        <div class="accordion" id="accordionExample">
+
+        <br>
+        <div class="accordion" id="accordionExample" style="width: max-content;">
 
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -308,6 +310,8 @@
                 </div>
             </div>
         </div>
+        <br>
+
         <div class="accordion" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="headingTwo">
@@ -330,63 +334,35 @@
             </div>
 
         </div>
+
     </div>
+        
+
+    </div> 
+</div> 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script> -->
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <script type="text/javascript">
-        $('.responsive').slick({
-            // dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ]
-        });
+    <script type="text/javascript">     
+    $(document).ready(function() {
+       $('.slider').slick({
+    dots: false,
+    vertical: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    verticalSwiping: true,
+    prevArrow: '.arrow_prev',
+    nextArrow: '.arrow_next'
+    });
+    });
     </script>
 
-    <script type="text/javascript">
-        // $(function () {
-        //     $('#book').on('click', function () {
-        //         var $size = $("#size option:selected").text();
-        //         $("#no_items").hide();
-        //         $(".modal-body").append('<div id="id">Some Stuff Here</div>');
-
-        //     });
-        // });
-
-    </script>
+  
 
 
 

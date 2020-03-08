@@ -8,6 +8,104 @@
         @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
     </style>
     <style>
+             .login,
+    .register {
+      width: 400px;
+      background-color: #ffffff;
+      box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+      margin: 100px auto;
+    }
+
+      .login h1,
+    .register h1 {
+      text-align: center;
+      color: #5b6574;
+      font-size: 24px;
+      padding: 20px 0 20px 0;
+      border-bottom: 1px solid #dee0e4;
+    }
+
+    .login .links,
+    .register .links {
+      display: flex;
+      padding: 0 15px;
+    }
+
+    .login .links a,
+    .register .links a {
+      color: #adb2ba;
+      text-decoration: none;
+      display: inline-flex;
+      padding: 0 10px 10px 10px;
+      font-weight: bold;
+    }
+
+    .login .links a:hover,
+    .register .links a:hover {
+      color: #9da3ac;
+    }
+
+    .login .links a.active,
+    .register .links a.active {
+      border-bottom: 3px solid pink;
+      color: pink;
+    }
+
+    .login form,
+    .register form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 20px;
+    }
+
+    .login form label,
+    .register form label {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      color: #ffffff;
+    }
+
+    .login form input[type="password"],
+    .login form input[type="text"],
+    .login form input[type="email"],
+    .register form input[type="password"],
+    .register form input[type="text"],
+    .register form input[type="email"] {
+      width: 310px;
+      height: 50px;
+      border: 1px solid #dee0e4;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+
+    .login form input[type="submit"],
+    .register form input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: pink;
+      border: 0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ffffff;
+      transition: background-color 0.2s;
+    }
+
+    .login form input[type="submit"]:hover,
+    .register form input[type="submit"]:hover {
+      background-color: pink;
+      transition: background-color 0.2s;
+    }
+
+    body.loggedin {
+      background-color: #f3f4f7;
+    }
+
     .bg-dark {
         background: white !important;
           transition: 750ms ease;
@@ -15,7 +113,7 @@
       }
 
       #mod1,#mod2, #mod3 {
-          background: transparent !important;
+          background: transparent !important; 
           border:transparent !important;
       }
 
@@ -64,7 +162,7 @@
 
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
-    <a class="navbar-brand" href="#" style="font-size:xx-large; font-weight: normal;">
+    <a class="navbar-brand" href="{{ url_for('home') }}" style="font-size:xx-large; font-weight: normal;">
         RENTISTA
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -76,34 +174,54 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#info">ZO WERKT HET<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('subscriptions.pick') }}">Abonnementen<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('outfits.show') }}">OUTFITS <span class=" sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('outfits.show') }}">Kleding<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Inspiratie<span class=" sr-only">(current)</span></a>
             </li>
 
 
 
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
                 <a class="nav-link" href="#prices">PRIJZEN<span class=" sr-only">(current)</span></a>
-            </li>
+            </li> -->
 
         </ul>
         <span class="navbar-text">
          
-          <div style="text-align: center"> <button type="button" id="mod1" class="btn btn-primary"
+            
+          <div class="d-inline-flex p-2 bd-highlight"> 
+            {%if authentic == True%}
+            <div class="btn-group dropleft">
+                <button class="btn btn primary" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+                    {%if admin == True%}
+                    <button class="dropdown-item" type="button">Dashboard</button>
+                    {%else%}
+                  <button class="dropdown-item" type="button">Bestellingen</button>
+                  <button class="dropdown-item" type="button">Klantgegevens</button> 
+                  {%endif%}              
+                </div>
+              </div>
+              {%else%}
+            <button type="button" id="mod1" class="btn btn-primary"
                   data-toggle="modal" data-target="#modal-with-tab">
-
                   <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i></button>
+            {%endif%}
               <!-- <br>
   <div style="display: inline-block"><a href="#">Login</a>
   </div> -->
 
-              <button type="button" id="mod2" class="btn btn-primary" data-toggle="modal"
+              <!-- <button type="button" id="mod2" class="btn btn-primary" data-toggle="modal"
                   data-target="#">
 
-                  <i class="fas fa-heart" style="font-size:24px; color:black; display: inline-block"></i></button>
-
+                  <i class="fas fa-heart" style="font-size:24px; color:black; display: inline-block"></i></button> -->
+<br>
               <button type="button" id="mod3" class="btn btn-primary" data-toggle="modal"
                   data-target="#myModal2">
 
@@ -120,6 +238,95 @@
     </ul> -->
 
 </nav>
+
+
+
+<div id="modal-with-tab" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel">
+
+    <!-- Only required for left/right tabs -->
+    <div class="register">
+      <h1 class="text-center">Account</h1>
+
+      <br>
+
+      <div class="nav nav-tabs links">
+        <br>
+        <a href="#register" data-toggle="tab">Register</a>
+        <a href="#login" class="active" data-toggle="tab">Login</a>
+      </div>
+
+      <div class="tab-content">
+
+        <div class="tab-pane active" id="login">
+          <br>
+          <div id='social' style='text-align: center;'>
+
+
+            <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+              <img id='facebook' style="width: 18.2vw; height:5vh;"
+                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+          </div>
+
+          <form action="{{ url_for('sessions.create') }}" method="POST" autocomplete="off">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+
+            <label for="email">
+              <i class="fas fa-envelope"></i>
+            </label>
+            <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+              required>
+
+            <label for="password">
+              <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+              required>
+            <button type="submit" value="Register" class="button4" style="background-color: pink">Login</button>
+
+          </form>
+        </div>
+
+        <div class="tab-pane" id="register">
+          <br>
+          <div id='social' style='text-align: center;'>
+
+           
+
+            <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
+              <img id='facebook' style="width: 18.2vw; height:5vh;"
+                src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
+          </div>
+          <form action="{{ url_for('users.create') }}" method="POST" autocomplete="off">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+            <label for="name">
+              <i class="fas fa-user"></i>
+            </label>
+            <input type="text" class="form-control" name="name" placeholder="Enter full name" required>
+
+            <label for="email">
+              <i class="fas fa-envelope"></i>
+            </label>
+            <input type="email" class="form-control" name="email" placeholder="Enter e-mail address" id="email"
+              required>
+
+            <label for="password">
+              <i class="fas fa-lock"></i>
+            </label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" id="password"
+              required>
+            <button type="submit" value="Register" class="button4" style="background-color: pink">Sign-up
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -133,8 +340,6 @@
             <div class="modal-body">
 
                 {%if sess|length > 0 %}
-                {{sess}}
-                {{ses_siz}}
                 {%if subscription %}
                 <p>Huur {{subscription.subscription_type}} outfits per keer met je abbonnement.</p>
                
@@ -172,7 +377,10 @@
                 <p>Korting meerdere artikelen€ {{discount}}</p>
                 <p>Totaal bedrag: €{{price}}</p>
                 {%endif%}
+
+                
                 <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+               
 
                 {%else%}
                 <p>Je abbonnement bevat nu volgende artikelen:</p>
@@ -205,8 +413,10 @@
                 <p>Korting €{{discount}}</p>
                 <p>Totaal bedrag:€{{price}}</p>
                 {%endif%}
-                <button><a href="{{ url_for('orders.new', price=price) }}">Checkout<a></button>
-                 <p><small>Heb je een abbonnement? <a href="">Log-in<a></small></p>   
+              
+             
+                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+             
                 {%endif%} 
 
                 {%else%}

@@ -52,13 +52,11 @@ def internal_server_error(e):
 @app.route("/")
 def home():
     pictures = Outfit_Picture.select().where(Outfit_Picture.outfit == 78)
-    # outfit = Outfit.select().where(Outfit.id == 78)
 
     return render_template('home.html', pictures=pictures)
 
 
 @app.route('/new_1', methods=['POST', 'GET'])
-@login_required
 def new_1():
     client_token = generate_client_token()
     price = request.form.get('price')
@@ -77,10 +75,9 @@ def new_1():
         return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
          
    
-
+   
 
 @app.route('/new_2', methods=['POST', 'GET'])
-@login_required
 def new_2():
     client_token = generate_client_token()
     price = request.form.get('price')

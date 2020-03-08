@@ -52,7 +52,9 @@
                                
                                 <br>
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                                {%if authentic == True%}
                                 <button name type="submit" class="btn btn-primary">Subscribe</button>
+                                {%else%}
                                 <br>
                                 <br>
                                 

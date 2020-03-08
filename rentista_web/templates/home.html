@@ -2989,11 +2989,6 @@ flex-direction: column;*/
           <br>
           <div id='social' style='text-align: center;'>
 
-            <a href="{{ url_for('sessions.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                src=" {{url_for('static', filename='google_button.png')}}"></a>
-            <br>
-
             <a href="{{ url_for('sessions.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
               <img id='facebook' style="width: 18.2vw; height:5vh;"
                 src="{{url_for('static', filename='18928641_251957295286418_4362086450741641216_n.png')}}"></a>
@@ -3023,10 +3018,7 @@ flex-direction: column;*/
           <br>
           <div id='social' style='text-align: center;'>
 
-            <a href="{{ url_for('users.google') }}" style='display:inline-block;padding-bottom:1.5vh;'><img
-                id='googlish' style="width:18vw; height: 5vh; object-fit: cover; border:2px solid black; "
-                src=" {{url_for('static', filename='google_button.png')}}"></a>
-            <br>
+           
 
             <a href="{{ url_for('users.facebook') }}" style='display:inline-block;padding-bottom:1.5vh;'>
               <img id='facebook' style="width: 18.2vw; height:5vh;"
@@ -3909,11 +3901,13 @@ flex-direction: column;*/
                                   <!-- 1 delivery <br> flexible dates -->
 
                                   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                               
                                   <button type="button" class="btn btn-outline-dark"
                                       style="margin:0.5rem; width:9rem; color: bl hack;"><a href="#"
                                           data-toggle="modal" data-target="#exampleModal2" style="color:black">
                                           Toegang</a>
                                   </button>
+                                  
                               </form>
 
 
@@ -3956,12 +3950,14 @@ flex-direction: column;*/
 
 
                                   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                               
                                   <button type="submit" class="btn btn-outline-dark"
                                       style="margin:0.5rem; width:9rem; color: black;">
                                       <!-- <a href="#" data-toggle="modal" data-target="#exampleModal3" -->
                                           <!-- style="color:black"> -->
                                           Toegang
                                   </button>
+                                  
                               </form>
                           </center>
                       </div>
@@ -4078,12 +4074,14 @@ flex-direction: column;*/
 
 
                               <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                             
                               <button type="submit" class="btn btn-outline-dark"
-                                  style="margin:0.5rem; width:9rem; color: black; ">
-                                  <!-- <a href="" data-toggle="modal" data-target="#exampleModal3" style="color:black">
-                                      Toegang</a> -->
+                                  style="margin:0.5rem; width:9rem; color: black;">
+                                  <!-- <a href="#" data-toggle="modal" data-target="#exampleModal3" -->
+                                      <!-- style="color:black"> -->
                                       Toegang
                               </button>
+                            
                           </form>
                      
                         </center>

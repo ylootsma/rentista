@@ -42,6 +42,12 @@ TRANSACTION_SUCCESS_STATUSES = [
 ]
 
 
+@orders_blueprint.route('/show/', methods=['POST', 'GET'])
+@login_required
+def show():
+    pass
+
+
 @orders_blueprint.route('/new/<price>/', methods=['POST', 'GET'])
 @login_required
 def new(price):
