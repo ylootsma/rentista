@@ -4,6 +4,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <style>
+
+.bg-dark {
+        background: white !important;
+          transition: 750ms ease;
+          /* background: white !important; */
+      }
+
+      #mod1,#mod2, #mod3 {
+          background: transparent !important; 
+          border:transparent !important;
+      }
+
+
+      .nav-link {
+          color: black !important;
+          font-weight: bold;
+
+      }
+
+      .navbar-brand {
+          color: black !important;
+      }
+
         .for_slick_slider {
           display: flex;
          
@@ -112,65 +135,93 @@
 
 <body>
 
+     <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <a class="navbar-brand" href="{{ url_for('home') }}" style="font-size:xx-large; font-weight: normal;">
+        RENTISTA
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"
+        style="float: left; margin-right: 3rem;">
+        <span class="navbar-toggler-icon" style="float: left;"></span>
+    </button>
+    <div class=" collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
 
-
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-                class="d-inline-block align-top" alt="">
-            RENTISTA
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-               
-                <li class="nav-item active">
-                    <a class="nav-link" href="#explanation">Subscriptions<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('outfits.show') }}">Clothing<span
-                            class="sr-only">(current)</span></a>
-                </li>
-     
-
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#plans">Get the look<span class="sr-only">(current)</span></a>
-                </li>
-        
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('subscriptions.pick') }}">Abonnementen<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('outfits.show') }}">Kleding<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Inspiratie<span class=" sr-only">(current)</span></a>
+            </li>
 
 
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="#inspiration">Inspiration<span class="sr-only">(current)</span></a>
-                </li>
-             
-            </ul>
-            <span class="navbar-text">
-                <div style="text-align: center"> <button type="button" id="mod" class="btn btn-primary"
-                        data-toggle="modal" data-target="#modal-with-tab">
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="#prices">PRIJZEN<span class=" sr-only">(current)</span></a>
+            </li> -->
 
-                        <i class="fas fa-user" style="font-size:24px; display: inline-block"></i></button>
-               
+        </ul>
+        <span class="navbar-text">
+         
+            
+          <div class="d-inline-flex p-2 bd-highlight"> 
+            {%if authentic == True%}
+            <div class="btn-group dropleft">
+                <button class="btn btn primary" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2" >
+                    {%if admin == True%}
+                    <button class="dropdown-item" type="button">Dashboard</button>
+                    {%else%}
+                  <button class="dropdown-item" type="button">Bestellingen</button>
+                  <button class="dropdown-item" type="button">Klantgegevens</button> 
+                  {%endif%}              
+                </div>
+              </div>
+              {%else%}
+            <button type="button" id="mod1" class="btn btn-primary"
+                  data-toggle="modal" data-target="#modal-with-tab">
+                  <i class="fas fa-user" style="font-size:24px; color:black; display: inline-block"></i></button>
+            {%endif%}
+              <!-- <br>
+  <div style="display: inline-block"><a href="#">Login</a>
+  </div> -->
 
-                    <button type="button" id="mod" class="btn btn-primary" data-toggle="modal"
-                        data-target="#modal-with-tab">
+              <!-- <button type="button" id="mod2" class="btn btn-primary" data-toggle="modal"
+                  data-target="#">
 
-                        <i class="fas fa-heart" style="font-size:24px; display: inline-block"></i></button>
+                  <i class="fas fa-heart" style="font-size:24px; color:black; display: inline-block"></i></button> -->
+<br>
+              <button type="button" id="mod3" class="btn btn-primary" data-toggle="modal"
+                  data-target="#myModal2">
+
+                  <i class="fas fa-shopping-bag" style="font-size:24px; color:black; display: inline-block"></i></button>
+          </div>
+
+      </span>
+      
+    </div>
+    <!-- <ul class="navbar-nav ml-auto" id="subscribe">
+
+        <button class="btn btn-primary" type="submit">Sign-up</button>
+
+    </ul> -->
+   
+
+</nav>
 
 
 
-                    <button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
-                        <i class="fas fa-shopping-bag" style="font-size:24px; display: inline-block"></i>
-                    </button>
+<br>
+<br>
+<br>
 
-            </span>
-        </div>
 
-    </nav> -->
 
     <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -183,9 +234,92 @@
                 </div>
 
                 <div class="modal-body">
-                    <p id="no_items">There are no items in your shopping bag
-                    </p>
+                    {%if sess|length > 0 %}
+                {%if subscription %}
+                <p>Huur {{subscription.subscription_type}} outfits per keer met je abbonnement.</p>
+               
+                {%if sess|length < subtype %}
+                <p>Je kunt nog {{subtype-(sess|length)}} artikel(en) toevoegen.</p>
+                {%endif%}
 
+                {%if surplus|length > 0 %}
+
+                <p>Je abbonnement bevat nu volgende artikelen:</p>
+                {%for s in sub%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
+                prijs €0</p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}  
+
+                <p>Je hebt {{surplus|length}}extra artikelen bestelt:</p> 
+                {%for s in surplus%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
+                prijs €{{outfit.outfit_price}}</p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%} 
+                <p>Prijs voor extra outfits:€{{amount}}</p>
+                {%if surplus|length > 1 %}
+                <p>Korting meerdere artikelen€ {{discount}}</p>
+                <p>Totaal bedrag: €{{price}}</p>
+                {%endif%}
+
+                
+                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+               
+
+                {%else%}
+                <p>Je abbonnement bevat nu volgende artikelen:</p>
+                {%for s in sess%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                    {{outfit.outfit_name}}
+                    <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
+                </p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+                <button><a href="">Bestel<a></button>  
+                {%endif%}
+
+                {%else%}
+                {%for s in sess%}
+                {%for outfit in out%}
+                {%if outfit.id==s%}
+                <p>{{outfit.brand_name}} -
+                {{outfit.outfit_name}}
+                <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
+                    prijs€{{outfit.outfit_price}}</p>
+                {%endif%}
+                {%endfor%}
+                {%endfor%}
+                <p>Prijs voor alle outfits:€{{amount}}</p>
+                {%if sess|length > 1 %}
+                <p>Korting €{{discount}}</p>
+                <p>Totaal bedrag:€{{price}}</p>
+                {%endif%}
+              
+             
+                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+             
+                {%endif%} 
+
+                {%else%}
+                <p id="no_items">Je hebt nog geen artikelen bestelt 
+                </p>
+
+                {%endif%}
+            
 
                 </div>
 
@@ -193,6 +327,9 @@
         </div><!-- modal-dialog -->
     </div><!-- modal -->
 
+   
+
+<div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{url_for('outfits.show')}}">Outfits</a></li>
@@ -200,8 +337,6 @@
                     href="{{url_for('outfits.detail', id=outfit[0].id)}}">{{outfit[0].outfit_name}}</a></li>
         </ol>
     </nav>
-
-<div class="container">
     <div class="d-inline-flex p-2 bd-highlight" style="position: relative;"> 
 
 
@@ -252,39 +387,31 @@
   
             <!-- <form action="#" method="POST"> -->
                 <div>
-                <form>
-            <div class="form-group">
-               
-                <div class="col-sm-5">
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                    <select id="size" name="size">
-                        <option value="" disabled selected>Select your size</option>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Order now   
+                          </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {%if size[0].size_xs >= 1  %}
-                        <option value="size_xs">size_xs</option>
+                        <a class="dropdown-item" href="{{url_for('outfits.add_to_cart', outfit=outfit.id,  size='size_xs')}}">Xs</a>
                         {%endif%}
                         {% if size[0].size_s >= 1 %}
-                        <option value="size_s">size_s</option>
+                        <a class="dropdown-item" href="{{url_for('outfits.add_to_cart', outfit=outfit.id,  size='size_s')}}">S</a>
                         {%endif%}
                         {% if size[0].size_m >= 1 %}
-                        <option value="size_m">size_m</option>
+                        <a class="dropdown-item" href="{{url_for('outfits.add_to_cart', outfit=outfit.id,  size='size_m')}}">M</a>
                         {%endif%}
                         {% if size[0].size_l >= 1 %}
-                        <option value="size_l">size_l</option>
+                        <a class="dropdown-item" href="{{url_for('outfits.add_to_cart', outfit=outfit.id,  size='size_l')}}">L</a>
                         {%endif%}
                         {% if size[0].size_xl >= 1 %}
-                        <option value="size_xl">size_xl</option>
+                        <a class="dropdown-item" href="{{url_for('outfits.add_to_cart', outfit=outfit.id,  size='size_xl')}}">Xl</a>
                         {%endif%}
-                    </select>
                 </div>
             </div>
-
-
-
-            <button id="book">Add to booking</button>
-
-            </form>
         </div>
 
+      
         <br>
         <div class="accordion" id="accordionExample" style="width: max-content;">
 
