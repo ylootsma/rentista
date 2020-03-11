@@ -203,8 +203,9 @@
                     {%if admin == True%}
                     <button class="dropdown-item" type="button">Dashboard</button>
                     {%else%}
-                  <button class="dropdown-item" type="button">Bestellingen</button>
-                  <button class="dropdown-item" type="button">Klantgegevens</button> 
+                  <button class="dropdown-item" type="button"><a href="">Bestellingen</a></button>
+                  <button class="dropdown-item" type="button"><a href="">Klantgegevens</a></button> 
+                  <button class="dropdown-item" type="button"><a href="">Afmelden</a></button> 
                   {%endif%}              
                 </div>
               </div>
@@ -368,14 +369,14 @@
                 <p>{{outfit.brand_name}} -
                     {{outfit.outfit_name}}
                     <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
-                prijs €{{outfit.outfit_price}}</p>
+                prijs €{{outfit.outfit_price|round|int}}</p>
                 {%endif%}
                 {%endfor%}
                 {%endfor%} 
-                <p>Prijs voor extra outfits:€{{amount}}</p>
+                <p>Prijs voor extra outfits:€{{amount|round|int}}</p>
                 {%if surplus|length > 1 %}
-                <p>Korting meerdere artikelen€ {{discount}}</p>
-                <p>Totaal bedrag: €{{price}}</p>
+                <p>Korting meerdere artikelen€ {{discount|round|int}}</p>
+                <p>Totaal bedrag: €{{price|round|int}}</p>
                 {%endif%}
 
                 
@@ -394,7 +395,7 @@
                 {%endif%}
                 {%endfor%}
                 {%endfor%}
-                <button><a href="">Bestel<a></button>  
+                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
                 {%endif%}
 
                 {%else%}
@@ -404,14 +405,14 @@
                 <p>{{outfit.brand_name}} -
                 {{outfit.outfit_name}}
                 <a href="{{ url_for('outfits.remove', outfit=outfit.id) }}"><i class="fa fa-trash" aria-hidden="true"></i><a>
-                    prijs€{{outfit.outfit_price}}</p>
+                    prijs€{{outfit.outfit_price|round|int}}</p>
                 {%endif%}
                 {%endfor%}
                 {%endfor%}
-                <p>Prijs voor alle outfits:€{{amount}}</p>
+                <p>Prijs voor alle outfits:€{{amount|round|int}}</p>
                 {%if sess|length > 1 %}
                 <p>Korting €{{discount}}</p>
-                <p>Totaal bedrag:€{{price}}</p>
+                <p>Totaal bedrag:€{{price|round|int}}</p>
                 {%endif%}
               
              
@@ -449,7 +450,9 @@
                             </br>
                             
                         </a>
-                        
+                        {%if outfit.in_stock == False %}
+                        <p>Momenteel niet op voorraad</p>
+                        {%else%}
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Size    
@@ -476,7 +479,7 @@
                               {%endfor%}
                             </div>
                           </div>
-
+                          {%endif%}
                       
                      
                           

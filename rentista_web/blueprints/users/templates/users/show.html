@@ -1,0 +1,69 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body" style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5 class="card-title">Klantengegevens</h5>
+          
+         
+       
+          <p class="card-text">Naam: {{user.name}}</p>
+          <p class="card-text">Email: {{user.email}}</p>
+
+          {%if user.size != "default"%}
+          <p class="card-text">Kledingmaat: {{user.size}}</p>
+          {%endif%}
+         
+          <button><a href="#" class="card-link">Wijzigen</a></button>
+        </div>
+      </div> 
+<br>
+<br>
+      <div class="card">
+        <div class="card-body" style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+      <h5 class="card-title">Adresgegevens</h5> 
+      {%if ad == True%}
+    <div class="d-inline-flex p-2 bd-highlight">
+        <span style="margin-right:2rem;">
+        <h6 class="card-subtitle mb-2 text-muted">Verzend Adres</h6>
+        <p class="card-text">Geadresseerde: {{adress.name}}</p>
+        <p class="card-text">Straat: {{adress.street}}</p>
+        <p class="card-text">Huisnummer: {{adress.housenumber}}</p>
+        <p class="card-text">Postcode:{{adress.postal}}</p>
+        <p class="card-text">Stad: {{adress.city}}</p>
+        <p class="card-text">Land: {{adress.country}}</p>
+        <p class="card-text">Telefoon: {{adress.phone}}</p>
+
+        </span>
+
+        <span>
+            <h6 class="card-subtitle mb-2 text-muted">Factuur Adres</h6>
+            <p class="card-text">Geadresseerde: {{adress.name}}</p>
+            <p class="card-text">Straat: {{adress.street}}</p>
+            <p class="card-text">Huisnummer: {{adress.housenumber}}</p>
+            <p class="card-text">Postcode:{{adress.postal}}</p>
+            <p class="card-text">Stad: {{adress.city}}</p>
+            <p class="card-text">Land: {{adress.country}}</p>
+            <p class="card-text">Telefoon: {{adress.phone}}</p>
+        </span>
+    </div>
+
+{%else%}
+<p class="card-text">Is nog niet bekend</p>
+{%endif%}
+       
+      
+          <p class="card-text"></p> 
+          <button><a href="#" class="card-link">Wijzigen</a></button>
+        </div>
+      </div> 
+      <center>
+      <button class="btn btn-primary-light"><a href="#">homepage
+      </a></button>
+      <button class="btn btn-primary-light"><a href="#">bestellingen</a></button>
+    </center>
+</div>
+
+
+{%endblock%}

@@ -61,7 +61,7 @@ def show():
     outfits = Outfit.select()
     size = Size.select()
     out= Outfit.select()
-    outfits_cart = Outfit.select().order_by(Outfit.outfit_price.desc()) 
+    outfits_cart = Outfit.select().order_by(Outfit.outfit_price.asc()) 
     subscription = None
     amount = 0
     # outfits = []
@@ -93,18 +93,20 @@ def show():
                                 count += 1    
                         else:
                             break                                                          
-                                    
-                if len(sess) > (sub_length+1):
-                    sess2 = len(sess) - (sub_length+1)
-                    count = 0
-                    for item in outfits_cart:
-                        if count < sess2:
-                            if item.id in sess:
-                                price = float(item.outfit_price)
-                                discount = discount + price*0.35
-                                count = count+1 
-                        else:
-                            break
+                    discount= int(amount)/count*0.33*(count-1)
+
+                # if len(sess) > (sub_length+1):
+                #     sess2 = len(sess) - (sub_length+1)
+                #     count = 0
+                #     for item in outfits_cart:
+                #         if count < sess2:
+                #             if item.id in sess:
+                #                 price = float(item.outfit_price)
+                #                 discount = discount + price*0.35
+                #                 count = count-1
+                #                 count = count+1 
+                #         else:
+                #             break
 
                 if len(surplus) > 0:
                     for s in sess:

@@ -9,7 +9,7 @@ class User(BaseModel):
     password = pw.CharField(unique=False, default="default")
     Admin = pw.BooleanField(unique=False, default=False)
     Partner = pw.BooleanField(unique=False, default=False)
-    DOB = pw.DateField(unique=False, default="01/01/01")
+    DOB = pw.DateField(unique=False, null=True)
     size = pw.CharField(unique=False, default="default")
    
 

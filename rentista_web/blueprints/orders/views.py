@@ -119,6 +119,15 @@ def create(price):
                     si.save()
                     count = count+1
 
+                for s in sess:
+                    si = Size.get(Size.outfit_id == s)
+                    total= int(si.size_xs)+int(si.size_s)+int(si.size_m)+int(si.size_l)+int(si.size_xl)
+             
+                    if total < 1:
+                        outfit = Outfit.get(Outfit.id==s)
+                        outfit.in_stock = False
+                        outfit.save()     
+
                 session.pop("cart", None)   
                 session.pop("size", None)  
 
@@ -178,7 +187,17 @@ def create_checkout():
                     si.size_xl=si_new         
                
                 si.save()
+                    
                 count = count+1
+       
+            for s in sess:
+                si = Size.get(Size.outfit_id == s)
+                total= int(si.size_xs)+int(si.size_s)+int(si.size_m)+int(si.size_l)+int(si.size_xl)
+                # breakpoint()
+                if total < 1:
+                    outfit = Outfit.get(Outfit.id==s)
+                    outfit.in_stock = False
+                    outfit.save()
 
             session.pop("cart", None)   
             session.pop("size", None) 

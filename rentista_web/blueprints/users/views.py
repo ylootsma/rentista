@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template
-from flask import request, flash, redirect, url_for, request, session
+from flask import Flask, Blueprint, render_template, request, flash, redirect, url_for, session, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from models.user import User
+from models.adress import Adress
 # from werkzeug.utils import secure_filename
 import datetime
 from flask_login import login_required, current_user, login_user, login_manager
 from rentista_web.util.oauth import oauth
+from rentista_web.util.helpers import *
 from app import app
 
 
@@ -48,11 +49,15 @@ def admin():
         flash('Sorry, je hebt geen toegang')
         return redirect(redirect_url())
 
-@users_blueprint.route('/show', methods=['POST'])
+@users_blueprint.route('/show', methods=['GET'])
 @login_required
 def show():
     user = User.get_by_id(current_user.id)
-    return render_template('users/show.html', user=user)
+    adress = Adress.get_or_none(Adress.user==user.id)
+    if adress:
+        ad = True
+
+    return render_template('users/show.html', user=user, ad=ad, adress=adress)
 
  
 
