@@ -1,0 +1,53 @@
+{% extends '_layout.html' %}
+{% block content %}
+<div class = "container">
+<center>
+{%if orderstate == 0%}
+<p>Je hebt nog geen bestellingen</p>
+{%endif%}
+{%if order_open_length > 0%}
+<h3>Bestaande Bestellingen</h3>
+<table>
+{%for order in order_open %}
+<tr>
+<td>Order Date:</td>
+<td>{{order[0]}}</td>
+<td>Outfit Size:</td>
+<td>{{order[1]}}</td>
+<td>Outfit Name:</td>
+<td>{{order[2]}}</td>
+<td>Outfit Brand:</td>
+<td>{{order[3]}}</td>
+</tr>
+{%endfor%}
+</table>
+{%endif%}
+{%if order_closed_length > 0%}
+<br>
+<br>
+<h3>Afgesloten Bestellingen</h3>
+<table>
+    {%for order in order_closed %}
+    <tr>
+    <td>Order Date:</td>
+    <td>{{order[0]}}</td>
+    <td>Outfit Size:</td>
+    <td>{{order[1]}}</td>
+    <td>Outfit Name:</td>
+    <td>{{order[2]}}</td>
+    <td>Outfit Brand:</td>
+    <td>{{order[3]}}</td>
+    </tr>
+    {%endfor%}
+    </table>
+{%endif%}
+<br>
+
+    <button class="btn btn-primary-light"><a href="#">Homepage
+    </a></button>
+    <button class="btn btn-primary-light"><a href="#">Accountgegevens</a></button>
+  </center>
+
+</div>
+
+{% endblock %}

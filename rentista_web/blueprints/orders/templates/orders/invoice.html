@@ -1,10 +1,10 @@
-{% extends "_layout.html" %}
+% extends "_layout.html" %}
 {% block content %}
 
-<form action="{{ url_for('orders.create_adress', price=price)}}" method="POST" enctype="multipart/form-data">
+<form action="{{ url_for('orders.create_invoice', price=price)}}" method="POST" enctype="multipart/form-data">
 
     <div class="col-sm-5">
-        <h1>Adres-gegevens</h1>
+        <h1>Factuur-gegevens</h1>
     </div>
 
     <div class="form-group">
@@ -64,17 +64,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="apparell_type">Factuur adres gelijk aan afleveringsadres?</label>
-        <div class="col-sm-5">
-            <div class="col-sm-5">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-                <input type="checkbox" id="invoice" name="invoice" value="true">
-            </div>
-        </div>
-    </div>
-
-    <button type="submit">Submit</button>
+    <button type="submit">Opslaan</button>
 
 </form>
 

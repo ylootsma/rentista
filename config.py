@@ -10,6 +10,7 @@ class Config(object):
     merchant_id = os.environ.get("Merchant_ID")
     public_key = os.environ.get("Public_Key")
     private_key = os.environ.get("Private_Key")
+    mailgun = os.environ.get("MAILGUN_API_KEY")
 
 
 class ProductionConfig(Config):

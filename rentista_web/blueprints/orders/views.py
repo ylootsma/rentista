@@ -7,6 +7,7 @@ from models.outfit_picture import Outfit_Picture
 from models.order_outfit import Order_Outfit
 from models.order import Order
 from models.adress import Adress
+from models.user import User
 from models.size import Size
 from flask_login import login_user, current_user, LoginManager, logout_user, login_required
 from rentista_web.util.oauth import oauth
@@ -24,6 +25,8 @@ from rentista_web.util.helpers import *
 from rentista_web.util.braintree import generate_client_token, gateway, find_transaction, transact, create_customer, subscription_create
 from random import randrange
 import datetime
+import requests
+import config
 
 
 orders_blueprint = Blueprint('orders',
@@ -42,10 +45,59 @@ TRANSACTION_SUCCESS_STATUSES = [
 ]
 
 
+
 @orders_blueprint.route('/show/', methods=['POST', 'GET'])
 @login_required
 def show():
-    pass
+    user = User.get_by_id(current_user.id)
+    orderstate = 0
+    order_open = []
+    order_closed = []
+    orders = Order.select().where(Order.user == user)
+    
+    for order in orders:
+        if order.is_open == True:
+            order_info= []
+            orderdate = order.order_date
+            order_info.append(orderdate)
+
+            order_outfit = Order_Outfit.get(Order_Outfit.order == order.id)
+            outfitsize = order_outfit.size 
+            order_info.append(outfitsize)
+
+            outfit = Outfit.get(Outfit.id == order_outfit.outfit)
+            outfitname = outfit.outfit_name
+            order_info.append(outfitname)
+            outfitbrand = outfit.brand_name
+            order_info.append(outfitbrand)
+            order_open.append(order_info)
+        else:
+            order_info = []
+            orderdate = order.order_date
+            order_info.append(orderdate)
+
+            order_outfit = Order_Outfit.get(Order_Outfit.order == order.id)
+            outfitsize = order_outfit.size 
+            order_info.append(outfitsize)
+
+            outfit = Outfit.get(Outfit.id == order_outfit.outfit)
+            outfitname = outfit.outfit_name
+            order_info.append(outfitname)
+            outfitbrand = outfit.brand_name
+            order_info.append(outfitbrand)
+            order_closed.append(order_info)
+            
+
+    order_open_length=len(order_open)
+    order_closed_length=len(order_closed)
+    if order_open_length == 0 and order_closed_length == 0:
+        orderstate = 0
+    else:
+        orderstate = 1    
+
+    return render_template('orders/show.html', orderstate=orderstate, order_open=order_open, user=user, order_closed=order_closed, order_open_length=order_open_length, order_closed_length=order_closed_length)
+
+
 
 
 @orders_blueprint.route('/new/<price>/', methods=['POST', 'GET'])
@@ -62,7 +114,7 @@ def new(price):
 @orders_blueprint.route('/create_adress/<price>/', methods=['POST', 'GET'])
 @login_required
 def create_adress(price):
-    price=price   
+    invoice = request.form.get('invoice') 
     name = request.form.get('name')
     street = request.form.get('street')
     housenumber = request.form.get('housenumber')
@@ -71,13 +123,33 @@ def create_adress(price):
     country = request.form.get('country')
     phone = request.form.get('phone')
 
+
     adress = Adress(user_id=current_user.id, name=name, street=street, housenumber=housenumber, postal=postal, city=city, country=country, phone=phone)
     if adress.save():   
-        return redirect(url_for('orders.create', price=price))
+        if invoice == "true":  
+            return render_template('users/invoice.html', price=price)
+        else:    
+            return redirect(url_for('orders.create', price=price))
+
+@orders_blueprint.route('/create_invoice/<price>/', methods=['POST', 'GET'])
+@login_required
+def create_invoice(price):
+    name = request.form.get('name')
+    street = request.form.get('street')
+    housenumber = request.form.get('housenumber')
+    postal = request.form.get('postal')
+    city = request.form.get('city')
+    country = request.form.get('country')
+    phone = request.form.get('phone')
+
+    invoice = Invoice(user_id=current_user.id, name=name, street=street, housenumber=housenumber, postal=postal, city=city, country=country, phone=phone)
+    if invoice.save():   
+            return redirect(url_for('orders.create', price=price))            
 
 @orders_blueprint.route('/create/<price>/', methods=['POST', 'GET'])
 @login_required
 def create(price):
+   
     client_token = generate_client_token()
     price=float(price)
     order = Order.get_or_none(Order.user == current_user.id)
@@ -130,9 +202,10 @@ def create(price):
 
                 session.pop("cart", None)   
                 session.pop("size", None)  
-
+                
                 flash('Bedankt voor je bestelling')
-                return redirect(url_for('home'))
+                return redirect(url_for('orders.simple_message'))
+                    
 
             else:
                 flash('Er is iets fout gegaan. Probeer het opnieuw aub')    
@@ -141,10 +214,22 @@ def create(price):
         flash('Je hebt al een bestelling. Contacteer ons om je bestelling te wijzigen.')    
         return redirect(url_for('home'))
 
+@orders_blueprint.route('/orders/simple_message/', methods=['POST', 'GET'])
+@login_required
+def simple_message():
+    user = User.get_by_id(current_user.id)
+    return requests.post(
+                    "https://api.eu.mailgun.net/v3/rentista@sandboxaa7f9769c89d4e3fbf3eaa85adea5215.mailgun.org/messages",
+                    auth=("api", Config.mailgun),
+                    data={"from": "Rentista <rentista@sandboxaa7f9769c89d4e3fbf3eaa85adea5215.mailgun.org>",
+                    "to": [user.name, "ylootsma@gmail.com"],
+                    "subject": "Hello",
+                    "text": "Testing some Mailgun awesomness!"})
+
 @orders_blueprint.route('/orders/create_checkout/', methods=['POST', 'GET'])
 @login_required
 def create_checkout():
-    
+  
     result = transact({
         'amount': request.form.get('amount'),
         'payment_method_nonce': request.form.get('payment_method_nonce'),
@@ -203,7 +288,7 @@ def create_checkout():
             session.pop("size", None) 
                  
             flash('Bedankt voor je bestelling')
-            return redirect(url_for('home'))
+            return redirect(url_for('orders.simple_message'))
                 
 
         else:
