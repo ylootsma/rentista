@@ -3,7 +3,7 @@ from config import Config
 
 gateway = braintree.BraintreeGateway(
     braintree.Configuration(
-        environment=braintree.Environment.Sandbox,
+        environment=braintree.Environment.Production if Config.braintree_environment == 'production' else braintree.Environment.Sandbox,
         merchant_id=Config.merchant_id,
         public_key=Config.public_key,
         private_key=Config.private_key

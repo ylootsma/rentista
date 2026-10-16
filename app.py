@@ -5,6 +5,7 @@ from models.base_model import db
 from flask_wtf.csrf import CSRFProtect
 from flask_login import LoginManager
 import urllib
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 web_dir = os.path.join(os.path.dirname(
     os.path.abspath(__file__)), 'rentista_web')
@@ -14,6 +15,8 @@ csrf = CSRFProtect(app)
 
 if os.getenv('FLASK_ENV') == 'production':
     app.config.from_object("config.ProductionConfig")
+    # Behind the hosting provider's proxy: trust its headers so external URLs use https
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 else:
     app.config.from_object("config.DevelopmentConfig")
 
@@ -44,12 +47,11 @@ def before_request():
 @app.teardown_request
 def _db_close(exc):
     if not db.is_closed():
-        print(db)
-        print(db.close())
+        db.close()
     return exc
 
 
 @login_manager.user_loader
 def load_user(user_id):
     from models.user import User
-    return User.get_by_id(user_id)
+    return User.get_or_none(User.id == user_id)

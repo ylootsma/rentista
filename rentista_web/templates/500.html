@@ -1,0 +1,8 @@
+{% extends '_layout.html' %}
+{% block content %}
+<div class="container text-center" style="padding-top: 10vh;">
+    <h1>RENTISTA</h1>
+    <p>{{ message or 'Er is iets fout gegaan. Probeer het later opnieuw.' }}</p>
+    <a class="btn btn-secondary" href="{{ url_for('home') }}">Terug naar de homepage</a>
+</div>
+{% endblock %}

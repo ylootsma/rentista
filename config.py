@@ -10,6 +10,7 @@ class Config(object):
     merchant_id = os.environ.get("Merchant_ID")
     public_key = os.environ.get("Public_Key")
     private_key = os.environ.get("Private_Key")
+    braintree_environment = os.environ.get("BRAINTREE_ENVIRONMENT", "sandbox")
     mailgun = os.environ.get("MAILGUN_API_KEY")
 
 

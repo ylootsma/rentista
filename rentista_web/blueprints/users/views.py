@@ -26,6 +26,12 @@ def create():
     name = request.form.get("name")
     email = request.form.get('email')
     password = request.form.get('password')
+    if not name or not email or not password:
+        flash("Vul je naam, e-mail en wachtwoord in")
+        return redirect(redirect_url())
+    if User.get_or_none(User.email == email):
+        flash("Er bestaat al een account met dit e-mailadres")
+        return redirect(redirect_url())
     pwd = generate_password_hash(password)
 
     user = User(name=name, email=email,
@@ -39,6 +45,7 @@ def create():
         return redirect(redirect_url())
 
 @users_blueprint.route('/edit', methods=['POST'])
+@login_required
 def edit():
     user_id= User.get_by_id(current_user.id)
     name = request.form.get("name")
@@ -54,24 +61,21 @@ def edit():
         return redirect(url_for('users.show'))
 
 
-@users_blueprint.route('/update_user', methods=['GET'])
-def update_user():
-   
-   
-    return render_template('users/update_user.html')
-
 @users_blueprint.route('/edit_adress', methods=['GET'])
+@login_required
 def edit_adress():
    
     return render_template('users/edit_adress.html')
 
 @users_blueprint.route('/invoice', methods=['GET'])
+@login_required
 def invoice():
    
     return render_template('users/invoice.html')
 
 
 @users_blueprint.route('/adress', methods=['GET', 'POST'])
+@login_required
 def adress():
     invoice = request.form.get('invoice')  
     name = request.form.get('name')
@@ -95,6 +99,7 @@ def adress():
 
 
 @users_blueprint.route('/create_invoice', methods=['GET', 'POST'])
+@login_required
 def create_invoice():
    
     name = request.form.get('name')
@@ -124,19 +129,6 @@ def create_invoice():
             return redirect(url_for('users.show')) 
 
 
-@users_blueprint.route('/admin', methods=['POST'])
-@login_required
-def admin():
-    user = User.get_by_id(current_user.id)
-    if user.Admin == True:
-       return render_template('users/admin.html', user=user)
-
-    else:
-        flash('Sorry, je hebt geen toegang')
-        return redirect(redirect_url())
-
-
-
 @users_blueprint.route('/show', methods=['GET'])
 @login_required
 def show():
@@ -158,39 +150,34 @@ def show():
 
 
 
-# @users_blueprint.route('/google', methods=["GET"])
-# def google():
-#     redirect_uri = "http://localhost:5000/users/google/login"
-#     return oauth.google.authorize_redirect(redirect_uri)
+@users_blueprint.route('/google/login', methods=["GET"])
+def google_login():
+    token = oauth.google.authorize_access_token()
+    profile = oauth.google.get(
+        'https://www.googleapis.com/oauth2/v2/userinfo').json()
+    return _oauth_login(profile['name'], profile['email'])
 
 
-# @users_blueprint.route('/google/login', methods=["GET"])
-# def google_login():
-#     token = oauth.google.authorize_access_token()
-#     profile = oauth.google.get(
-#         'https://www.googleapis.com/oauth2/v2/userinfo').json()
-#     name = profile['name']
-#     email = oauth.google.get(
-#         'https://www.googleapis.com/oauth2/v2/userinfo').json()['email']
-#     user = User.get_or_none(User.email == email)
-#     if user == None:
-#         user = User(name=name, email=email)
-#         if user.save():
-#             login_user(user)
-#             flash('succesfully signed-up')
-#             return redirect(url_for('home'))
-#         else:
-#             flash('something went wrong, please try again', 'danger')
-#             return redirect(url_for('home'))
-#     else:
-#         login_user(user)
-#         flash('Welcome, successfully signed in.')
-#         return redirect(url_for('home', id=user.id))
+def _oauth_login(name, email):
+    user = User.get_or_none(User.email == email)
+    if user == None:
+        user = User(name=name, email=email)
+        if user.save():
+            flash('succesfully signed-up')
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            flash('something went wrong, please try again', 'danger')
+            return redirect(url_for('home'))
+    else:
+        login_user(user)
+        flash('Welcome, successfully signed in.')
+        return redirect(url_for('home'))
 
 
 @users_blueprint.route('/facebook', methods=["GET"])
 def facebook():
-    redirect_uri = "https://localhost:5000/users/facebook/login"
+    redirect_uri = url_for('users.facebook_login', _external=True)
     return oauth.facebook.authorize_redirect(redirect_uri, state=session['csrf_token'])
 
 
@@ -202,20 +189,4 @@ def facebook_login():
 
     user_data = oauth.facebook.get(
         f"https://graph.facebook.com/v3.2/{facebook_id}?fields=id,name,email").json()
-    email = user_data['email']
-    name = user_data['name']
-
-    user = User.get_or_none(User.email == email)
-    if user == None:
-        user = User(name=name, email=email)
-        if user.save():
-            flash('succesfully signed-up')
-            login_user(user)
-            return redirect(url_for('home'))
-        else:
-            flash('something went wrong, please try again', 'danger')
-            return redirect(redirect_url())
-    else:
-        login_user(user)
-        flash('Welcome, successfully signed in.')
-        return redirect(url_for('home', id=user.id))
+    return _oauth_login(user_data['name'], user_data['email'])

@@ -380,7 +380,7 @@
                 {%endif%}
 
                 
-                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+                <button><a href="{{ url_for('orders.new')}}">Bestel<a></button>  
                
 
                 {%else%}
@@ -395,7 +395,7 @@
                 {%endif%}
                 {%endfor%}
                 {%endfor%}
-                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+                <button><a href="{{ url_for('orders.new')}}">Bestel<a></button>  
                 {%endif%}
 
                 {%else%}
@@ -416,7 +416,7 @@
                 {%endif%}
               
              
-                <button><a href="{{ url_for('orders.new', price=price)}}">Bestel<a></button>  
+                <button><a href="{{ url_for('orders.new')}}">Bestel<a></button>  
              
                 {%endif%} 
 
@@ -448,6 +448,7 @@
                         <p class="card-text"><b>{{outfit.outfit_name}}</b>
                             - <i> {{outfit.brand_name}}</i>
                             </br>
+                            €{{outfit.outfit_price|round|int}}
                             
                         </a>
                         {%if outfit.in_stock == False %}

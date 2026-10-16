@@ -1,68 +1,29 @@
-# Flask Nextagram Template
+# Rentista
 
-version 0.0.1 (alpha)
+Clothing rental webshop built with Flask, Peewee and PostgreSQL. Payments run through Braintree, product photos are stored on S3 and emails are sent with Mailgun.
 
 ## Development
 
-**Make a fork before cloning**
-
-**Install dependencies**
-
-- Python 3.7.2 was tested
-- Postgresql 10.3 was tested
-
-1. Delete `peewee-db-evolve==3.7.0` from `requirements.txt` during the first installation.
-   Because of how `peewee-db-evolve` created it's build process, we would first need to delete it.
-1. Run:
-   ```
-   pip install -r requirements.txt
-   ```
-1. Now add `peewee-db-evolve==3.7.0` back into `requirements.txt`
-1. Run again:
-   ```
-   pip install -r requirements.txt
-   ```
-
-If you're having trouble installing dependencies
-
-- Remove `certifi==2018.11.29` from requirements.txt
-
-If you're having trouble starting flask
-
-- Restart your terminal as well and reactivate conda source
-
-**Create a `.env` file at the root of the directory**
-
-This project uses `python-dotenv`. When running commands using `flask`, environment variables from `.env` are automatically loaded.
-
-When executing `python` scripts directly e.g. `python start.py`, environment variables are not loaded and will not work except `python migrate.py` _(read the script - `migrate.py` to know why it would load the environment variables `.env`)_
-
-Minimum environment variables that needs to be set
+**Install dependencies** (Python 3.13 and PostgreSQL)
 
 ```
-FLASK_APP='start' # based on the name of our entry point script
-FLASK_ENV='development' # use this in development, otherwise 'production' or 'test'
-DATABASE_URL="postgres://localhost:5432/nextagram_dev"
-SECRET_KEY= #generate your own key
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-Use `os.urandom(32)` to generate a random secret key and paste that in `.env`. It's important to keep this `SECRET_KEY` private.
+**Create a `.env` file**
 
-Since this app uses Pooled Connections, you may also want to set:
+Copy `.env.example` to `.env` and fill in the values. `SECRET_KEY` and `DATABASE_URL` are required; the other keys are needed for payments, emails, photo uploads and social login.
 
-```
-DB_TIMEOUT=300 # 5 minutes
-DB_POOL=5
-```
-
-_(see `database.py`)_
+When running commands using `flask`, environment variables from `.env` are loaded automatically. `python migrate.py` loads them itself.
 
 **Create a Database**
 
 - this application is configured to use Postgresql
 
 ```
-createdb nextagram_dev
+createdb rentista_dev
 ```
 
 _\*if you name your database something else, tweak the settings in `.env`_
@@ -104,7 +65,8 @@ flask shell
 
 ## Deploying to Production
 
-- ensure environment variables are configured appropriately
+- ensure environment variables are configured appropriately (see `.env.example`); set `BRAINTREE_ENVIRONMENT=production` to take real payments
+- the `Procfile` starts the site with gunicorn
 - migrations will not run in interactive mode when FLASK_ENV is set to 'production'
 - It's important to set your own `SECRET_KEY` environment variable and keep that private.
 

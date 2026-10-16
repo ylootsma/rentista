@@ -16,7 +16,7 @@ from models.subscription import Subscription
 import braintree
 import os
 import config
-from rentista_web.util.braintree import generate_client_token, gateway, find_transaction, transact, create_customer, subscription_create
+from rentista_web.util.shop import PLANS
 
 
 
@@ -44,9 +44,14 @@ TRANSACTION_SUCCESS_STATUSES = [
 ]
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('500.html', message='Deze pagina bestaat niet.'), 404
+
+
 @app.errorhandler(500)
 def internal_server_error(e):
-    return render_template('500.html'), 500
+    return render_template('500.html', message='Er is iets fout gegaan. Probeer het later opnieuw.'), 500
 
 
 @app.route("/")
@@ -56,43 +61,15 @@ def home():
     return render_template('home.html', pictures=pictures)
 
 
+PLAN_BY_PRICE = {str(plan['price']): name for name, plan in PLANS.items()}
+
+
+# Subscribe buttons on the home page post a price; send them to the matching plan.
 @app.route('/new_1', methods=['POST', 'GET'])
+@app.route('/new_2', methods=['POST', 'GET'], endpoint='new_2')
+@login_required
 def new_1():
-    client_token = generate_client_token()
-    price = request.form.get('price')
-    if price == 93:
-        subscriptiontype= 'standard'
-    elif price == 109:
-        subscriptiontype = 'premium'
-    else:
-        subscriptiontype = 'exclusive'  
-    
-    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
-    if subscription:
-        flash("You already have a subscription. Contact us in case you would like to change.")
-        return redirect(url_for('home'))
-    else:
-        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
-         
-   
-   
-
-@app.route('/new_2', methods=['POST', 'GET'])
-def new_2():
-    client_token = generate_client_token()
-    price = request.form.get('price')
-    if price == 93:
-        subscriptiontype= 'standard'
-    elif price == 109:
-        subscriptiontype = 'premium'
-    else:
-        subscriptiontype = 'exclusive'    
-    
-    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
-    if subscription:
-        flash("You already have a subscription. Contact us in case you would like to change.")
-        return redirect(url_for('home'))
-    else:
-        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
-         
-
+    plan = PLAN_BY_PRICE.get(request.form.get('price', ''))
+    if plan is None:
+        return redirect(url_for('subscriptions.pick'))
+    return redirect(url_for('subscriptions.' + plan))

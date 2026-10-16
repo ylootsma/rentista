@@ -3,3 +3,6 @@
 *__pycache__
 *.env
 
+.webassets-cache/
+rentista_web/static/gen/
+*.lnk

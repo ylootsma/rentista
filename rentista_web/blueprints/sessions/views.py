@@ -29,7 +29,7 @@ def create():
         flash('Email not valid', 'warning')
         return redirect(url_for('sessions.new'))
 
-    if not check_password_hash(user.password, password):
+    if not password or not check_password_hash(user.password, password):
         flash('Password invalid', 'danger')
         return redirect(url_for('sessions.new'))
 
@@ -44,13 +44,13 @@ def create():
 
 @sessions_blueprint.route('/google', methods=['GET'])
 def google():
-    redirect_uri = "http://localhost:5000/users/google/login"
+    redirect_uri = url_for('users.google_login', _external=True)
     return oauth.google.authorize_redirect(redirect_uri)
 
 
 @sessions_blueprint.route('/facebook', methods=['GET'])
 def facebook():
-    redirect_uri = "http://localhost:5000/users/facebook/login"
+    redirect_uri = url_for('users.facebook_login', _external=True)
     return oauth.facebook.authorize_redirect(redirect_uri, state=session['csrf_token'])
 
 
