@@ -11,6 +11,7 @@ class User(BaseModel):
     Partner = pw.BooleanField(unique=False, default=False)
     DOB = pw.DateField(unique=False, null=True)
     size = pw.CharField(unique=False, default="default")
+    mollie_customer_id = pw.CharField(unique=False, null=True)
    
 
     def is_authenticated(self):

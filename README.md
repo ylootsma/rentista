@@ -80,6 +80,30 @@ Before git commiting, remember to ignore key files. Here's an example of `.gitig
 
 ---
 
+## Betalingen via Mollie
+
+Rentista rekent af via [Mollie](https://www.mollie.com). Klanten betalen op de beveiligde Mollie-betaalpagina; het geld wordt uitbetaald op de bankrekening die je in je Mollie-account koppelt.
+
+- **Losse outfits:** iDEAL, creditcard, Klarna, Riverty (achteraf betalen) en in3. De prijs wordt altijd op de server berekend uit de winkelwagen. De voorraad wordt pas afgeboekt als de betaling binnen is. Klarna-, Riverty- en in3-betalingen worden direct "gecaptured", zodat het geld meteen richting uitbetaling gaat.
+- **Abonnementen** (3, 4 of 5 outfits voor €93, €109 of €125 per maand): de klant betaalt de eerste maand met iDEAL of creditcard. Daarna maakt Mollie elke maand automatisch een incasso. Een abonnement geeft pas korting in de winkel als het actief (betaald) is.
+
+### Instellen
+
+1. Maak een account op mollie.com, rond de verificatie af en koppel je bankrekening.
+2. Zet in het Mollie-dashboard de betaalmethoden aan: iDEAL, creditcard, Klarna, Riverty, in3 en SEPA-incasso (nodig voor de maandelijkse abonnementsbetalingen).
+3. Zet je uitbetaalschema in Mollie op "elke werkdag" (standaard is wekelijks op woensdag).
+4. Voeg toe aan `.env` (lokaal) of de omgevingsvariabelen van je host:
+
+```
+MOLLIE_API_KEY=test_xxxxxxxx   # test-key om te testen, live_... om echt geld te ontvangen
+BASE_URL=https://www.jouwdomein.nl
+MOLLIE_VAT_RATE=21             # btw-percentage op de orderregels (Klarna/Riverty/in3)
+```
+
+5. Draai de migratie (`python migrate.py`) voor de nieuwe velden op `order`, `subscription` en `user`.
+
+Mollie meldt elke statuswijziging aan `/orders/webhook/` en `/subscriptions/webhook`. Die adressen moeten via internet bereikbaar zijn; lokaal (`localhost`) wordt de webhook overgeslagen en wordt de status gecontroleerd als de klant terugkomt op de site.
+
 ## Database Migrations
 
 ```
