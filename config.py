@@ -7,9 +7,10 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = os.environ.get(
         'SECRET_KEY') or os.urandom(32)
-    merchant_id = os.environ.get("Merchant_ID")
-    public_key = os.environ.get("Public_Key")
-    private_key = os.environ.get("Private_Key")
+    # Mollie payments: test_... key while testing, live_... key in production
+    MOLLIE_API_KEY = os.environ.get("MOLLIE_API_KEY")
+    # Public address of the site, used for Mollie webhooks, e.g. https://www.rentista.nl
+    BASE_URL = os.environ.get("BASE_URL")
     mailgun = os.environ.get("MAILGUN_API_KEY")
 
 

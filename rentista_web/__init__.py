@@ -13,10 +13,10 @@ from playhouse.flask_utils import FlaskDB, get_object_or_404, object_list
 from models.outfit import Outfit
 from models.outfit_picture import Outfit_Picture
 from models.subscription import Subscription
-import braintree
 import os
 import config
-from rentista_web.util.braintree import generate_client_token, gateway, find_transaction, transact, create_customer, subscription_create
+from rentista_web.util.pricing import PLAN_BY_PRICE
+from rentista_web.blueprints.subscriptions.views import confirm_page
 
 
 
@@ -33,17 +33,6 @@ app.register_blueprint(subscriptions_blueprint, url_prefix="/subscriptions")
 app.register_blueprint(orders_blueprint, url_prefix="/orders")
 
 
-TRANSACTION_SUCCESS_STATUSES = [
-    braintree.Transaction.Status.Authorized,
-    braintree.Transaction.Status.Authorizing,
-    braintree.Transaction.Status.Settled,
-    braintree.Transaction.Status.SettlementConfirmed,
-    braintree.Transaction.Status.SettlementPending,
-    braintree.Transaction.Status.Settling,
-    braintree.Transaction.Status.SubmittedForSettlement
-]
-
-
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
@@ -56,43 +45,18 @@ def home():
     return render_template('home.html', pictures=pictures)
 
 
+def _plan_from_form():
+    try:
+        return PLAN_BY_PRICE[int(request.form.get('price', ''))]
+    except (KeyError, ValueError):
+        return 3
+
+
 @app.route('/new_1', methods=['POST', 'GET'])
 def new_1():
-    client_token = generate_client_token()
-    price = request.form.get('price')
-    if price == 93:
-        subscriptiontype= 'standard'
-    elif price == 109:
-        subscriptiontype = 'premium'
-    else:
-        subscriptiontype = 'exclusive'  
-    
-    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
-    if subscription:
-        flash("You already have a subscription. Contact us in case you would like to change.")
-        return redirect(url_for('home'))
-    else:
-        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
-         
-   
-   
+    return confirm_page(_plan_from_form())
+
 
 @app.route('/new_2', methods=['POST', 'GET'])
 def new_2():
-    client_token = generate_client_token()
-    price = request.form.get('price')
-    if price == 93:
-        subscriptiontype= 'standard'
-    elif price == 109:
-        subscriptiontype = 'premium'
-    else:
-        subscriptiontype = 'exclusive'    
-    
-    subscription = Subscription.get_or_none(Subscription.user == current_user.id)
-    if subscription:
-        flash("You already have a subscription. Contact us in case you would like to change.")
-        return redirect(url_for('home'))
-    else:
-        return render_template('subscriptions/new.html', client_token=client_token, price=price, subscriptiontype=subscriptiontype)
-         
-
+    return confirm_page(_plan_from_form())

@@ -10,6 +10,8 @@ class Order(BaseModel):
     status = pw.CharField(unique=False)
     is_open = pw.BooleanField(unique=False)
     user = pw.ForeignKeyField(User, backref='orders')
+    amount = pw.DecimalField(unique=False, null=True)
+    mollie_payment_id = pw.CharField(unique=False, null=True)
   
 
      

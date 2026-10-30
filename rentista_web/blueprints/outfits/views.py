@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from models.outfit import Outfit
 from models.subscription import Subscription
+from rentista_web.util.payments import active_subscription
 from models.outfit_picture import Outfit_Picture
 from models.user import User
 from models.size import Size
@@ -76,7 +77,7 @@ def show():
         sess =  session['cart']  
         if current_user.is_authenticated:
             # user= User.select().where(User.id == current_user.id)
-            subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+            subscription = active_subscription(current_user.id)
             if subscription:
                 
                 sub_length = int(subscription.subscription_type) 
@@ -179,7 +180,7 @@ def detail(id):
         sess =  session['cart']  
         if current_user.is_authenticated:
             # user= User.select().where(User.id == current_user.id)
-            subscription = Subscription.get_or_none(Subscription.user == current_user.id)
+            subscription = active_subscription(current_user.id)
             if subscription:
                 
                 sub_length = int(subscription.subscription_type) 
